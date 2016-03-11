@@ -1,0 +1,230 @@
+fileFormatVersion: 2
+guid: 20040ae1acdcc1d4ab8043c6f3cb3d5c
+timeCreated: 1434996107
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Adam Complete Model_copy
+    100002: //RootNode
+    100004: Adamshoes
+    100006: CATRigHub001
+    100008: CATRigHub002
+    100010: CATRigHub003
+    100012: CATRigLArm1
+    100014: CATRigLArm21
+    100016: CATRigLArm22
+    100018: CATRigLArmCollarbone
+    100020: CATRigLArmDigit11
+    100022: CATRigLArmDigit12
+    100024: CATRigLArmDigit13
+    100026: CATRigLArmDigit21
+    100028: CATRigLArmDigit22
+    100030: CATRigLArmDigit23
+    100032: CATRigLArmDigit31
+    100034: CATRigLArmDigit32
+    100036: CATRigLArmDigit33
+    100038: CATRigLArmDigit41
+    100040: CATRigLArmDigit42
+    100042: CATRigLArmDigit43
+    100044: CATRigLArmDigit51
+    100046: CATRigLArmDigit52
+    100048: CATRigLArmDigit53
+    100050: CATRigLArmPalm
+    100052: CATRigLLeg1
+    100054: CATRigLLeg2
+    100056: CATRigLLegAnkle
+    100058: CATRigLLegDigit11
+    100060: CATRigLLegPlatform
+    100062: CATRigRArm1
+    100064: CATRigRArm21
+    100066: CATRigRArm22
+    100068: CATRigRArmCollarbone
+    100070: CATRigRArmDigit11
+    100072: CATRigRArmDigit12
+    100074: CATRigRArmDigit13
+    100076: CATRigRArmDigit21
+    100078: CATRigRArmDigit22
+    100080: CATRigRArmDigit23
+    100082: CATRigRArmDigit31
+    100084: CATRigRArmDigit32
+    100086: CATRigRArmDigit33
+    100088: CATRigRArmDigit41
+    100090: CATRigRArmDigit42
+    100092: CATRigRArmDigit43
+    100094: CATRigRArmDigit51
+    100096: CATRigRArmDigit52
+    100098: CATRigRArmDigit53
+    100100: CATRigRArmPalm
+    100102: CATRigRLeg1
+    100104: CATRigRLeg2
+    100106: CATRigRLegAnkle
+    100108: CATRigRLegDigit11
+    100110: CATRigRLegPlatform
+    100112: CATRigSpine
+    100114: CATRigSpine1
+    100116: CATRigSpine2
+    100118: CATRigSpine3
+    100120: CATRigSpine4
+    100122: CATRigSpine5
+    100124: Character001
+    100126: Dummy001
+    100128: Object001
+    100130: Object003
+    100132: Object004
+    100134: Sphere003
+    100136: Sphere004
+    100138: Sphere005
+    400000: Adam Complete Model_copy
+    400002: //RootNode
+    400004: Adamshoes
+    400006: CATRigHub001
+    400008: CATRigHub002
+    400010: CATRigHub003
+    400012: CATRigLArm1
+    400014: CATRigLArm21
+    400016: CATRigLArm22
+    400018: CATRigLArmCollarbone
+    400020: CATRigLArmDigit11
+    400022: CATRigLArmDigit12
+    400024: CATRigLArmDigit13
+    400026: CATRigLArmDigit21
+    400028: CATRigLArmDigit22
+    400030: CATRigLArmDigit23
+    400032: CATRigLArmDigit31
+    400034: CATRigLArmDigit32
+    400036: CATRigLArmDigit33
+    400038: CATRigLArmDigit41
+    400040: CATRigLArmDigit42
+    400042: CATRigLArmDigit43
+    400044: CATRigLArmDigit51
+    400046: CATRigLArmDigit52
+    400048: CATRigLArmDigit53
+    400050: CATRigLArmPalm
+    400052: CATRigLLeg1
+    400054: CATRigLLeg2
+    400056: CATRigLLegAnkle
+    400058: CATRigLLegDigit11
+    400060: CATRigLLegPlatform
+    400062: CATRigRArm1
+    400064: CATRigRArm21
+    400066: CATRigRArm22
+    400068: CATRigRArmCollarbone
+    400070: CATRigRArmDigit11
+    400072: CATRigRArmDigit12
+    400074: CATRigRArmDigit13
+    400076: CATRigRArmDigit21
+    400078: CATRigRArmDigit22
+    400080: CATRigRArmDigit23
+    400082: CATRigRArmDigit31
+    400084: CATRigRArmDigit32
+    400086: CATRigRArmDigit33
+    400088: CATRigRArmDigit41
+    400090: CATRigRArmDigit42
+    400092: CATRigRArmDigit43
+    400094: CATRigRArmDigit51
+    400096: CATRigRArmDigit52
+    400098: CATRigRArmDigit53
+    400100: CATRigRArmPalm
+    400102: CATRigRLeg1
+    400104: CATRigRLeg2
+    400106: CATRigRLegAnkle
+    400108: CATRigRLegDigit11
+    400110: CATRigRLegPlatform
+    400112: CATRigSpine
+    400114: CATRigSpine1
+    400116: CATRigSpine2
+    400118: CATRigSpine3
+    400120: CATRigSpine4
+    400122: CATRigSpine5
+    400124: Character001
+    400126: Dummy001
+    400128: Object001
+    400130: Object003
+    400132: Object004
+    400134: Sphere003
+    400136: Sphere004
+    400138: Sphere005
+    2300000: Object004
+    2300002: Sphere004
+    2300004: Sphere005
+    3300000: Object004
+    3300002: Sphere004
+    3300004: Sphere005
+    4300000: Adamshoes
+    4300002: Object003
+    4300004: Sphere003
+    4300006: Adam Complete Model_copy
+    4300008: Object001
+    4300010: Sphere004
+    4300012: Object004
+    4300014: Sphere005
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Adam Complete Model_copy
+    13700002: Adamshoes
+    13700004: Object001
+    13700006: Object003
+    13700008: Sphere003
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
