@@ -32,9 +32,9 @@ public class TextReadDisplay : MonoBehaviour {
 
     void Start () {
         //int[] charts = new int[2] { 0, 1 };
-        int random = Random.Range(0, 2);
-        Debug.Log(random);
-
+        //int random = Random.Range(0, 2);
+        //Debug.Log(random);
+        int random = 0; //Chart 1 only
 
         if (random == 0)
         {
@@ -59,7 +59,7 @@ public class TextReadDisplay : MonoBehaviour {
             this.rightThree.text = chartOneList[9];
             this.rightFour.text = chartOneList[10];
             this.rightFive.text = chartOneList[11];
-            this.rightFive.text = chartOneList[12];
+            this.rightSix.text = chartOneList[12];
         }
 
         if (random == 1)

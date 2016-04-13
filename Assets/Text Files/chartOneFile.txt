@@ -1,13 +1,13 @@
-FIRST LINE OF CHART ONE
-SECOND LINE OF CHART ONE
-THIRD
-FOURTH
-FIFTH
-SIXTH
-SEVENTH
-EIGHTH
-NINTH
-TENTH
-ELEVENTH
-TWELTH
-THIRTEENTH
+Case Authoring:    “Chart Review” information  CVA Prototype
+Name, diagnosis, date of onset
+Patient biographical/social info
+Prior level of function
+Past medical history
+Chief complaint
+Hospital (acute management)
+MJ, Right CVA: middle cerebral artery stroke due to thrombosis resulting in left hemiparesis,  9 days ago
+60 yr old, female, married, lives in 2 story home with 4 step entry. 
+Worked part-time in retail sales, drove, did all housework and cooking. Drove, walked regularly for exercise
+type II diabetes, hypertension
+Inability to walk and concern about ability to return home safely without assistance.
+Admitted to ER 5 hours after noticing weakness on her left side, spent 9 days in the acute hospital before transfer

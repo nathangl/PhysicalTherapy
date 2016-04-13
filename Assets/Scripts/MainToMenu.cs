@@ -7,6 +7,6 @@ public class MainToMenu : MonoBehaviour
 
     public void SceneSwitch()
     {
-        SceneManager.LoadSceneAsync("Menu");
+        SceneManager.LoadSceneAsync("Chart");
     }
 }
