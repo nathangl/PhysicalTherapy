@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Temp\IfClick.cs" />
     <Compile Include="Assets\Scripts\Temp\Manager.cs" />
     <Compile Include="Assets\Scripts\Temp\MovingMyText.cs" />
+    <Compile Include="Assets\Scripts\Temp\QuestionReader.cs" />
     <Compile Include="Assets\Scripts\Temp\Typer.cs" />
     <Compile Include="Assets\Scripts\TestButtonClick.cs" />
     <Compile Include="Assets\Scripts\TextReadDisplay.cs" />
@@ -78,8 +79,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\archivo-black\SIL Open Font License.txt" />
+    <None Include="Assets\Text Files\answerFile.txt" />
     <None Include="Assets\Text Files\chartOneFile.txt" />
     <None Include="Assets\Text Files\chartTwoFile.txt" />
+    <None Include="Assets\Text Files\questionFile.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

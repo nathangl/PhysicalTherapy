@@ -34,4 +34,17 @@ public class Manager : MonoBehaviour
             menuOn = false;
         }
     }
+    public void BeginQuestions()
+    {
+        if (!menuOn)
+        {
+            menuAnim.SetTrigger("FadeInQuestions");
+            menuOn = true;
+        }
+        else
+        {
+            menuAnim.SetTrigger("FadeOutQuestions");
+            menuOn = false;
+        }
+    }
 }
