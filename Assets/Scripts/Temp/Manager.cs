@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+
+
 public class Manager : MonoBehaviour
 {
     private Animator menuAnim;
@@ -12,6 +14,7 @@ public class Manager : MonoBehaviour
     {
         if (!menuOn)
         {
+            //gameObject.SetActive(true);
             menuAnim.SetTrigger("FadeIn");
             menuOn = true;
         }
@@ -19,12 +22,14 @@ public class Manager : MonoBehaviour
         {
             menuAnim.SetTrigger("FadeOut");
             menuOn = false;
+            //Invoke("DisableUI", 1);
         }
     }
     public void BeginDecision()
     {
         if (!menuOn)
         {
+            //gameObject.SetActive(true);
             menuAnim.SetTrigger("FadeInDecision");
             menuOn = true;
         }
@@ -32,12 +37,14 @@ public class Manager : MonoBehaviour
         {
             menuAnim.SetTrigger("FadeOutDecision");
             menuOn = false;
+            //Invoke("DisableUI", 1);
         }
     }
     public void BeginQuestions()
     {
         if (!menuOn)
         {
+            //gameObject.SetActive(true);
             menuAnim.SetTrigger("FadeInQuestions");
             menuOn = true;
         }
@@ -45,6 +52,12 @@ public class Manager : MonoBehaviour
         {
             menuAnim.SetTrigger("FadeOutQuestions");
             menuOn = false;
+            //Invoke("DisableUI", 1);
         }
     }
+    void DisableUI()
+    {
+        gameObject.SetActive(false);
+    }
+  
 }
