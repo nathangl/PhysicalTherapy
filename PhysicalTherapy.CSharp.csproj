@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AdamMove.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Data\CarPerson.cs" />
+    <Compile Include="Assets\Scripts\Data\ManyConstructors.cs" />
     <Compile Include="Assets\Scripts\DocReader.cs" />
     <Compile Include="Assets\Scripts\JumpScenes.cs" />
     <Compile Include="Assets\Scripts\MainToMenu.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Assets\Scripts\Temp\IfClick.cs" />
     <Compile Include="Assets\Scripts\Temp\Manager.cs" />
     <Compile Include="Assets\Scripts\Temp\MovingMyText.cs" />
+    <Compile Include="Assets\Scripts\Temp\MultipleChoice.cs" />
     <Compile Include="Assets\Scripts\Temp\QuestionReader.cs" />
     <Compile Include="Assets\Scripts\Temp\Typer.cs" />
     <Compile Include="Assets\Scripts\TestButtonClick.cs" />

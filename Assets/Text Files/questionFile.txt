@@ -1,6 +1,3 @@
-You: What happened to you?
-You: What are your goals?
-You: Do you have any pain?
-You: Do you live alone?
-You: What is your home set up?
-You: How were you managing at home prior to this illness?
+What is 2+2?
+What is the color of the sky?
+What is the color of the grass?
