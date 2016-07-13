@@ -65,6 +65,16 @@
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Data\CarPerson.cs" />
     <Compile Include="Assets\Scripts\Data\ManyConstructors.cs" />
+    <Compile Include="Assets\Scripts\Data\New Data\AdjustPointsScript.cs" />
+    <Compile Include="Assets\Scripts\Data\New Data\Back.cs" />
+    <Compile Include="Assets\Scripts\Data\New Data\BackToQuestionsMenu.cs" />
+    <Compile Include="Assets\Scripts\Data\New Data\LoadingUserPreviousActivities.cs" />
+    <Compile Include="Assets\Scripts\Data\New Data\QuestionsClass.cs" />
+    <Compile Include="Assets\Scripts\Data\New Data\RetainUserID.cs" />
+    <Compile Include="Assets\Scripts\Data\New Data\SaveNewUser.cs" />
+    <Compile Include="Assets\Scripts\Data\New Data\SaveQuestionsClassData.cs" />
+    <Compile Include="Assets\Scripts\Data\New Data\StudentsLevelClass.cs" />
+    <Compile Include="Assets\Scripts\Data\New Data\UserInputCheck.cs" />
     <Compile Include="Assets\Scripts\DocReader.cs" />
     <Compile Include="Assets\Scripts\JumpScenes.cs" />
     <Compile Include="Assets\Scripts\MainToMenu.cs" />
@@ -79,16 +89,6 @@
     <Compile Include="Assets\Scripts\TestButtonClick.cs" />
     <Compile Include="Assets\Scripts\TextReadDisplay.cs" />
     <Compile Include="Assets\Scripts\TextboxManager.cs" />
-    <Compile Include="Assets\UnityNewSavingAndLoading\Scripts\AdjustPointsScript.cs" />
-    <Compile Include="Assets\UnityNewSavingAndLoading\Scripts\Back.cs" />
-    <Compile Include="Assets\UnityNewSavingAndLoading\Scripts\BackToQuestionsMenu.cs" />
-    <Compile Include="Assets\UnityNewSavingAndLoading\Scripts\LoadingUserPreviousActivities.cs" />
-    <Compile Include="Assets\UnityNewSavingAndLoading\Scripts\QuestionsClass.cs" />
-    <Compile Include="Assets\UnityNewSavingAndLoading\Scripts\RetainUserID.cs" />
-    <Compile Include="Assets\UnityNewSavingAndLoading\Scripts\SaveNewUser.cs" />
-    <Compile Include="Assets\UnityNewSavingAndLoading\Scripts\SaveQuestionsClassData.cs" />
-    <Compile Include="Assets\UnityNewSavingAndLoading\Scripts\StudentsLevelClass.cs" />
-    <Compile Include="Assets\UnityNewSavingAndLoading\Scripts\UserInputCheck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\archivo-black\SIL Open Font License.txt" />
