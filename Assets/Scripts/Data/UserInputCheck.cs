@@ -51,9 +51,9 @@ public class UserInputCheck : MonoBehaviour
 
             data.StudentId = Int32.Parse(User_ID.text);
             User_ID_All_Level = Int32.Parse(User_ID.text);
-           // data.FName = firstName.text;
-           // data.LName = "Johny";
-           //write data to file
+            // data.FName = firstName.text;
+            // data.LName = "Johny";
+            //write data to file
             bf.Serialize(file, data);
             file.Close();
         }
@@ -75,17 +75,18 @@ public class UserInputCheck : MonoBehaviour
                     break;
                 }
             }
-            if (RedundantId == false)
-            {
-                User_ID_All_Level = Int32.Parse(User_ID.text);
-                SceneManager.LoadScene("ID_Not_Exist"); 
-            }
-
         }
+        if (RedundantId == false)
+        {
+            User_ID_All_Level = Int32.Parse(User_ID.text);
+            SceneManager.LoadScene("ID_Not_Exist"); 
+        }
+
     }
+}
 
 
 
     
-}
+
 
