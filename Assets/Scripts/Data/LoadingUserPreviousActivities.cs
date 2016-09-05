@@ -16,7 +16,7 @@ public class LoadingUserPreviousActivities : MonoBehaviour
 
     public static LoadingUserPreviousActivities control;
 
-    public int health;
+    public int score;
     public int User_ID;
     public int user_question_ID_answered, tempQuestionId;
     public Text question_to_be_asked;
@@ -55,7 +55,7 @@ public class LoadingUserPreviousActivities : MonoBehaviour
     void OnGUI()
     {
         //if(GUI)
-        GUI.Label(new Rect(10, 10, 100, 30), "health: " + health);
+        GUI.Label(new Rect(10, 10, 100, 30), "Score: " + score);
         GUI.Label(new Rect(10, 40, 150, 30), "User_ID: " + UserInputCheck.User_ID_All_Level);
         //removed buttons and random debugs
     }
@@ -79,10 +79,10 @@ public class LoadingUserPreviousActivities : MonoBehaviour
                 if (lData.StudentId == UserInputCheck.User_ID_All_Level)
                 {
                     // assign data from file to temporary feilds
-                    health = lData.LevelScore;
+                    score = lData.LevelScore;
                     user_question_ID_answered = lData.QuestionId;
                     //question, answer, 
-                    Debug.Log(health + "last student question: " +
+                    Debug.Log(score + "last student question: " +
                         user_question_ID_answered);
                 }
             }
@@ -193,7 +193,7 @@ public class LoadingUserPreviousActivities : MonoBehaviour
                 Third_Answer.text =  items[2].ToString();
                 Fourths_Answer.text = items[3].ToString();
 
-                Debug.Log(health + "last student question: " +
+                Debug.Log(score + "last student question: " +
                     user_question_ID_answered);
                 qfile.Close();
                 //nadd
@@ -221,37 +221,37 @@ public class LoadingUserPreviousActivities : MonoBehaviour
            string lfq= LoadFirstQuestion();
                 if(First_Answer_Toggle.isOn && First_Answer.text == lfq)
                 {
-                    health += 10;
-                    sLevels.LevelScore = health;
+                    score += 10;
+                    sLevels.LevelScore = score;
                     sLevels.Success = 1;
                 }
                 else if (Second_Answer_Toggle.isOn && Second_Answer.text == lfq)
                 {
-                    health += 10;
-                    sLevels.LevelScore = health;
+                    score += 10;
+                    sLevels.LevelScore = score;
                     sLevels.Success = 1;
                 }
                 else if(Third_Answer_Toggle.isOn && Third_Answer.text == lfq)
                 {
 
-                    health += 10;
-                    sLevels.LevelScore = health;
+                    score += 10;
+                    sLevels.LevelScore = score;
                     sLevels.Success = 1;
 
 
                 }
                 else if (Fourths_Answer_Toggle.isOn && Fourths_Answer.text == lfq)
                 {
-                    health += 10;
-                    sLevels.LevelScore = health;
+                    score += 10;
+                    sLevels.LevelScore = score;
                     sLevels.Success = 1;
 
                 }
                 else
                 {
 
-                    health -= 10;
-                    sLevels.LevelScore = health;
+                    score -= 10;
+                    sLevels.LevelScore = score;
                     sLevels.Success = 0;
                 }
             
@@ -268,49 +268,50 @@ public class LoadingUserPreviousActivities : MonoBehaviour
             Debug.Log(Application.persistentDataPath);
             Level sLevels = new Level();
             sLevels.StudentId = UserInputCheck.User_ID_All_Level;
-            sLevels.QuestionId =  int.Parse( tempQuestionId.ToString());  //where all problems lie
-            
+            //sLevels.QuestionId =  int.Parse( tempQuestionId.ToString());  //where all problems lie  0, 0
+            sLevels.QuestionId = int.Parse(user_question_ID_answered.ToString());
+
             tempCorrectAnswer = LoadAnswer(sLevels);
 
             if (First_Answer_Toggle.isOn && First_Answer.text == tempCorrectAnswer)
             {
-                health += 10;
-                sLevels.LevelScore = health;
+                score += 10;
+                sLevels.LevelScore = score;
                 sLevels.Success = 1;
             }
             else if (Second_Answer_Toggle.isOn && Second_Answer.text == tempCorrectAnswer)
             {
-                health += 10;
-                sLevels.LevelScore = health;
+                score += 10;
+                sLevels.LevelScore = score;
                 sLevels.Success = 1;
             }
             else if (Third_Answer_Toggle.isOn && Third_Answer.text == tempCorrectAnswer)
             {
 
-                health += 10;
-                sLevels.LevelScore = health;
+                score += 10;
+                sLevels.LevelScore = score;
                 sLevels.Success = 1;
 
 
             }
             else if (Fourths_Answer_Toggle.isOn && Fourths_Answer.text == tempCorrectAnswer)
             {
-                health += 10;
-                sLevels.LevelScore = health;
+                score += 10;
+                sLevels.LevelScore = score;
                 sLevels.Success = 1;
 
             }
             else
             {
                 // check if health greater that 10
-                if(health >= 10)
+                if(score >= 10)
                 {
-                    health -= 10;
-                    sLevels.LevelScore = health;
+                    score -= 10;
+                    sLevels.LevelScore = score;
                     sLevels.Success = 0;
                 }else
                 {
-                    health = 0;
+                    score = 0;
                 }
                 
             } 
@@ -347,9 +348,19 @@ public class LoadingUserPreviousActivities : MonoBehaviour
         FileStream qFile = File.Open(
             Questionpath, FileMode.Open);
         qFile.Seek(0, SeekOrigin.Begin + sLevels.QuestionId);
-        QuestionsClass qdata = (QuestionsClass)qbf.Deserialize(qFile);
-        qFile.Close();
-        return qdata.Answer;
+        for (int i = 0; i < qFile.Length; i++)
+        {
+            QuestionsClass qdata = (QuestionsClass)qbf.Deserialize(qFile);
+            qFile.Close();
+            if (qdata.QuestionId == user_question_ID_answered)
+            {
+
+                return qdata.Answer;
+            }
+        }
+        Debug.Log("Error in getting answer");
+        return null;
+        
     }
                 
 }

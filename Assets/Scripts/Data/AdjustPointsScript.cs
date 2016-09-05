@@ -7,11 +7,11 @@ public class AdjustPointsScript : MonoBehaviour {
     {
         if (GUI.Button(new Rect(10, 60, 100, 30), "Health up"))
         {
-            LoadingUserPreviousActivities.control.health += 10; 
+            LoadingUserPreviousActivities.control.score += 10; 
         } 
         if (GUI.Button(new Rect(10, 100, 100, 30), "Health Down"))
         {
-            LoadingUserPreviousActivities.control.health -= 10;
+            LoadingUserPreviousActivities.control.score -= 10;
         }
         
     }
