@@ -20,6 +20,7 @@ public class LoadingUserPreviousActivities : MonoBehaviour
     public int User_ID;
     public int user_question_ID_answered, tempQuestionId;
     public Text question_to_be_asked;
+
     public GameObject notificationUI;
     public Text continueButton;
     //correct answer to question
@@ -33,7 +34,7 @@ public class LoadingUserPreviousActivities : MonoBehaviour
 
 
     //singeltone
-    void Start()        //was Awake() changed to Start() nadd
+    void Start()        //was Awake() changed to Start()
     {
         /*
         //if there is NotificationServices game control 
@@ -198,7 +199,6 @@ public class LoadingUserPreviousActivities : MonoBehaviour
                 Debug.Log(score + "last student question: " +
                     user_question_ID_answered);
                 qfile.Close();
-                //nadd
                 return;
             }
 
@@ -273,7 +273,7 @@ public class LoadingUserPreviousActivities : MonoBehaviour
             Debug.Log(Application.persistentDataPath);
             Level sLevels = new Level();
             sLevels.StudentId = UserInputCheck.User_ID_All_Level;
-            //sLevels.QuestionId =  int.Parse( tempQuestionId.ToString());  //where all problems lie  0, 0
+            //sLevels.QuestionId =  int.Parse( tempQuestionId.ToString());  
             sLevels.QuestionId = int.Parse(user_question_ID_answered.ToString());
 
             tempCorrectAnswer = LoadAnswer(sLevels);
@@ -357,23 +357,24 @@ public class LoadingUserPreviousActivities : MonoBehaviour
         BinaryFormatter qbf = new BinaryFormatter();
         FileStream qFile = File.Open(
             Questionpath, FileMode.Open);
-        qFile.Seek(0, SeekOrigin.Begin + sLevels.QuestionId);
-        for (int i = 0; i < qFile.Length; i++)
+
+        qFile.Seek(0, SeekOrigin.Begin);
+        while (qFile.Position <= qFile.Length)
         {
             QuestionsClass qdata = (QuestionsClass)qbf.Deserialize(qFile);
-            qFile.Close();
             if (qdata.QuestionId == user_question_ID_answered)
             {
-
+                qFile.Close();
                 return qdata.Answer;
             }
         }
         Debug.Log("Error in getting answer");
+        qFile.Close();
         return null;
         
     }
 
-    private void ShowNotification(bool correct)
+    private void ShowNotification(bool correct)     //accepts a bool where true means correct and false means incorrect
     {
         notificationUI.SetActive(true);
         if (correct)
