@@ -20,6 +20,8 @@ public class LoadingUserPreviousActivities : MonoBehaviour
     public int User_ID;
     public int user_question_ID_answered, tempQuestionId;
     public Text question_to_be_asked;
+    public GameObject notificationUI;
+    public Text continueButton;
     //correct answer to question
     private string tempCorrectAnswer;   //no clue
 
@@ -221,19 +223,21 @@ public class LoadingUserPreviousActivities : MonoBehaviour
            string lfq= LoadFirstQuestion();
                 if(First_Answer_Toggle.isOn && First_Answer.text == lfq)
                 {
+                    ShowNotification(true);
                     score += 10;
                     sLevels.LevelScore = score;
                     sLevels.Success = 1;
                 }
                 else if (Second_Answer_Toggle.isOn && Second_Answer.text == lfq)
                 {
+                    ShowNotification(true);
                     score += 10;
                     sLevels.LevelScore = score;
                     sLevels.Success = 1;
                 }
                 else if(Third_Answer_Toggle.isOn && Third_Answer.text == lfq)
                 {
-
+                    ShowNotification(true);
                     score += 10;
                     sLevels.LevelScore = score;
                     sLevels.Success = 1;
@@ -242,6 +246,7 @@ public class LoadingUserPreviousActivities : MonoBehaviour
                 }
                 else if (Fourths_Answer_Toggle.isOn && Fourths_Answer.text == lfq)
                 {
+                    ShowNotification(true);
                     score += 10;
                     sLevels.LevelScore = score;
                     sLevels.Success = 1;
@@ -249,7 +254,7 @@ public class LoadingUserPreviousActivities : MonoBehaviour
                 }
                 else
                 {
-
+                    ShowNotification(false);
                     score -= 10;
                     sLevels.LevelScore = score;
                     sLevels.Success = 0;
@@ -275,19 +280,21 @@ public class LoadingUserPreviousActivities : MonoBehaviour
 
             if (First_Answer_Toggle.isOn && First_Answer.text == tempCorrectAnswer)
             {
+                ShowNotification(true);
                 score += 10;
                 sLevels.LevelScore = score;
                 sLevels.Success = 1;
             }
             else if (Second_Answer_Toggle.isOn && Second_Answer.text == tempCorrectAnswer)
             {
+                ShowNotification(true);
                 score += 10;
                 sLevels.LevelScore = score;
                 sLevels.Success = 1;
             }
             else if (Third_Answer_Toggle.isOn && Third_Answer.text == tempCorrectAnswer)
             {
-
+                ShowNotification(true);
                 score += 10;
                 sLevels.LevelScore = score;
                 sLevels.Success = 1;
@@ -296,6 +303,7 @@ public class LoadingUserPreviousActivities : MonoBehaviour
             }
             else if (Fourths_Answer_Toggle.isOn && Fourths_Answer.text == tempCorrectAnswer)
             {
+                ShowNotification(true);
                 score += 10;
                 sLevels.LevelScore = score;
                 sLevels.Success = 1;
@@ -306,11 +314,13 @@ public class LoadingUserPreviousActivities : MonoBehaviour
                 // check if health greater that 10
                 if(score >= 10)
                 {
+                    ShowNotification(false);
                     score -= 10;
                     sLevels.LevelScore = score;
                     sLevels.Success = 0;
                 }else
                 {
+                    ShowNotification(false);
                     score = 0;
                 }
                 
@@ -361,6 +371,21 @@ public class LoadingUserPreviousActivities : MonoBehaviour
         Debug.Log("Error in getting answer");
         return null;
         
+    }
+
+    private void ShowNotification(bool correct)
+    {
+        notificationUI.SetActive(true);
+        if (correct)
+        {
+            continueButton.text = ("Correct! +10 points");
+        }
+        else if (!correct)
+        {
+            continueButton.text = ("Incorrect! -10 points");
+        }
+        else
+            Debug.Log("Notification bool error.");
     }
                 
 }
