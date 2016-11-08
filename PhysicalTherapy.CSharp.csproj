@@ -61,6 +61,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>Assets\Plugins\Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>Assets\Plugins\System.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Data\AdjustPointsScript.cs" />
@@ -73,6 +79,10 @@
     <Compile Include="Assets\Scripts\Data\SaveQuestionsClassData.cs" />
     <Compile Include="Assets\Scripts\Data\StudentsLevelClass.cs" />
     <Compile Include="Assets\Scripts\Data\UserInputCheck.cs" />
+    <Compile Include="Assets\Scripts\Database\DatabaseManager.cs" />
+    <Compile Include="Assets\Scripts\Database\LoginUser.cs" />
+    <Compile Include="Assets\Scripts\Database\RegisterUser.cs" />
+    <Compile Include="Assets\Scripts\Dropdown.cs" />
     <Compile Include="Assets\Scripts\IfClick.cs" />
     <Compile Include="Assets\Scripts\JumpScenes.cs" />
     <Compile Include="Assets\Scripts\Manager.cs" />
