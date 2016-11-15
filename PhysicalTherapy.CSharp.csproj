@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Database\DatabaseManager.cs" />
     <Compile Include="Assets\Scripts\Database\LoginUser.cs" />
     <Compile Include="Assets\Scripts\Database\RegisterUser.cs" />
+    <Compile Include="Assets\Scripts\Database\UserClass.cs" />
     <Compile Include="Assets\Scripts\Dropdown.cs" />
     <Compile Include="Assets\Scripts\IfClick.cs" />
     <Compile Include="Assets\Scripts\JumpScenes.cs" />

@@ -41,7 +41,7 @@ public class DatabaseManager : MonoBehaviour
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = String.Format("CREATE TABLE if not exists UserInfo (Username TEXT PRIMARY KEY NOT NULL UNIQUE, Password TEXT  NOT NULL, FirstName TEXT  NOT NULL, LastName  TEXT  NOT NULL)");    //TABLE ONE CREATION
+                string sqlQuery = String.Format("CREATE TABLE if not exists UserInfo (Username TEXT NOT NULL UNIQUE, Password TEXT  NOT NULL, FirstName TEXT  NOT NULL, LastName  TEXT  NOT NULL)");
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
@@ -52,7 +52,18 @@ public class DatabaseManager : MonoBehaviour
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = String.Format("CREATE TABLE UserRecords (UserName TEXT  NOT NULL PRIMARY KEY, QuestionID TEXT  NOT NULL, Answer TEXT  NOT NULL, Correct BOOLEAN  NOT NULL)");    //TABLE TWO CREATION
+                string sqlQuery = String.Format("CREATE TABLE UserRecords (UserName TEXT  NOT NULL PRIMARY KEY, QuestionID TEXT  NOT NULL, Correct BOOLEAN  NOT NULL)");
+                dbCmd.CommandText = sqlQuery;
+                dbCmd.ExecuteScalar();
+                dbConnection.Close();
+            }
+        }
+        using (IDbConnection dbConnection = new SqliteConnection(connectionString))
+        {
+            dbConnection.Open();
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = String.Format("CREATE TABLE Question (Question_ID INTEGER  NOT NULL PRIMARY KEY, Question TEXT  NOT NULL, Answer TEXT  NOT NULL)");
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
@@ -81,7 +92,9 @@ public class DatabaseManager : MonoBehaviour
     {
         string tempUsername = null;
         string tempPassword = null;
-        string tempQuestionID = null;
+        string tempFirstName = null;
+        string tempLastName = null;
+        //string tempQuestionID = null;
         bool foundLogin = false;
 
         using (IDbConnection dbConnection = new SqliteConnection(connectionString))
@@ -89,7 +102,7 @@ public class DatabaseManager : MonoBehaviour
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = "SELECT * FROM UserInfo"; //SELECT * FROM (user info table)
+                string sqlQuery = "SELECT * FROM UserInfo";
                 dbCmd.CommandText = sqlQuery;
                 using (IDataReader dbReader = dbCmd.ExecuteReader())
                 {
@@ -97,7 +110,9 @@ public class DatabaseManager : MonoBehaviour
                     {
                         tempUsername = dbReader.GetString(0);
                         tempPassword = dbReader.GetString(0);
-                        tempQuestionID = dbReader.GetString(0);
+                        tempFirstName = dbReader.GetString(0);
+                        tempLastName = dbReader.GetString(0);
+                        //tempQuestionID = dbReader.GetString(0);
 
                         if (tempUsername == username && tempPassword == password)
                         {
@@ -109,6 +124,9 @@ public class DatabaseManager : MonoBehaviour
                     if (foundLogin == true)
                     {
                         //UserCLass storage
+                        UserClass.currentUser.username = tempUsername;
+                        UserClass.currentUser.firstName = tempFirstName;
+                        UserClass.currentUser.lastName = tempLastName;
                         Login(questionID);
                     }
                     else if ((tempUsername == username && tempPassword != password) || (tempUsername != username && tempPassword == password))
@@ -143,7 +161,7 @@ public class DatabaseManager : MonoBehaviour
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = String.Format("DELETE FROM ", username);    //DELETE FROM (table) WHERE (username) = \"{0}\"
+                string sqlQuery = String.Format("DELETE FROM UserInfo WHERE username = \"{0}\"", username);    //DELETE FROM (table) WHERE (username) = \"{0}\"
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
@@ -151,16 +169,16 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
-    private static void InsertUserRecord(string questionID, string userAnswer, bool correct)
+    private static void InsertUserRecord(string questionID, bool correct)
     {
-        string username = ""; // UserClass.player.username
+        string username = UserClass.currentUser.username; // UserClass.player.username
 
         using (IDbConnection dbConnection = new SqliteConnection(connectionString))
         {
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = String.Format("INSET INTO UserInfo (Username, Password, FirstName, LastName) VALUES(\"{0}\",\"{1}\",\"{2}\",\"{3}\")", username, questionID, userAnswer, correct); //INSERT info follow by values
+                string sqlQuery = String.Format("INSET INTO UserRecords (Username, QuestionID, Correct) VALUES(\"{0}\",\"{1}\",\"{2}\")", username, questionID, correct); //INSERT info follow by values
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
@@ -183,8 +201,8 @@ public class DatabaseManager : MonoBehaviour
         DeleteUser(username);
     }
 
-    public static void insetStudentRecord(string questionID, string userAnswer, bool correct)
+    public static void insetStudentRecord(string questionID, bool correct)
     {
-        InsertUserRecord(questionID, userAnswer, correct);
+        InsertUserRecord(questionID, correct);
     }
 }
