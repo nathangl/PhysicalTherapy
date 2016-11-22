@@ -69,12 +69,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Cube Example\CubeFront.cs" />
-    <Compile Include="Assets\Scripts\Cube Example\CubeList.cs" />
-    <Compile Include="Assets\Scripts\Cube Example\CubeSide.cs" />
-    <Compile Include="Assets\Scripts\Cube Example\CubeTop.cs" />
-    <Compile Include="Assets\Scripts\Cube Example\CubeTree.cs" />
-    <Compile Include="Assets\Scripts\Cube Example\EmployeeExample.cs" />
     <Compile Include="Assets\Scripts\Database\DatabaseManager.cs" />
     <Compile Include="Assets\Scripts\Database\LoginUser.cs" />
     <Compile Include="Assets\Scripts\Database\RegisterUser.cs" />
@@ -84,6 +78,8 @@
     <Compile Include="Assets\Scripts\Manager.cs" />
     <Compile Include="Assets\Scripts\MovingMyText.cs" />
     <Compile Include="Assets\Scripts\MultipleChoice.cs" />
+    <Compile Include="Assets\Scripts\Patient Tree\ClickTrigger.cs" />
+    <Compile Include="Assets\Scripts\Patient Tree\PatientTree.cs" />
     <Compile Include="Assets\Scripts\QuestionReader.cs" />
     <Compile Include="Assets\Scripts\TextReadDisplay.cs" />
     <Compile Include="Assets\Scripts\Typer.cs" />

@@ -3,16 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class CubeTree : MonoBehaviour {
-    
-    static TreeNode root = new TreeNode { Value = "CubeTree" };
+public class PatientTree : MonoBehaviour
+{
+
+    static TreeNode root = new TreeNode { Value = "Patient" };
 
     void Start()
     {
-        root.Nodes.Add(new TreeNode { Value = "Top" });
-        root.Nodes[0].Nodes.Add(new TreeNode { Value = "LEFT" });
-        root.Nodes[0].Nodes.Add(new TreeNode { Value = "RIGHT" });
-        root.Nodes.Add(new TreeNode { Value = "Front" });
+        root.Nodes.Add(new TreeNode { Value = "UpperExtremity" });
+        root.Nodes[0].Nodes.Add(new TreeNode { Value = "Shoulder" });
+        root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "LeftShoulder" });
+        root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "RightShoulder" });
+        root.Nodes[0].Nodes.Add(new TreeNode { Value = "Elbow" });
+        root.Nodes[0].Nodes.Add(new TreeNode { Value = "Hand" });
+        root.Nodes.Add(new TreeNode { Value = "LowerExtremity" });
         root.Nodes[1].Nodes.Add(new TreeNode { Value = "LEFT" });
         root.Nodes[1].Nodes.Add(new TreeNode { Value = "RIGHT" });
         root.Nodes.Add(new TreeNode { Value = "Side" });
@@ -28,7 +32,7 @@ public class CubeTree : MonoBehaviour {
         traverse = (n) => {
             if (n.Value == clicked)
             {
-                Debug.Log(n.Value + " ACCESSED!");
+                Debug.Log(n.Value + " CLICKED!");
                 foreach (TreeNode nv in n.Nodes)
                 {
                     Debug.Log(nv.Value);
