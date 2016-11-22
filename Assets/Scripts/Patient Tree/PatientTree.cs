@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -7,6 +8,8 @@ public class PatientTree : MonoBehaviour
 {
 
     static TreeNode root = new TreeNode { Value = "Patient" };
+
+    public Dropdown userDropdown;
 
     void Start()
     {
@@ -47,6 +50,12 @@ public class PatientTree : MonoBehaviour
         };
 
         traverse(root);
+    }
+
+    public void DropdownUI()
+    {
+        userDropdown.gameObject.SetActive(true);
+        userDropdown.transform.position = new Vector3(Input.mousePosition.x + 80, Input.mousePosition.y - 15, Input.mousePosition.z);
     }
 }
 
