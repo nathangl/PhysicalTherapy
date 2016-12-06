@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\MultipleChoice.cs" />
     <Compile Include="Assets\Scripts\PatientController.cs" />
     <Compile Include="Assets\Scripts\QuestionReader.cs" />
+    <Compile Include="Assets\Scripts\SubjectiveExam.cs" />
     <Compile Include="Assets\Scripts\TextReadDisplay.cs" />
     <Compile Include="Assets\Scripts\Typer.cs" />
   </ItemGroup>

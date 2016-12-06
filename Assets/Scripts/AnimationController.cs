@@ -15,7 +15,12 @@ public class AnimationController : MonoBehaviour {
         if (pAnim == "leftShoulder")
         {
             Debug.Log("Animation Accessed");
-            //patientAnim.SetTrigger("LeftShoulder");
+            patientAnim.SetTrigger("LeftShoulder");
         }
+    }
+
+    void OnMouseDown()
+    {
+        patientAnim.SetTrigger("LeftShoulder");
     }
 }
