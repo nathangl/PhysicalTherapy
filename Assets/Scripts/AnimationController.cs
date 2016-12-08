@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class AnimationController : MonoBehaviour {
@@ -10,17 +11,21 @@ public class AnimationController : MonoBehaviour {
         patientAnim = GetComponent<Animator>();
     }
 
-    public void PlayPatientAnim(string pAnim)
+    public void PlayPatientAnim(Dropdown dropdown)
     {
-        if (pAnim == "leftShoulder")
+        if (dropdown.value == 1)        //AROM
         {
-            Debug.Log("Animation Accessed");
-            patientAnim.SetTrigger("LeftShoulder");
+            Debug.Log("AROM Animation Accessed");
+            patientAnim.SetTrigger("AROMLeftArm");
         }
-    }
 
-    void OnMouseDown()
-    {
-        patientAnim.SetTrigger("LeftShoulder");
+        else if (dropdown.value == 2)       //PROM
+        {
+            Debug.Log("PROM Animation Accessed");
+            patientAnim.SetTrigger("PROMLeftArm");
+        }
+
+        else
+            Debug.Log("Error at animationcontroller");
     }
 }

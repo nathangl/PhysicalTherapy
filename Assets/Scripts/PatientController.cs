@@ -5,12 +5,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class PatientController : MonoBehaviour {
-
+    
     public Dropdown userDropdown;
     public SphereCollider leftShoulder, rightShoulder;
     private RaycastHit hit;
     TreeNode root = new TreeNode { Value = "Patient" };
-
+    
     void Start()
     {
         root.Nodes.Add(new TreeNode { Value = "UpperExtremity" });
