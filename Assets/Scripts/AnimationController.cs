@@ -17,12 +17,14 @@ public class AnimationController : MonoBehaviour {
         {
             Debug.Log("AROM Animation Accessed");
             patientAnim.SetTrigger("AROMLeftArm");
+			dropdown.value = 0;
         }
 
         else if (dropdown.value == 2)       //PROM
         {
             Debug.Log("PROM Animation Accessed");
             patientAnim.SetTrigger("PROMLeftArm");
+			dropdown.value = 0;
         }
 
         else
