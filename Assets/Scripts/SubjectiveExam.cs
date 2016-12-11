@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class SubjectiveExam : MonoBehaviour {
 
-    int index = 0;
+    //int index = 0;
 
     public Text qBox;
     public Text aBox;
@@ -66,10 +66,12 @@ public class SubjectiveExam : MonoBehaviour {
 		GameObject obj = EventSystem.current.currentSelectedGameObject;
 		switch (obj.name)
 		{
+		/*
 		case "Question1":
 				qBox.text = questions [0];
 				aBox.text = answers [0];
 				break;
+				*/
 			case "Question2":
 				qBox.text = questions [1];
 				aBox.text = answers [1];
