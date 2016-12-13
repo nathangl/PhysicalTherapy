@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,14 @@ public class PatientController : MonoBehaviour {
     public SphereCollider leftShoulder, rightShoulder;
     private RaycastHit hit;
     TreeNode root = new TreeNode { Value = "Patient" };
+    Animator patientAnim;
+    string dropdownIndex;
     
+    void Awake()
+    {
+        patientAnim = GetComponent<Animator>();
+    }
+
     void Start()
     {
         root.Nodes.Add(new TreeNode { Value = "UpperExtremity" });
@@ -19,6 +27,8 @@ public class PatientController : MonoBehaviour {
         root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "AROM" });
         root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "PROM" });
         root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "RightShoulder" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "AROM" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "PROM" });
         root.Nodes[0].Nodes.Add(new TreeNode { Value = "Elbow" });
         root.Nodes[0].Nodes.Add(new TreeNode { Value = "Hand" });
         root.Nodes.Add(new TreeNode { Value = "LowerExtremity" });
@@ -37,9 +47,8 @@ public class PatientController : MonoBehaviour {
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity)) // if the raycast hit something
             {
-                 SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
+                SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
             }
-
         }
 
     }
@@ -52,7 +61,8 @@ public class PatientController : MonoBehaviour {
             if (n.Value == clicked)
             {
                 Debug.Log(n.Value + " CLICKED!");
-                dropdownList.Add("Decisions");
+                dropdownIndex = n.Value;
+                dropdownList.Add(n.Value);
                 foreach (TreeNode nv in n.Nodes)
                 {
                     //Debug.Log(nv.Value);
@@ -73,6 +83,38 @@ public class PatientController : MonoBehaviour {
         userDropdown.ClearOptions();
         userDropdown.AddOptions(dropdownList);
 
+    }
+
+    public void PlayPatientAnim(Dropdown dropdown)
+    {
+        if (dropdown.value == 1)        //AROM
+        {
+            Debug.Log("AROM Animation Accessed");
+            if (dropdownIndex == "LeftShoulder")
+            {
+                patientAnim.SetTrigger("AROMLeftArm");
+            }
+            if (dropdownIndex == "RightShoulder")
+            {
+                patientAnim.SetTrigger("AROMRightArm");
+            }
+        }
+
+        else if (dropdown.value == 2)       //PROM
+        {
+            Debug.Log("PROM Animation Accessed");
+            if (dropdownIndex == "LeftShoulder")
+            {
+                patientAnim.SetTrigger("PROMLeftArm");
+            }
+            if (dropdownIndex == "RightShoulder")
+            {
+                patientAnim.SetTrigger("PROMRightArm");
+            }
+        }
+
+        else
+            Debug.Log("Error at animationcontroller");
     }
 }
 
