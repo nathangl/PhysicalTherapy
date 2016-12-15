@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
+	private CanvasGroup cGroup;
     private Animator menuAnim;
     private bool menuOn = true;
     void Awake()
     {
-        menuAnim = GetComponent<Animator>();
+		cGroup = gameObject.GetComponent<CanvasGroup> ();
+		menuAnim = GetComponentInChildren<Animator> ();
+		cGroup.alpha = 0;
+		menuOn = false;
+		OnOff (menuOn);
     }
+
     public void BeginMenu()
     {
         if (!menuOn)
@@ -16,11 +23,13 @@ public class Manager : MonoBehaviour
             //gameObject.SetActive(true);
             menuAnim.SetTrigger("FadeIn");
             menuOn = true;
+			OnOff (menuOn);
         }
         else
         {
             menuAnim.SetTrigger("FadeOut");
             menuOn = false;
+			OnOff (menuOn);
             //Invoke("DisableUI", 1);
         }
     }
@@ -31,11 +40,13 @@ public class Manager : MonoBehaviour
             //gameObject.SetActive(true);
             menuAnim.SetTrigger("FadeInDecision");
             menuOn = true;
+			OnOff (menuOn);
         }
         else
         {
             menuAnim.SetTrigger("FadeOutDecision");
             menuOn = false;
+			OnOff (menuOn);
             //Invoke("DisableUI", 1);
         }
     }
@@ -46,11 +57,13 @@ public class Manager : MonoBehaviour
             //gameObject.SetActive(true);
             menuAnim.SetTrigger("FadeInQuestions");
             menuOn = true;
+			OnOff (menuOn);
         }
         else
         {
             menuAnim.SetTrigger("FadeOutQuestions");
             menuOn = false;
+			OnOff (menuOn);
             //Invoke("DisableUI", 1);
         }
     }
@@ -58,5 +71,19 @@ public class Manager : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+	void OnOff(bool input)
+	{
+		if (input == true) {
+			cGroup.alpha = 1f;
+			cGroup.interactable = true;
+			cGroup.blocksRaycasts = true;
+		} else {
+			//cGroup.alpha = 0f;
+			cGroup.interactable = false;
+			cGroup.blocksRaycasts = false;
+		}
+	}
+
   
 }
