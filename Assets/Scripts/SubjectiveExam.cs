@@ -75,6 +75,7 @@ public class SubjectiveExam : MonoBehaviour {
 			case "Question2":
 				qBox.text = questions [1];
 				aBox.text = answers [1];
+				Debug.Log ("Question1 clicked");
 				break;
 			case "Question3":
 				qBox.text = questions [2];
