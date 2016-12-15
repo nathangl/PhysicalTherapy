@@ -5,15 +5,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class PatientController : MonoBehaviour {
-    
+public class PatientController : MonoBehaviour
+{
+
     public Dropdown userDropdown;
     public SphereCollider leftShoulder, rightShoulder;
     private RaycastHit hit;
     TreeNode root = new TreeNode { Value = "Patient" };
     Animator patientAnim;
     string dropdownIndex;
-    
+    bool dropdownActive = false;
+    string currentTag = "";
+
     void Awake()
     {
         patientAnim = GetComponent<Animator>();
@@ -41,16 +44,26 @@ public class PatientController : MonoBehaviour {
 
     void Update()
     {
+        //TODO: fix weird spacing
         if (Input.GetMouseButtonDown(0)) // if left mouse clicked
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity)) // if the raycast hit something
             {
-                SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
+
+                if (currentTag != hit.collider.transform.tag && dropdownActive == true) //if raycast hits a new collider
+                {
+                    currentTag = hit.collider.transform.tag;
+                    SetDropdown(hit.collider.transform.tag);
+                }
+                else if (dropdownActive == false)   //if raycast hits a collider
+                {
+                    currentTag = hit.collider.transform.tag;
+                    SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
+                }
             }
         }
-
     }
 
     public void SetDropdown(string clicked)       //static
@@ -79,15 +92,20 @@ public class PatientController : MonoBehaviour {
         traverse(root);
 
         userDropdown.gameObject.SetActive(true);
+        dropdownActive = true;
         userDropdown.transform.position = new Vector3(Input.mousePosition.x + 80, Input.mousePosition.y - 15, Input.mousePosition.z);
         userDropdown.ClearOptions();
         userDropdown.AddOptions(dropdownList);
-
     }
 
-    public void PlayPatientAnim(Dropdown dropdown)
+    public void PlayPatientAnim()
     {
-        if (dropdown.value == 1)        //AROM
+        if (userDropdown.value == 0)
+        {
+            return;
+        }
+
+        if (userDropdown.value == 1)        //AROM
         {
             Debug.Log("AROM Animation Accessed");
             if (dropdownIndex == "LeftShoulder")
@@ -100,7 +118,7 @@ public class PatientController : MonoBehaviour {
             }
         }
 
-        else if (dropdown.value == 2)       //PROM
+        else if (userDropdown.value == 2)       //PROM
         {
             Debug.Log("PROM Animation Accessed");
             if (dropdownIndex == "LeftShoulder")
@@ -115,6 +133,16 @@ public class PatientController : MonoBehaviour {
 
         else
             Debug.Log("Error at animationcontroller");
+
+        //userDropdown.gameObject.SetActive(false);
+        userDropdown.value = 0;
+        userDropdown.transform.position = new Vector3(1000, 0, 0);
+        dropdownActive = false;
+    }
+
+    public void DisableDropdown()
+    {
+        userDropdown.gameObject.SetActive(false);
     }
 }
 
