@@ -16,6 +16,7 @@ public class PatientController : MonoBehaviour
     string dropdownIndex;
     bool dropdownActive = false;
     string currentTag = "";
+    string currentScreen = "";
 
     void Awake()
     {
@@ -27,11 +28,27 @@ public class PatientController : MonoBehaviour
         root.Nodes.Add(new TreeNode { Value = "UpperExtremity" });
         root.Nodes[0].Nodes.Add(new TreeNode { Value = "Shoulder" });
         root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "LeftShoulder" });
-        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "AROM" });
-        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "PROM" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Flexion" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Extension" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Abduction" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Adduction" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Internal Rotation" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "External Rotation" });
         root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "RightShoulder" });
-        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "AROM" });
-        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "PROM" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Flexion" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Extension" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Abduction" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Adduction" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Internal Rotation" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "External Rotation" });
+        root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Choose" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "AROM" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "PROM" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Strength" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Tone" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Sensation" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Visual-spatial" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Findings" });
         root.Nodes[0].Nodes.Add(new TreeNode { Value = "Elbow" });
         root.Nodes[0].Nodes.Add(new TreeNode { Value = "Hand" });
         root.Nodes.Add(new TreeNode { Value = "LowerExtremity" });
@@ -49,7 +66,7 @@ public class PatientController : MonoBehaviour
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity)) // if the raycast hit something
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity) && currentScreen != "") // if the raycast hit something
             {
 
                 if (currentTag != hit.collider.transform.tag && dropdownActive == true) //if raycast hits a new collider
@@ -98,16 +115,16 @@ public class PatientController : MonoBehaviour
         userDropdown.AddOptions(dropdownList);
     }
 
-    public void PlayPatientAnim()
+    public void DetermineDropdown()
     {
         if (userDropdown.value == 0)
         {
             return;
         }
 
-        if (userDropdown.value == 1)        //AROM
+        else if (userDropdown.value == 1 && currentScreen == "AROM")        //AROM
         {
-            Debug.Log("AROM Animation Accessed");
+            Debug.Log("AROM Flexion Animation Accessed");
             if (dropdownIndex == "LeftShoulder")
             {
                 patientAnim.SetTrigger("AROMLeftArm");
@@ -116,9 +133,9 @@ public class PatientController : MonoBehaviour
             {
                 patientAnim.SetTrigger("AROMRightArm");
             }
+            currentScreen = "";
         }
-
-        else if (userDropdown.value == 2)       //PROM
+        else if (userDropdown.value == 1 && currentScreen == "PROM")
         {
             Debug.Log("PROM Animation Accessed");
             if (dropdownIndex == "LeftShoulder")
@@ -129,10 +146,34 @@ public class PatientController : MonoBehaviour
             {
                 patientAnim.SetTrigger("PROMRightArm");
             }
+            currentScreen = "";
+        }
+        else if (userDropdown.value == 1)
+        {
+            currentScreen = "AROM";
+            Debug.Log("AROM MODE");
         }
 
+        /*else if (userDropdown.value == 2 && currentScreen == "PROM")       //PROM
+        {
+            Debug.Log("PROM Animation Accessed");
+            if (dropdownIndex == "LeftShoulder")
+            {
+                patientAnim.SetTrigger("PROMLeftArm");
+            }
+            if (dropdownIndex == "RightShoulder")
+            {
+                patientAnim.SetTrigger("PROMRightArm");
+            }
+            currentScreen = "";
+        }*/
+        else if (userDropdown.value == 2)
+        {
+            currentScreen = "PROM";
+            Debug.Log("PROM MODE");
+        }
         else
-            Debug.Log("Error at animationcontroller");
+            Debug.Log("Not Yet Implemented");
 
         //userDropdown.gameObject.SetActive(false);
         userDropdown.value = 0;

@@ -11,7 +11,10 @@ public class Manager : MonoBehaviour
     {
 		cGroup = gameObject.GetComponent<CanvasGroup> ();
 		menuAnim = GetComponentInChildren<Animator> ();
-		cGroup.alpha = 0;
+        if (cGroup)
+        {
+            cGroup.alpha = 0;
+        }
 		menuOn = false;
 		OnOff (menuOn);
     }
@@ -78,7 +81,7 @@ public class Manager : MonoBehaviour
 			cGroup.alpha = 1f;
 			cGroup.interactable = true;
 			cGroup.blocksRaycasts = true;
-		} else {
+		} else if(cGroup){
 			//cGroup.alpha = 0f;
 			cGroup.interactable = false;
 			cGroup.blocksRaycasts = false;
