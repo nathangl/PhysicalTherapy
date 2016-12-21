@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Database\UserClass.cs" />
      <Compile Include="Assets\Scripts\IfClick.cs" />
      <Compile Include="Assets\Scripts\JumpScenes.cs" />
+     <Compile Include="Assets\Scripts\Keywords.cs" />
      <Compile Include="Assets\Scripts\Manager.cs" />
      <Compile Include="Assets\Scripts\MovingMyText.cs" />
      <Compile Include="Assets\Scripts\MultipleChoice.cs" />
