@@ -9,10 +9,15 @@ using UnityEngine.UI;
 public class QSearch : MonoBehaviour {
 	string input;
 	string[] result;
-	SubjectiveExam sExam = new SubjectiveExam();
-	Keywords keywords = new Keywords();
+	//SubjectiveExam sExam;
+	Keywords keywords;
+	public string[] questions = { "Can you try raising your arm?", "Why are you here?", "What are your goals ?", "Do you have any pain", "Do you live alone?", "What is your home set up?", "How were you managing at home prior to this illness?" };
+	public string[] answers = { "", "They say I had a stroke", "To go home.", "No", "No, my husband is home but he works full-time.", "A 2 story split-level home, with bedroom on 2 nd floor and laundry in the basement.", "I worked, drove, did the shopping, walked regularly for exercise" };
+
 	// Use this for initialization
 	void Start () {
+		keywords = gameObject.GetComponent<Keywords> ();
+		//sExam = gameObject.GetComponent<SubjectiveExam> ();
 	}
 
 	public void OnClick() {
@@ -81,7 +86,7 @@ public class QSearch : MonoBehaviour {
 					if ((num == 5 || num == 6) && (keywords.NumKeywords < 2))
 						Debug.Log ("Wrong");
 					else
-						Debug.Log (num + ", " + question + " Response: " + sExam.answers [num]);
+						Debug.Log (num + ", " + question + " Response: " + answers [num]);
 				}
 				reader.Close ();
 				dbcmd.Dispose ();
@@ -89,10 +94,5 @@ public class QSearch : MonoBehaviour {
 				dbconn.Dispose ();
 			}
 		}
-	}
-
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
