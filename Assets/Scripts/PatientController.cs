@@ -17,9 +17,13 @@ public class PatientController : MonoBehaviour
     bool dropdownActive = false;
     string currentTag = "";
     string currentScreen = "";
+    GameObject chart;
+    Manager manager;
 
     void Awake()
     {
+        chart = GameObject.FindGameObjectWithTag("Chart");
+        manager = chart.GetComponent<Manager>();
         patientAnim = GetComponent<Animator>();
     }
 
@@ -83,8 +87,9 @@ public class PatientController : MonoBehaviour
         }
     }
 
-    public void SetDropdown(string clicked)       //static
+    public void SetDropdown(string clicked)
     {
+        manager.BeginMenu(true);
         List<string> dropdownList = new List<string>();
         Action<TreeNode> traverse = null;
         traverse = (n) => {

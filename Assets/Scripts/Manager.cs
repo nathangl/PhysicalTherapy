@@ -7,6 +7,7 @@ public class Manager : MonoBehaviour
 	private CanvasGroup cGroup;
     private Animator menuAnim;
     private bool menuOn = true;
+
     void Awake()
     {
 		cGroup = gameObject.GetComponent<CanvasGroup> ();
@@ -19,9 +20,9 @@ public class Manager : MonoBehaviour
 		OnOff (menuOn);
     }
 
-    public void BeginMenu()
+    public void BeginMenu(bool isDropdown)
     {
-        if (!menuOn)
+        if (!menuOn && !isDropdown)
         {
             //gameObject.SetActive(true);
             menuAnim.SetTrigger("FadeIn");
