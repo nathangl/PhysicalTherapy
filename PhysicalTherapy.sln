@@ -1,7 +1,7 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhysicalTherapy.CSharp", "PhysicalTherapy.CSharp.csproj", "{87F5005B-7750-1FC0-A245-16422B65EF11}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{CAC2AACF-BB78-7FAA-4D79-2C6172D500DF}") = "PhysicalTherapy", "Assembly-CSharp.csproj", "{F1F602B9-5FF2-87EF-E934-D68528DDC44F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{87F5005B-7750-1FC0-A245-16422B65EF11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87F5005B-7750-1FC0-A245-16422B65EF11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87F5005B-7750-1FC0-A245-16422B65EF11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87F5005B-7750-1FC0-A245-16422B65EF11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F602B9-5FF2-87EF-E934-D68528DDC44F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F602B9-5FF2-87EF-E934-D68528DDC44F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F602B9-5FF2-87EF-E934-D68528DDC44F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F602B9-5FF2-87EF-E934-D68528DDC44F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
