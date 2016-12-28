@@ -34,16 +34,22 @@ public class Keywords : MonoBehaviour {
 
 	public string FindKeywords(string[] input)
 	{
+		int count=0;
 		numKeywords = 0;
 		string strMain="", temp;
 		if(CheckFor(input) == true)
 		{
 			foreach (var str in input) {
-				keywordsDict.TryGetValue (str, out temp);
+				string search = str;
+				if (str == "set" && input[count + 1] == "up") {
+					search = "setup";
+				}
+				keywordsDict.TryGetValue (search, out temp);
 				if (temp != null) {
 					strMain += "Question LIKE '%" + temp + "%' AND ";
 					numKeywords++;
 				}
+				count++;
 			}
 			if(strMain.Length>4)
 				strMain = strMain.Remove (strMain.Length - 4);
