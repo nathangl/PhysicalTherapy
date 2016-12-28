@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class QSearch : MonoBehaviour {
 	string input;
 	string[] result;
+	public Text textArea;
 	//SubjectiveExam sExam;
 	Keywords keywords;
 	public string[] questions = { "Can you try raising your arm?", "Why are you here?", "What are your goals ?", "Do you have any pain", "Do you live alone?", "What is your home set up?", "How were you managing at home prior to this illness?" };
@@ -16,6 +17,7 @@ public class QSearch : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		textArea.text = "";
 		keywords = gameObject.GetComponent<Keywords> ();
 		//sExam = gameObject.GetComponent<SubjectiveExam> ();
 	}
@@ -80,6 +82,20 @@ public class QSearch : MonoBehaviour {
 				dbcmd.CommandText = sqlQuery;
 				IDataReader reader = dbcmd.ExecuteReader ();
 
+				reader.Read ();	
+
+				int num = reader.GetInt32 (0);
+				string question = reader.GetString (1);
+
+				if ((num == 5 || num == 6) && (keywords.NumKeywords < 2)) {
+					textArea.text += "Insufficient Question: '" + input + "' Please try again.\n\n";
+				}
+				else {
+					textArea.text += reader ["Question"].ToString () + "\n";
+					textArea.text += answers [num] + "\n\n";
+				}
+			
+				/*
 				while (reader.Read ()) {
 					int num = reader.GetInt32 (0);
 					string question = reader.GetString (1);
@@ -88,11 +104,14 @@ public class QSearch : MonoBehaviour {
 					else
 						Debug.Log (num + ", " + question + " Response: " + answers [num]);
 				}
+				*/
 				reader.Close ();
 				dbcmd.Dispose ();
 				dbconn.Close ();
 				dbconn.Dispose ();
 			}
+			else
+				textArea.text += "Insufficient Question: '" + input + "' Please try again.\n";
 		}
 	}
 }
