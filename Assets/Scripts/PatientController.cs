@@ -19,6 +19,7 @@ public class PatientController : MonoBehaviour
     string currentScreen = "";
     GameObject chart;
     Manager manager;
+    int dropChecker = 0;
 
     void Awake()
     {
@@ -29,38 +30,7 @@ public class PatientController : MonoBehaviour
 
     void Start()
     {
-        root.Nodes.Add(new TreeNode { Value = "UpperExtremity" });
-        root.Nodes[0].Nodes.Add(new TreeNode { Value = "Shoulder" });
-        root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "LeftShoulder" });
-        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Flexion" });
-        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Extension" });
-        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Abduction" });
-        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Adduction" });
-        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Internal Rotation" });
-        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "External Rotation" });
-        root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "RightShoulder" });
-        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Flexion" });
-        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Extension" });
-        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Abduction" });
-        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Adduction" });
-        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Internal Rotation" });
-        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "External Rotation" });
-        root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Choose" });
-        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "AROM" });
-        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "PROM" });
-        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Strength" });
-        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Tone" });
-        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Sensation" });
-        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Visual-spatial" });
-        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Findings" });
-        root.Nodes[0].Nodes.Add(new TreeNode { Value = "Elbow" });
-        root.Nodes[0].Nodes.Add(new TreeNode { Value = "Hand" });
-        root.Nodes.Add(new TreeNode { Value = "LowerExtremity" });
-        root.Nodes[1].Nodes.Add(new TreeNode { Value = "LEFT" });
-        root.Nodes[1].Nodes.Add(new TreeNode { Value = "RIGHT" });
-        root.Nodes.Add(new TreeNode { Value = "Side" });
-        root.Nodes[2].Nodes.Add(new TreeNode { Value = "LEFT" });
-        root.Nodes[2].Nodes.Add(new TreeNode { Value = "RIGHT" });
+        CreatePatientTree();
     }
 
     void Update()
@@ -70,18 +40,37 @@ public class PatientController : MonoBehaviour
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity) && currentScreen != "") // if the raycast hit something
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity)) // if the raycast hit something
             {
-
-                if (currentTag != hit.collider.transform.tag && dropdownActive == true) //if raycast hits a new collider
+                if (currentScreen != "")
                 {
-                    currentTag = hit.collider.transform.tag;
-                    SetDropdown(hit.collider.transform.tag);
+                    if (currentTag != hit.collider.transform.tag && dropdownActive == true) //if raycast hits a new collider
+                    {
+                        currentTag = hit.collider.transform.tag;
+                        SetDropdown(hit.collider.transform.tag);
+                    }
+                    else if (dropdownActive == false)   //if raycast hits a collider
+                    {
+                        currentTag = hit.collider.transform.tag;
+                        SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
+                    }
                 }
-                else if (dropdownActive == false)   //if raycast hits a collider
+            }
+
+            if (dropdownActive && EventSystem.current.currentSelectedGameObject == null && currentScreen == "")
+            {
+                /*dropChecker = EventSystem.current.currentSelectedGameObject.layer;    //get gameobject's layer
+                if (dropChecker != 8)
                 {
-                    currentTag = hit.collider.transform.tag;
-                    SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
+                    DisableDropdown();
+                }*/
+                DisableDropdown();
+            }
+            else if (EventSystem.current.currentSelectedGameObject)
+            {
+                if (EventSystem.current.currentSelectedGameObject.layer != 8)
+                {
+                    DisableDropdown();
                 }
             }
         }
@@ -90,6 +79,10 @@ public class PatientController : MonoBehaviour
     public void SetDropdown(string clicked)
     {
         manager.BeginMenu(true);
+        if (clicked == "Choose")
+        {
+            currentScreen = "";
+        }
         List<string> dropdownList = new List<string>();
         Action<TreeNode> traverse = null;
         traverse = (n) => {
@@ -172,7 +165,7 @@ public class PatientController : MonoBehaviour
             }
             currentScreen = "";
         }*/
-        else if (userDropdown.value == 2)
+        else if (userDropdown.value == 2 && currentScreen == "")
         {
             currentScreen = "PROM";
             Debug.Log("PROM MODE");
@@ -180,15 +173,51 @@ public class PatientController : MonoBehaviour
         else
             Debug.Log("Not Yet Implemented");
 
+        DisableDropdown();
+    }
+
+    public void DisableDropdown()
+    {
         //userDropdown.gameObject.SetActive(false);
         userDropdown.value = 0;
         userDropdown.transform.position = new Vector3(1000, 0, 0);
         dropdownActive = false;
     }
 
-    public void DisableDropdown()
+    public void CreatePatientTree()
     {
-        userDropdown.gameObject.SetActive(false);
+        root.Nodes.Add(new TreeNode { Value = "UpperExtremity" });
+        root.Nodes[0].Nodes.Add(new TreeNode { Value = "Shoulder" });
+        root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "LeftShoulder" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Flexion" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Extension" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Abduction" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Adduction" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Internal Rotation" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "External Rotation" });
+        root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "RightShoulder" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Flexion" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Extension" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Abduction" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Adduction" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Internal Rotation" });
+        root.Nodes[0].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "External Rotation" });
+        root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Choose" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "AROM" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "PROM" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Strength" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Tone" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Sensation" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Visual-spatial" });
+        root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Findings" });
+        root.Nodes[0].Nodes.Add(new TreeNode { Value = "Elbow" });
+        root.Nodes[0].Nodes.Add(new TreeNode { Value = "Hand" });
+        root.Nodes.Add(new TreeNode { Value = "LowerExtremity" });
+        root.Nodes[1].Nodes.Add(new TreeNode { Value = "LEFT" });
+        root.Nodes[1].Nodes.Add(new TreeNode { Value = "RIGHT" });
+        root.Nodes.Add(new TreeNode { Value = "Side" });
+        root.Nodes[2].Nodes.Add(new TreeNode { Value = "LEFT" });
+        root.Nodes[2].Nodes.Add(new TreeNode { Value = "RIGHT" });
     }
 }
 
