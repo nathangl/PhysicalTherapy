@@ -8,8 +8,10 @@ using UnityEngine.UI;
 
 public class QSearch : MonoBehaviour {
 	string input;
+	public List<int> Asked = new List<int>(); //stores which questions have been asked already
 	string[] result;
 	public Text textArea;
+	public Text totalAskedText;
 	public ScrollRect scrollRect;
 	//SubjectiveExam sExam;
 	Keywords keywords;
@@ -28,7 +30,7 @@ public class QSearch : MonoBehaviour {
 		string conn = "URI=file:" + Application.dataPath + "/UserDB.s3db";//Connecting to database
 		IDbConnection dbconn = new SqliteConnection(conn);
 		dbconn.Open ();
-		scrollRect.verticalNormalizedPosition = 0.0f;
+		scrollRect.verticalNormalizedPosition = 0.0f; //moves scroll rect to bottom
 
 		if (input != null) 
 		{
@@ -51,13 +53,13 @@ public class QSearch : MonoBehaviour {
 
 				int num = reader.GetInt32 (0);
 				string question = reader.GetString (1);
-
+				SetList (num);
 				if ((num == 5 || num == 6) && (keywords.NumKeywords < 2)) {
-					textArea.text += "Insufficient Question: '" + input + "' Please try again.\n\n";
+					textArea.text += "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n";
 				}
 				else {
-					textArea.text += reader ["Question"].ToString () + "\n";
-					textArea.text += answers [num] + "\n\n";
+					textArea.text += "User: " + reader ["Question"].ToString () + "\n";
+					textArea.text += "Patient: " + '"' + answers [num] + '"' + "\n\n";
 				}
 
 				reader.Close ();
@@ -66,7 +68,14 @@ public class QSearch : MonoBehaviour {
 				dbconn.Dispose ();
 			}
 			else
-				textArea.text += "Insufficient Question: '" + input + "' Please try again.\n\n";
+				textArea.text += "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n";
 		}
+	}
+
+	void SetList(int num) { //Sets the Asked list to keep track of what questions have been asked
+		if (Asked.Contains (num) == false) {
+			Asked.Add (num);
+			totalAskedText.text = "Questions Asked " + Asked.Count + "/6";
+		} 
 	}
 }
