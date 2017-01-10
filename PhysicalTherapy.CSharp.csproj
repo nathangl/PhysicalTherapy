@@ -83,9 +83,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Database\DatabaseManager.cs" />
     <Compile Include="Assets\Scripts\Database\LoginUser.cs" />
-    <Compile Include="Assets\Scripts\Database\QSearch.cs" />
     <Compile Include="Assets\Scripts\Database\RegisterUser.cs" />
     <Compile Include="Assets\Scripts\Database\UserClass.cs" />
+    <Compile Include="Assets\Scripts\HintTimer.cs" />
     <Compile Include="Assets\Scripts\IfClick.cs" />
     <Compile Include="Assets\Scripts\JumpScenes.cs" />
     <Compile Include="Assets\Scripts\Keywords.cs" />
@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\MovingMyText.cs" />
     <Compile Include="Assets\Scripts\MultipleChoice.cs" />
     <Compile Include="Assets\Scripts\PatientController.cs" />
+    <Compile Include="Assets\Scripts\QSearch.cs" />
     <Compile Include="Assets\Scripts\QuestionReader.cs" />
     <Compile Include="Assets\Scripts\SubjectiveExam.cs" />
     <Compile Include="Assets\Scripts\TextReadDisplay.cs" />
