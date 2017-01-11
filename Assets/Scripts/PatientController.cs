@@ -19,7 +19,6 @@ public class PatientController : MonoBehaviour
     string currentScreen = "";
     GameObject chart;
     Manager manager;
-    int dropChecker = 0;
 
     void Awake()
     {
@@ -79,10 +78,10 @@ public class PatientController : MonoBehaviour
     public void SetDropdown(string clicked)
     {
         manager.BeginMenu(true);
-        if (clicked == "Choose")
+        /*if (clicked == "Choose")
         {
             currentScreen = "";
-        }
+        }*/
         List<string> dropdownList = new List<string>();
         Action<TreeNode> traverse = null;
         traverse = (n) => {
@@ -145,12 +144,12 @@ public class PatientController : MonoBehaviour
                 patientAnim.SetTrigger("PROMRightArm");
             }
             currentScreen = "";
-        }
+        }/*
         else if (userDropdown.value == 1)
         {
             currentScreen = "AROM";
             Debug.Log("AROM MODE");
-        }
+        }*/
 
         /*else if (userDropdown.value == 2 && currentScreen == "PROM")       //PROM
         {
@@ -182,6 +181,12 @@ public class PatientController : MonoBehaviour
         userDropdown.value = 0;
         userDropdown.transform.position = new Vector3(1000, 0, 0);
         dropdownActive = false;
+    }
+
+    public void ButtonInput(string mode)
+    {
+        currentScreen = mode;
+        Debug.Log(mode + " MODE");
     }
 
     public void CreatePatientTree()
