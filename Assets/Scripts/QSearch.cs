@@ -13,6 +13,7 @@ public class QSearch : MonoBehaviour {
 	public Text textArea;
 	public Text totalAskedText;
 	public ScrollRect scrollRect;
+    public GameObject AROM, PROM, Strength;
 	//SubjectiveExam sExam;
 	Keywords keywords;
 	//public string[] questions = { "Can you try raising your arm?", "Why are you here?", "What are your goals ?", "Do you have any pain", "Do you live alone?", "What is your home set up?", "How were you managing at home prior to this illness?" };
@@ -24,6 +25,16 @@ public class QSearch : MonoBehaviour {
 		keywords = gameObject.GetComponent<Keywords> ();
 		//sExam = gameObject.GetComponent<SubjectiveExam> ();
 	}
+
+    void Update()
+    {
+        if (Asked.Count == 1)
+        {
+            AROM.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
+            PROM.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
+            Strength.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
+        }
+    }
 
 	public void OnClick() {
 		input = gameObject.GetComponent<InputField> ().text;
