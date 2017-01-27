@@ -6,7 +6,7 @@ public class Manager : MonoBehaviour
 {
 	private CanvasGroup cGroup;
     private Animator menuAnim;
-    private bool menuOn = true;
+    [HideInInspector] public bool menuOn = true;
 
     void Awake()
     {
@@ -76,7 +76,7 @@ public class Manager : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-	void OnOff(bool input)
+	public void OnOff(bool input)
 	{
 		if (input == true) {
 			cGroup.alpha = 1f;
