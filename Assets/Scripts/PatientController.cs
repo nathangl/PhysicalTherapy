@@ -77,7 +77,7 @@ public class PatientController : MonoBehaviour
 
     public void SetDropdown(string clicked)
     {
-        manager.BeginMenu(true);
+        //manager.BeginMenu(true);
         /*if (clicked == "Choose")
         {
             currentScreen = "";
