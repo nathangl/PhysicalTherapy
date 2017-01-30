@@ -52,9 +52,6 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Advertisements.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -70,9 +67,6 @@
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
@@ -85,6 +79,12 @@
     <Reference Include="System.Data">
       <HintPath>Assets\Plugins\System.Data.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="PhysicalTherapy.CSharp.Plugins.csproj">
+      <Project>{EDB14414-3FA2-BC91-DCD0-672A8906573B}</Project>
+      <Name>PhysicalTherapy.CSharp.Plugins</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Database\DatabaseManager.cs" />
@@ -101,12 +101,15 @@
     <Compile Include="Assets\Scripts\PatientController.cs" />
     <Compile Include="Assets\Scripts\QSearch.cs" />
     <Compile Include="Assets\Scripts\QuestionReader.cs" />
+    <Compile Include="Assets\Scripts\SliderAnim.cs" />
     <Compile Include="Assets\Scripts\SubjectiveExam.cs" />
     <Compile Include="Assets\Scripts\TextReadDisplay.cs" />
     <Compile Include="Assets\Scripts\Typer.cs" />
+    <Compile Include="Assets\Scripts\test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\archivo-black\SIL Open Font License.txt" />
+    <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Text Files\answerFile.txt" />
     <None Include="Assets\Text Files\chartOneFile.txt" />
     <None Include="Assets\Text Files\chartTwoFile.txt" />
