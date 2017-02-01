@@ -1,0 +1,145 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 670 (ID=0x1189)
+    Vendor:   NVIDIA
+    VRAM:     1989 MB
+    Driver:   10.18.13.5891
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\Mono.Data.Sqlite.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\Mono.Data.Sqlite.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\System.Data.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\System.Data.dll into Unity Child Domain
+- Completed reload, in  0.037 seconds
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3520x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.029271 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 1218 -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.515985 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 403.
+Total: 0.291010 ms (FindLiveObjects: 0.041620 ms CreateObjectMapping: 0.013212 ms MarkObjects: 0.229240 ms  DeleteObjects: 0.006276 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.117797 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 964.
+Total: 0.729012 ms (FindLiveObjects: 0.086873 ms CreateObjectMapping: 0.024773 ms MarkObjects: 0.608115 ms  DeleteObjects: 0.008588 ms)
+
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\System.Transactions.dll (this message is harmless)
+Platform assembly: C:\Users\Patrick\Desktop\PhysicalTherapy\PTBuild_Data\Managed\System.Xml.dll (this message is harmless)
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/.\C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/.\C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/libC:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/.\libC:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/libC:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/.\C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/.\C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/libC:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/.\libC:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/libC:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/.\C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/.\C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/libC:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/.\libC:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+Fallback handler could not load library C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Mono/libC:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+DllNotFoundException: C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+  at (wrapper managed-to-native) Mono.Data.Sqlite.UnsafeNativeMethods:sqlite3_open_v2 (byte[],intptr&,int,intptr)
+  at Mono.Data.Sqlite.SQLite3.Open (System.String strFilename, SQLiteOpenFlagsEnum flags, Int32 maxPoolSize, Boolean usePool) [0x00000] in <filename unknown>:0 
+  at Mono.Data.Sqlite.SqliteConnection.Open () [0x00000] in <filename unknown>:0 
+  at QSearch.OnClick () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.UnityEvent.Invoke () [0x00000] in <filename unknown>:0 
+  at UnityEngine.UI.Button.Press () [0x00000] in <filename unknown>:0 
+  at UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) [0x00000] in <filename unknown>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
+UnityEngine.EventSystems.StandaloneInputModule:Process()
+UnityEngine.EventSystems.EventSystem:Update()
+ 
+(Filename:  Line: -1)
+
+DllNotFoundException: C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+  at (wrapper managed-to-native) Mono.Data.Sqlite.UnsafeNativeMethods:sqlite3_open_v2 (byte[],intptr&,int,intptr)
+  at Mono.Data.Sqlite.SQLite3.Open (System.String strFilename, SQLiteOpenFlagsEnum flags, Int32 maxPoolSize, Boolean usePool) [0x00000] in <filename unknown>:0 
+  at Mono.Data.Sqlite.SqliteConnection.Open () [0x00000] in <filename unknown>:0 
+  at QSearch.OnClick () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.UnityEvent`1[T0].Invoke (.T0 arg0) [0x00000] in <filename unknown>:0 
+  at UnityEngine.UI.InputField.SendOnSubmit () [0x00000] in <filename unknown>:0 
+  at UnityEngine.UI.InputField.DeactivateInputField () [0x00000] in <filename unknown>:0 
+  at UnityEngine.UI.InputField.OnDeselect (UnityEngine.EventSystems.BaseEventData eventData) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute (IDeselectHandler handler, UnityEngine.EventSystems.BaseEventData eventData) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute[IDeselectHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) [0x00000] in <filename unknown>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
+UnityEngine.EventSystems.EventSystem:SetSelectedGameObject(GameObject, BaseEventData)
+UnityEngine.EventSystems.PointerInputModule:DeselectIfSelectionChanged(GameObject, BaseEventData)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
+UnityEngine.EventSystems.StandaloneInputModule:Process()
+UnityEngine.EventSystems.EventSystem:Update()
+ 
+(Filename:  Line: -1)
+
+DllNotFoundException: C:/Users/Patrick/Desktop/PhysicalTherapy/PTBuild_Data/Plugins/sqlite3.dll
+  at (wrapper managed-to-native) Mono.Data.Sqlite.UnsafeNativeMethods:sqlite3_open_v2 (byte[],intptr&,int,intptr)
+  at Mono.Data.Sqlite.SQLite3.Open (System.String strFilename, SQLiteOpenFlagsEnum flags, Int32 maxPoolSize, Boolean usePool) [0x00000] in <filename unknown>:0 
+  at Mono.Data.Sqlite.SqliteConnection.Open () [0x00000] in <filename unknown>:0 
+  at QSearch.OnClick () [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.InvokableCall.Invoke (System.Object[] args) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.InvokableCallList.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.UnityEventBase.Invoke (System.Object[] parameters) [0x00000] in <filename unknown>:0 
+  at UnityEngine.Events.UnityEvent.Invoke () [0x00000] in <filename unknown>:0 
+  at UnityEngine.UI.Button.Press () [0x00000] in <filename unknown>:0 
+  at UnityEngine.UI.Button.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute (IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) [0x00000] in <filename unknown>:0 
+  at UnityEngine.EventSystems.ExecuteEvents.Execute[IPointerClickHandler] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.EventFunction`1 functor) [0x00000] in <filename unknown>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent(Int32)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent()
+UnityEngine.EventSystems.StandaloneInputModule:Process()
+UnityEngine.EventSystems.EventSystem:Update()
+ 
+(Filename:  Line: -1)
+
