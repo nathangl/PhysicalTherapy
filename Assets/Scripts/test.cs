@@ -140,63 +140,108 @@ void MathStuff()
 
 }
 */
+ /*
+     public Camera camera;
+     Vector3 player;
+     float minDistance = float.PositiveInfinity;
+     float minPercent  = 0;
+     Vector3 pos;
+     public Animator anim;
+     void Start()
+     {
+         //iTween.MoveUpdate(gameObject, iTween.Hash("path", iTweenPath.GetPath("New Path 1")));
+         //iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("Path1"), "time", 2));
+         iTween.PutOnPath(gameObject, iTweenPath.GetPath("Path1"), 0f);
+         //Debug.Log(iTween.PointOnPath(iTweenPath.GetPath("Path1"), 43f));
+
+     }
+     void Update()
+     {
+         if (Input.GetMouseButton(0))
+         {
+             RaycastHit hit;
+             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+             if (Physics.Raycast(ray))
+             {
+                 player = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+                 //Debug.Log(camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane)));
+                 //iTween.PutOnPath(gameObject, iTweenPath.GetPath("Path1"), 50);
+                 //MovetoMouse(player);
+                 //iTween.MoveUpdate(gameObject,pos,0.001f);
+                 iTween.PutOnPath(gameObject, iTweenPath.GetPath("Path1"), MovetoMouse(player)+0.2f);
+                 //Vector3 p = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                 //Debug.Log(p);
+                 anim.speed = 0;
+                 Debug.Log(MovetoMouse(player));
+                 anim.Play("PROMRightArm", 0, (MovetoMouse(player));
+             }
+         }
+     }
+     float MovetoMouse(Vector3 Player)
+     {
+         float minDistance = float.PositiveInfinity;
+         float minPercent = 0;
+
+         for (float t = 0; t <= 1; t += 0.005f)
+         {
+             float dist = ((Vector2)Player - (Vector2)iTween.PointOnPath(iTweenPath.GetPath("Path1"), t)).sqrMagnitude;
+             if (dist < minDistance)
+             {
+                 minDistance = dist;
+                 minPercent = t;
+                 pos = iTween.PointOnPath(iTweenPath.GetPath("Path1"), t);
+             }
+
+
+         }
+         return minPercent;
+         //iTween.PutOnPath(gameObject, iTweenPath.GetPath("Path1"), 50f);
+         Debug.Log(minPercent); 
+     }
+     */
     public Camera camera;
     Vector3 player;
     float minDistance = float.PositiveInfinity;
-    float minPercent  = 0;
+    float minPercent = 0;
     Vector3 pos;
     public Animator anim;
-    void Start()
-    {
-        //iTween.MoveUpdate(gameObject, iTween.Hash("path", iTweenPath.GetPath("New Path 1")));
-        //iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("Path1"), "time", 2));
-        iTween.PutOnPath(gameObject, iTweenPath.GetPath("Path1"), 0f);
-        //Debug.Log(iTween.PointOnPath(iTweenPath.GetPath("Path1"), 43f));
+    Vector3 screenPoint;
+    Vector3 offset;
+    public GameObject cube;
+    Vector3 targetPosition;
 
-    }
-    void Update()
+    float distance = 1;
+    void OnMouseDrag()
     {
-        if (Input.GetMouseButton(0))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray))
+        Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
+        Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        cube.transform.position = objPosition;
+        iTween.PutOnPath(gameObject, iTweenPath.GetPath("Path1"), DeterminePos(objPosition));
+        anim.Play("PROMRightArm", 0, DeterminePos(objPosition));
+    }
+    float DeterminePos(Vector3 input)
+    {
+            float minDistance = float.PositiveInfinity;
+            float minPercent = 0;
+
+            for (float t = 0; t <= 1; t += 0.005f)
             {
-                player = camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
-                //Debug.Log(camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane)));
-                //iTween.PutOnPath(gameObject, iTweenPath.GetPath("Path1"), 50);
-                //MovetoMouse(player);
-                //iTween.MoveUpdate(gameObject,pos,0.001f);
-                iTween.PutOnPath(gameObject, iTweenPath.GetPath("Path1"), MovetoMouse(player)+0.2f);
-                //Vector3 p = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                //Debug.Log(p);
-                anim.speed = 0;
-                Debug.Log(MovetoMouse(player));
-                anim.Play("PROMRightArm", 0, MovetoMouse(player));
-            }
-        }
-    }
-    float MovetoMouse(Vector3 Player)
-    {
-        float minDistance = float.PositiveInfinity;
-        float minPercent = 0;
+                float dist = ((Vector2)input - (Vector2)iTween.PointOnPath(iTweenPath.GetPath("Path1"), t)).sqrMagnitude;
+                if (dist < minDistance)
+                {
+                    minDistance = dist;
+                    minPercent = t;
+                    pos = iTween.PointOnPath(iTweenPath.GetPath("Path1"), t);
+                }
 
-        for (float t = 0; t <= 1; t += 0.005f)
-        {
-            float dist = ((Vector2)Player - (Vector2)iTween.PointOnPath(iTweenPath.GetPath("Path1"), t)).sqrMagnitude;
-            if (dist < minDistance)
-            {
-                minDistance = dist;
-                minPercent = t;
-                pos = iTween.PointOnPath(iTweenPath.GetPath("Path1"), t);
-            }
-            
 
+            }
+
+            return minPercent;
+            //iTween.PutOnPath(gameObject, iTweenPath.GetPath("Path1"), 50f);
+            //Debug.Log(minPercent);
         }
-        return minPercent;
-        //iTween.PutOnPath(gameObject, iTweenPath.GetPath("Path1"), 50f);
-        Debug.Log(minPercent); 
-    }
 }
 
 
