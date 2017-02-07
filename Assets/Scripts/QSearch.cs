@@ -14,6 +14,7 @@ public class QSearch : MonoBehaviour {
 	public Text totalAskedText;
 	public ScrollRect scrollRect;
     public GameObject AROM, PROM, Strength;
+    public bool testing=false;
 	//SubjectiveExam sExam;
 	Keywords keywords;
 	//public string[] questions = { "Can you try raising your arm?", "Why are you here?", "What are your goals ?", "Do you have any pain", "Do you live alone?", "What is your home set up?", "How were you managing at home prior to this illness?" };
@@ -28,7 +29,7 @@ public class QSearch : MonoBehaviour {
 
     void Update()
     {
-        if (Asked.Count == 1)
+        if (Asked.Count == 6 || testing==true)
         {
             AROM.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
             PROM.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
