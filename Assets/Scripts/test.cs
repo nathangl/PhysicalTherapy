@@ -14,6 +14,6 @@ public class test : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         anim.speed = 0;
-        anim.Play("PROMRightArm", 0, slider.normalizedValue);
+        anim.Play("PROMLeftArm", 0, slider.normalizedValue);
     }
 }
