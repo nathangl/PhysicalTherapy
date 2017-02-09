@@ -14,12 +14,13 @@ public class PatientController : MonoBehaviour
     TreeNode root = new TreeNode { Value = "Patient" };
     Animator patientAnim;
     string dropdownIndex;
-    bool dropdownActive = false;
+    bool interactableActive = false;        //If dropdown or slider is active
     string currentTag = "";
     string currentScreen = "";
     GameObject chart;
     Manager manager;
     public GameObject PROMAnims;
+    public Slider strengthSlider;
 
     void Awake()
     {
@@ -46,20 +47,28 @@ public class PatientController : MonoBehaviour
                 {
                     if (currentScreen != "")
                     {
-                        if (currentTag != hit.collider.transform.tag && dropdownActive == true) //if raycast hits a new collider
+                        if (currentTag != hit.collider.transform.tag && interactableActive == true) //if raycast hits a new collider
                         {
                             currentTag = hit.collider.transform.tag;
+                            if (currentScreen == "STRENGTH")
+                            {
+                                SetSlider(hit.collider.transform.tag);
+                            }
                             SetDropdown(hit.collider.transform.tag);
                         }
-                        else if (dropdownActive == false)   //if raycast hits a collider
+                        else if (interactableActive == false)   //if raycast hits a collider
                         {
                             currentTag = hit.collider.transform.tag;
+                            if (currentScreen == "STRENGTH")
+                            {
+                                SetSlider(hit.collider.transform.tag);
+                            }
                             SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
                         }
                     }
                 }
 
-                if (dropdownActive && EventSystem.current.currentSelectedGameObject == null && currentScreen == "")
+                if (interactableActive && EventSystem.current.currentSelectedGameObject == null && currentScreen == "")
                 {
                     /*dropChecker = EventSystem.current.currentSelectedGameObject.layer;    //get gameobject's layer
                     if (dropChecker != 8)
@@ -112,10 +121,16 @@ public class PatientController : MonoBehaviour
         traverse(root);
 
         userDropdown.gameObject.SetActive(true);
-        dropdownActive = true;
+        interactableActive = true;
         userDropdown.transform.position = new Vector3(Input.mousePosition.x + 80, Input.mousePosition.y - 15, Input.mousePosition.z);
         userDropdown.ClearOptions();
         userDropdown.AddOptions(dropdownList);
+    }
+
+    public void SetSlider(string clicked)
+    {
+        strengthSlider.gameObject.SetActive(true);
+        interactableActive = true;
     }
 
     public void DetermineDropdown()
@@ -186,7 +201,7 @@ public class PatientController : MonoBehaviour
         //userDropdown.gameObject.SetActive(false);
         userDropdown.value = 0;
         userDropdown.transform.position = new Vector3(1000, 0, 0);
-        dropdownActive = false;
+        interactableActive = false;
     }
 
     public void ButtonInput(string mode)
