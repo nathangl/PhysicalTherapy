@@ -21,6 +21,7 @@ public class PatientController : MonoBehaviour
     Manager manager;
     public GameObject PROMAnims;
     public Slider strengthSlider;
+    public int strengthScore = 0;
 
     void Awake()
     {
@@ -50,19 +51,21 @@ public class PatientController : MonoBehaviour
                         if (currentTag != hit.collider.transform.tag && interactableActive == true) //if raycast hits a new collider
                         {
                             currentTag = hit.collider.transform.tag;
+                            /*
                             if (currentScreen == "STRENGTH")
                             {
                                 SetSlider(hit.collider.transform.tag);
-                            }
+                            }*/
                             SetDropdown(hit.collider.transform.tag);
                         }
                         else if (interactableActive == false)   //if raycast hits a collider
                         {
                             currentTag = hit.collider.transform.tag;
-                            if (currentScreen == "STRENGTH")
+                            /*if (currentScreen == "STRENGTH")
                             {
                                 SetSlider(hit.collider.transform.tag);
                             }
+                            else*/
                             SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
                         }
                     }
@@ -139,7 +142,6 @@ public class PatientController : MonoBehaviour
         {
             return;
         }
-
         else if (userDropdown.value == 1 && currentScreen == "AROM")        //AROM
         {
             Debug.Log("AROM Flexion Animation Accessed");
@@ -165,30 +167,10 @@ public class PatientController : MonoBehaviour
                 patientAnim.SetTrigger("PROMRightArm");
             }
             currentScreen = "";
-        }/*
-        else if (userDropdown.value == 1)
+        }
+        else if (userDropdown.value == 1 && currentScreen == "STRENGTH")
         {
-            currentScreen = "AROM";
-            Debug.Log("AROM MODE");
-        }*/
-
-        /*else if (userDropdown.value == 2 && currentScreen == "PROM")       //PROM
-        {
-            Debug.Log("PROM Animation Accessed");
-            if (dropdownIndex == "LeftShoulder")
-            {
-                patientAnim.SetTrigger("PROMLeftArm");
-            }
-            if (dropdownIndex == "RightShoulder")
-            {
-                patientAnim.SetTrigger("PROMRightArm");
-            }
-            currentScreen = "";
-        }*/
-        else if (userDropdown.value == 2 && currentScreen == "")
-        {
-            currentScreen = "PROM";
-            Debug.Log("PROM MODE");
+            SetStrength(1);
         }
         else
             Debug.Log("Not Yet Implemented");
@@ -204,6 +186,73 @@ public class PatientController : MonoBehaviour
         interactableActive = false;
     }
 
+    public void SetStrength(int dropdownValue)
+    {
+        bool listMade = false;
+        List<string> dropdownList = new List<string>();
+        Action<TreeNode> traverse = null;
+        traverse = (n) => {
+            if (!listMade)
+            {
+                if (n.Value == currentTag)
+                {
+                    Debug.Log(n.Value + " Strength Searching!");
+                    dropdownIndex = n.Value;
+                    dropdownList.Add(n.Value);
+                    foreach (TreeNode nv in n.Nodes)
+                    {
+                        dropdownList.Add(nv.Value);
+                    }
+                }
+                else
+                {
+                    n.Nodes.ForEach(traverse);
+                }
+                listMade = true;
+            }
+            if (listMade)
+            {
+                if (n.Value == dropdownList[dropdownValue])
+                {
+                    Debug.Log(n.Value + " ACCESSED!");
+                    foreach (TreeNode nv in n.Nodes)
+                    {
+                        Int32.TryParse(nv.Value, out strengthScore);
+                        Debug.Log(strengthScore);
+                    }
+                }
+                else
+                {
+                    n.Nodes.ForEach(traverse);
+                }
+                listMade = false;
+            }
+
+        };
+
+        traverse(root);
+
+        /*Action<TreeNode> traverseForValue = null;
+        traverseForValue = (v) => {
+            if (v.Value == dropdownList[dropdownValue-1])
+            {
+                Debug.Log(v.Value + " ACCESSED!");
+                foreach (TreeNode nv in v.Nodes)
+                {
+                    strengthScore = Int32.Parse(nv.Value);
+                }
+            }
+            else
+            {
+                v.Nodes.ForEach(traverse);
+            }
+
+        };
+
+        traverseForValue(root);*/
+
+    }
+
     public void ButtonInput(string mode)
     {
         currentScreen = mode;
@@ -216,6 +265,7 @@ public class PatientController : MonoBehaviour
         root.Nodes[0].Nodes.Add(new TreeNode { Value = "Shoulder" });
         root.Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "LeftShoulder" });
         root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Flexion" });
+        root.Nodes[0].Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "0.5" });
         root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Extension" });
         root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Abduction" });
         root.Nodes[0].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Adduction" });
