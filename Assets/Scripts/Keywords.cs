@@ -5,9 +5,11 @@ using System.Linq;
 
 public class Keywords : MonoBehaviour {
 	int numKeywords=0;
+    public QSearch qSearch;
 	public int NumKeywords { get { return numKeywords; } }
 	List<string> beginsWith = new List<string> { "What", "Why", "Do", "Are", "Does", "How", "Is" };
 	Dictionary<string, string> keywordsDict = new Dictionary<string, string> {
+        //The following are for subjective questions
 		{ "happened", "happened" }, { "problem", "happened" }, { "issue", "happened" }, { "issues", "happened" },  { "problems", "happened" },
 		{ "goals", "goals" }, { "goal", "goals"}, 
 		{ "pain", "pain" }, { "pains", "pain" }, { "aches", "pain" }, { "feeling", "pain" },
@@ -16,6 +18,9 @@ public class Keywords : MonoBehaviour {
 		{ "set up", "set up" }, { "setup", "set up" }, { "arrangement", "set up" }, { "arranged", "set up" }, { "organized", "set up" },
 		{ "prior", "prior" }, { "before", "prior" },
 		{ "managing", "managing" }, {"handling", "managing" }, { "doing", "managing" },
+
+        { "left", "left" }, { "hemiparesis", "hemiparesis" }, { "decreased", "decreased" }, { "strength", "strength" }, { "sensation", "sensation" }, { "visual", "visual" },
+        { "tone", "tone" }, { "low", "low" }, { "alertness", "alertness" },
 	};
 	// Use this for initialization
 	void Start () {
@@ -37,7 +42,7 @@ public class Keywords : MonoBehaviour {
 		int count=0;
 		numKeywords = 0;
 		string strMain="", temp;
-		if(CheckFor(input) == true)
+		if(CheckFor(input) == true || qSearch.instructorQ == false)
 		{
 			foreach (var str in input) {
 				string search = str;
@@ -45,10 +50,15 @@ public class Keywords : MonoBehaviour {
 					search = "setup";
 				}
 				keywordsDict.TryGetValue (search, out temp);
-				if (temp != null) {
+				if (temp != null && qSearch.instructorQ == true) {
 					strMain += "Question LIKE '%" + temp + "%' AND ";
 					numKeywords++;
 				}
+                else if (temp != null && qSearch.instructorQ == false)
+                {
+                    strMain += "answer LIKE '%" + temp + "%' AND ";
+                    numKeywords++;
+                }
 				count++;
 			}
 			if(strMain.Length>4)
