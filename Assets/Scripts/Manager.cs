@@ -89,5 +89,17 @@ public class Manager : MonoBehaviour
 		}
 	}
 
+    //fucntion for dialogue box 
+    public void diagBoxLerp()
+    {
+        RectTransform rt = gameObject.GetComponent<RectTransform>();
+        rt.sizeDelta = new Vector2(50f, 50f);
+    }
+
+    void Start()
+    {
+
+    }
+
   
 }

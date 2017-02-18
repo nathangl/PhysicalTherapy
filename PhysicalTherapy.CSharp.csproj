@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CameraLerp.cs" />
     <Compile Include="Assets\Scripts\Database\DatabaseManager.cs" />
     <Compile Include="Assets\Scripts\Database\LoginUser.cs" />
     <Compile Include="Assets\Scripts\Database\RegisterUser.cs" />
@@ -105,7 +106,6 @@
     <Compile Include="Assets\Scripts\iTween\Pixelplacement\iTween\Sample\RotateSample.cs" />
     <Compile Include="Assets\Scripts\iTween\Pixelplacement\iTween\Sample\SampleInfo.cs" />
     <Compile Include="Assets\Scripts\iTween\Pixelplacement\iTween\iTween.cs" />
-    <Compile Include="Assets\Scripts\test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\archivo-black\SIL Open Font License.txt" />
