@@ -7,7 +7,7 @@ using System;
 using UnityEngine.UI;
 
 public class QSearch : MonoBehaviour {
-	string input;
+	string input, prevInput=null;
 	public List<int> Asked = new List<int>(); //stores which questions have been asked already
 	string[] result;
 	public Text textArea;
@@ -43,106 +43,111 @@ public class QSearch : MonoBehaviour {
 
 	public void OnClick() {
 		input = gameObject.GetComponent<InputField> ().text;
+        Debug.Log("input:" + input);
 		string conn = "URI=file:" + Application.dataPath + "/UserDB.s3db";//Connecting to database
 		IDbConnection dbconn = new SqliteConnection(conn);
 		dbconn.Open ();
 		scrollRect.verticalNormalizedPosition = 0.0f; //moves scroll rect to bottom
-
+        if (input != prevInput)
+        {
             if (instructorQ == true)
             {
-                if (input != null)
+                if (input != "")
                 {
-                //string sqlQuery = "SELECT * " + "FROM SubjectiveQuestions " + "WHERE ";
-                string temp;
-                while (input.EndsWith("?"))
-                {
-                    input = input.Remove(input.Length - 1);
-                }
-                result = input.Split(' ');
-                temp = keywords.FindKeywords(result);
-                if (temp != "")
-                {
-                    string sqlQuery = "SELECT * " + "FROM SubjectiveQuestions " + "WHERE " + temp;
-                    Debug.Log(sqlQuery);
-
-                    IDbCommand dbcmd = dbconn.CreateCommand();
-                    dbcmd.CommandText = sqlQuery;
-                    IDataReader reader = dbcmd.ExecuteReader();
-
-                    reader.Read();
-
-                    int num = reader.GetInt32(0);
-                    string question = reader.GetString(1);
-                    SetList(num);
-                    if ((num == 5) && (keywords.NumKeywords < 2))
+                    //string sqlQuery = "SELECT * " + "FROM SubjectiveQuestions " + "WHERE ";
+                    string temp;
+                    while (input.EndsWith("?"))
                     {
-                        textArea.text += "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n";
+                        input = input.Remove(input.Length - 1);
+                    }
+                    result = input.Split(' ');
+                    temp = keywords.FindKeywords(result);
+                    if (temp != "")
+                    {
+                        string sqlQuery = "SELECT * " + "FROM SubjectiveQuestions " + "WHERE " + temp;
+                        Debug.Log(sqlQuery);
+
+                        IDbCommand dbcmd = dbconn.CreateCommand();
+                        dbcmd.CommandText = sqlQuery;
+                        IDataReader reader = dbcmd.ExecuteReader();
+
+                        reader.Read();
+
+                        int num = reader.GetInt32(0);
+                        string question = reader.GetString(1);
+                        SetList(num);
+                        if ((num == 5) && (keywords.NumKeywords < 2))
+                        {
+                            textArea.text += "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n";
+                        }
+                        else
+                        {
+                            textArea.text += "User: " + reader["Question"].ToString() + "\n";
+                            textArea.text += "Patient: " + '"' + answers[num] + '"' + "\n\n";
+                        }
+
+                        reader.Close();
+                        dbcmd.Dispose();
+                        dbconn.Close();
+                        dbconn.Dispose();
                     }
                     else
-                    {
-                        textArea.text += "User: " + reader["Question"].ToString() + "\n";
-                        textArea.text += "Patient: " + '"' + answers[num] + '"' + "\n\n";
-                    }
-
-                    reader.Close();
-                    dbcmd.Dispose();
-                    dbconn.Close();
-                    dbconn.Dispose();
+                        textArea.text += "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n";
                 }
-                else
-                    textArea.text += "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n";
-            }
-        }
-        else
-        {
-            if (input != null)
-            {
-                string temp;
-                while (input.EndsWith("?"))
-                {
-                    input = input.Remove(input.Length - 1);
-                }
-                result = input.Split(' ');
-                temp = keywords.FindKeywords(result);
-                Debug.Log(result[0]);
-                //Need to add scoring here later
-                string sqlQuery = "SELECT * " + "FROM AnswerData " + "WHERE " + temp;
-                Debug.Log(sqlQuery);
-
-                IDbCommand dbcmd = dbconn.CreateCommand();
-                dbcmd.CommandText = sqlQuery;
-                IDataReader reader = dbcmd.ExecuteReader();
-
-                reader.Read();
-                int num = reader.GetInt32(0);
-                string question = reader.GetString(1);
-
-                if (((num == 2 || num == 3) && (keywords.NumKeywords < 3)) || keywords.NumKeywords < 2)
-                {
-                    //This means answer wasnt correct or efficient enough so minus points
-                    Debug.Log("Answer not good enough");
-                }
-                else
-                {
-                    //Answer was correct
-                    Debug.Log("Correct");
-                }
-
-                instructorQanswer = input;
-                textArea.text += "Thanks you, you may now move on to the subjective exam.\n\n";
-                instructorQ = true;
-
-                reader.Close();
-                dbcmd.Dispose();
-                dbconn.Close();
-                dbconn.Dispose();
             }
             else
             {
-                textArea.text += "ERROR: Please enter a response.\n\n";
-            }
-         }
+                if (input != "")
+                {
+                    string temp;
+                    while (input.EndsWith("?"))
+                    {
+                        input = input.Remove(input.Length - 1);
+                    }
+                    result = input.Split(' ');
+                    temp = keywords.FindKeywords(result);
+                    if (temp != "")
+                    {
+                        Debug.Log(result[0]);
+                        //Need to add scoring here later
+                        string sqlQuery = "SELECT * " + "FROM AnswerData " + "WHERE " + temp;
+                        Debug.Log(sqlQuery);
 
+                        IDbCommand dbcmd = dbconn.CreateCommand();
+                        dbcmd.CommandText = sqlQuery;
+                        IDataReader reader = dbcmd.ExecuteReader();
+
+                        reader.Read();
+                        int num = reader.GetInt32(0);
+                        string question = reader.GetString(1);
+
+                        if (((num == 2 || num == 3) && (keywords.NumKeywords < 3)) || keywords.NumKeywords < 2)
+                        {
+                            //This means answer wasnt correct or efficient enough so minus points
+                            Debug.Log("Answer not good enough");
+                        }
+                        else
+                        {
+                            //Answer was correct
+                            Debug.Log("Correct");
+                        }
+
+                        reader.Close();
+                        dbcmd.Dispose();
+                        dbconn.Close();
+                        dbconn.Dispose();
+                    }
+                    instructorQanswer = input;
+                    textArea.text += "Thanks you, you may now move on to the subjective exam.\n\n";
+                    instructorQ = true;
+                }
+                else
+                {
+                    textArea.text += "ERROR: Please enter a response.\n\n";
+                }
+            }
+            prevInput = input;
+        }
 	}
 
 	void SetList(int num) { //Sets the Asked list to keep track of what questions have been asked
