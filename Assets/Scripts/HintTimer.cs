@@ -43,12 +43,15 @@ public class HintTimer : MonoBehaviour
 
     public void OnClick()
     {
-        if (qSearch.Asked.Count > oldAsked)
+        if (qSearch.instructorQ == true)
         {
-            TimeSinceClick = 0f;
-            oldAsked = qSearch.Asked.Count;
+            if (qSearch.Asked.Count > oldAsked)
+            {
+                TimeSinceClick = 0f;
+                oldAsked = qSearch.Asked.Count;
+            }
+            startTimer = true;
         }
-        startTimer = true;
     }
 
     void GiveHint()

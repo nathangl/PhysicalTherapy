@@ -11,4 +11,8 @@ public class JumpScenes : MonoBehaviour {
         {
             SceneManager.LoadScene(level);
         }
+        public void Exit()
+        {
+            Application.Quit();
+        }
 }

@@ -19,6 +19,7 @@ public class PatientController : MonoBehaviour
     string currentScreen = "";
     GameObject chart;
     Manager manager;
+    public GameObject PROMAnims;
 
     void Awake()
     {
@@ -34,50 +35,55 @@ public class PatientController : MonoBehaviour
 
     void Update()
     {
-        //TODO: fix weird spacing
-        if (Input.GetMouseButtonDown(0)) // if left mouse clicked
+        if (currentScreen != "PROM")
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity)) // if the raycast hit something
+            //TODO: fix weird spacing
+            if (Input.GetMouseButtonDown(0)) // if left mouse clicked
             {
-                if (currentScreen != "")
+                var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity)) // if the raycast hit something
                 {
-                    if (currentTag != hit.collider.transform.tag && dropdownActive == true) //if raycast hits a new collider
+                    if (currentScreen != "")
                     {
-                        currentTag = hit.collider.transform.tag;
-                        SetDropdown(hit.collider.transform.tag);
-                    }
-                    else if (dropdownActive == false)   //if raycast hits a collider
-                    {
-                        currentTag = hit.collider.transform.tag;
-                        SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
+                        if (currentTag != hit.collider.transform.tag && dropdownActive == true) //if raycast hits a new collider
+                        {
+                            currentTag = hit.collider.transform.tag;
+                            SetDropdown(hit.collider.transform.tag);
+                        }
+                        else if (dropdownActive == false)   //if raycast hits a collider
+                        {
+                            currentTag = hit.collider.transform.tag;
+                            SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
+                        }
                     }
                 }
-            }
 
-            if (dropdownActive && EventSystem.current.currentSelectedGameObject == null && currentScreen == "")
-            {
-                /*dropChecker = EventSystem.current.currentSelectedGameObject.layer;    //get gameobject's layer
-                if (dropChecker != 8)
+                if (dropdownActive && EventSystem.current.currentSelectedGameObject == null && currentScreen == "")
                 {
+                    /*dropChecker = EventSystem.current.currentSelectedGameObject.layer;    //get gameobject's layer
+                    if (dropChecker != 8)
+                    {
+                        DisableDropdown();
+                    }*/
                     DisableDropdown();
-                }*/
-                DisableDropdown();
-            }
-            else if (EventSystem.current.currentSelectedGameObject)
-            {
-                if (EventSystem.current.currentSelectedGameObject.layer != 8)
+                }
+                else if (EventSystem.current.currentSelectedGameObject)
                 {
-                    DisableDropdown();
+                    if (EventSystem.current.currentSelectedGameObject.layer != 8)
+                    {
+                        DisableDropdown();
+                    }
                 }
             }
         }
+        else
+            PROMAnims.SetActive(true);
     }
 
     public void SetDropdown(string clicked)
     {
-        manager.BeginMenu(true);
+        //manager.BeginMenu(true);
         /*if (clicked == "Choose")
         {
             currentScreen = "";
