@@ -8,6 +8,7 @@ public class CameraLerp : MonoBehaviour {
     Vector3 endV3;
     Quaternion beginQ;
     Quaternion endQ;
+    public float speed = 2.5f; //lerp speed
     
     //GameObject patient;
     bool active = false;
@@ -30,15 +31,15 @@ public class CameraLerp : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (!active)
+        if (active)
         {
-            Camera.main.transform.position = Vector3.Lerp(beginV3, endV3,  0.00001f);
-            Camera.main.transform.rotation = Quaternion.Slerp(beginQ, endQ, 0.00001f);
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, endV3,  speed * Time.deltaTime);
+            Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, endQ, speed * Time.deltaTime);
         }
         else
         {
-            Camera.main.transform.position = Vector3.Lerp(endV3, beginV3, 0.00001f);
-            Camera.main.transform.rotation = Quaternion.Slerp(endQ, beginQ, 0.00001f);
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, beginV3, speed * Time.deltaTime);
+            Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, beginQ, speed * Time.deltaTime);
         }
 	}
 }
