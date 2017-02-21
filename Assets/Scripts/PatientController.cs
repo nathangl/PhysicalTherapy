@@ -37,6 +37,7 @@ public class PatientController : MonoBehaviour
     {
         if (currentScreen != "PROM")
         {
+            PROMAnims.SetActive(false);
             //TODO: fix weird spacing
             if (Input.GetMouseButtonDown(0)) // if left mouse clicked
             {
@@ -113,7 +114,8 @@ public class PatientController : MonoBehaviour
 
         userDropdown.gameObject.SetActive(true);
         dropdownActive = true;
-        userDropdown.transform.position = new Vector3(Input.mousePosition.x + 80, Input.mousePosition.y - 15, Input.mousePosition.z);
+        userDropdown.transform.position = new Vector3(Input.mousePosition.x + 80, Input.mousePosition.y - 15, 0);
+        Debug.Log(new Vector3(Input.mousePosition.x + 80, Input.mousePosition.y - 15, Input.mousePosition.z));
         userDropdown.ClearOptions();
         userDropdown.AddOptions(dropdownList);
     }
