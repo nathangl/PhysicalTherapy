@@ -76,7 +76,8 @@ public class QSearch : MonoBehaviour {
                         int num = reader.GetInt32(0);
                         string question = reader.GetString(1);
                         SetList(num);
-                        if ((num == 5) && (keywords.NumKeywords < 2))
+                        if (((num == 5) || (num == 9) || (num == 10)) && (keywords.NumKeywords < 2) || (num == 7) && (keywords.NumKeywords < 3)
+                            || (num == 8) && (keywords.NumKeywords < 6))
                         {
                             textArea.text += "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n";
                         }
@@ -95,7 +96,7 @@ public class QSearch : MonoBehaviour {
                         textArea.text += "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n";
                 }
             }
-            else
+            else //For instructorQ
             {
                 if (input != "")
                 {
@@ -108,34 +109,40 @@ public class QSearch : MonoBehaviour {
                     temp = keywords.FindKeywords(result);
                     if (temp != "")
                     {
-                        Debug.Log(result[0]);
-                        //Need to add scoring here later
-                        string sqlQuery = "SELECT * " + "FROM AnswerData " + "WHERE " + temp;
-                        Debug.Log(sqlQuery);
-
-                        IDbCommand dbcmd = dbconn.CreateCommand();
-                        dbcmd.CommandText = sqlQuery;
-                        IDataReader reader = dbcmd.ExecuteReader();
-
-                        reader.Read();
-                        int num = reader.GetInt32(0);
-                        string question = reader.GetString(1);
-
-                        if (((num == 2 || num == 3) && (keywords.NumKeywords < 3)) || keywords.NumKeywords < 2)
+                        try
                         {
-                            //This means answer wasnt correct or efficient enough so minus points
-                            Debug.Log("Answer not good enough");
-                        }
-                        else
-                        {
-                            //Answer was correct
-                            Debug.Log("Correct");
-                        }
+                            Debug.Log(result[0]);
+                            //Need to add scoring here later
+                            string sqlQuery = "SELECT * " + "FROM AnswerData " + "WHERE " + temp;
+                            Debug.Log(sqlQuery);
 
-                        reader.Close();
-                        dbcmd.Dispose();
-                        dbconn.Close();
-                        dbconn.Dispose();
+                            IDbCommand dbcmd = dbconn.CreateCommand();
+                            dbcmd.CommandText = sqlQuery;
+                            IDataReader reader = dbcmd.ExecuteReader();
+
+                            reader.Read();
+                            int num = reader.GetInt32(0);
+                            string question = reader.GetString(1);
+
+                            if (((num == 2 || num == 3) && (keywords.NumKeywords < 3)) || keywords.NumKeywords < 2)
+                            {
+                                //This means answer wasnt correct or efficient enough so minus points
+                                Debug.Log("Answer not good enough");
+                            }
+                            else
+                            {
+                                //Answer was correct
+                                Debug.Log("Correct");
+                            }
+
+                            reader.Close();
+                            dbcmd.Dispose();
+                            dbconn.Close();
+                            dbconn.Dispose();
+                        }
+                        catch(Exception e){
+                            Debug.Log(e.ToString());
+                        }
                     }
                     instructorQanswer = input;
                     textArea.text += "Thanks you, you may now move on to the subjective exam.\n\n";
@@ -153,7 +160,7 @@ public class QSearch : MonoBehaviour {
 	void SetList(int num) { //Sets the Asked list to keep track of what questions have been asked
 		if (Asked.Contains (num) == false) {
 			Asked.Add (num);
-			totalAskedText.text = "Questions Asked " + Asked.Count + "/6";
+			totalAskedText.text = "Questions Asked " + Asked.Count + "/10";
 		} 
 	}
 }
