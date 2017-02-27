@@ -16,10 +16,11 @@ public class PatientController : MonoBehaviour
     string dropdownIndex;
     bool dropdownActive = false;
     string currentTag = "";
-    string currentScreen = "";
+    public string currentScreen = "";
     GameObject chart;
     Manager manager;
     public GameObject PROMAnims;
+    string prevMode = ""; //Previous mode (AROM/PROM)
 
     void Awake()
     {
@@ -37,6 +38,11 @@ public class PatientController : MonoBehaviour
     {
         if (currentScreen != "PROM")
         {
+            if(currentScreen != prevMode) {
+                patientAnim.speed = 1;
+                patientAnim.Play("Idle");
+                prevMode = currentScreen;
+            }
             PROMAnims.SetActive(false);
             //TODO: fix weird spacing
             if (Input.GetMouseButtonDown(0)) // if left mouse clicked
