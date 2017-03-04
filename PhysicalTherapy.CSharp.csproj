@@ -101,6 +101,8 @@
     <Compile Include="Assets\Scripts\Typer.cs" />
     <Compile Include="Assets\Scripts\animPaths.cs" />
     <Compile Include="Assets\Scripts\animPathsManager.cs" />
+    <Compile Include="Assets\Scripts\buttonDown.cs" />
+    <Compile Include="Assets\Scripts\cameraRotate.cs" />
     <Compile Include="Assets\Scripts\iTween\Pixelplacement 1\iTweenPath\iTweenPath.cs" />
     <Compile Include="Assets\Scripts\iTween\Pixelplacement\iTween\Sample\MoveSample.cs" />
     <Compile Include="Assets\Scripts\iTween\Pixelplacement\iTween\Sample\RotateSample.cs" />
