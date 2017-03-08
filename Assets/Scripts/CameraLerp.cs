@@ -14,17 +14,15 @@ public class CameraLerp : MonoBehaviour {
     public float speed = 2.5f; //lerp speed
     bool prevState = false; //Stores the previous state of active
     [HideInInspector]
-    public bool finished = true; //So we know if we are finished lerping
-
-    //GameObject patient;
+    public bool finished = true; //So we know if we are finished lerping before moving the camera again
     [HideInInspector]
     public bool active = false;
 	void Start () {
         beginV3 = Camera.main.transform.position;
         beginQ = Camera.main.transform.rotation;
 
-        addV3 = new Vector3(0.024f, 0f, 0f);
-        addQ = Quaternion.Euler(0f, 15.12f, 0f);
+        addV3 = new Vector3(0.024f, 0f, 0f);    //Add this to current camera pos to determine pos at end of lerp
+        addQ = Quaternion.Euler(0f, 15.12f, 0f);//Same as addV3 except for angle
         
 	}
 	
@@ -40,7 +38,7 @@ public class CameraLerp : MonoBehaviour {
             StartCoroutine(LerpCamera(active));
             prevState = !prevState;
         }
-        Debug.Log(finished);
+        //Debug.Log(finished);
 	}
     IEnumerator LerpCamera(bool active)
     {

@@ -13,6 +13,8 @@ public class cameraRotate : MonoBehaviour {
     bool reset = false;
     Vector3 resetV3;
     Quaternion resetQ;
+    [HideInInspector]
+    public float currentAngle; //The current angle around the patient
 	// Use this for initialization
 	void Start () {
         camLerp = gameObject.GetComponent<CameraLerp>();
@@ -42,7 +44,8 @@ public class cameraRotate : MonoBehaviour {
             resetV3 = new Vector3(0f, 0.61f, -1.25f);
             resetQ = Quaternion.Euler(0f, 0f, 0f);
         }
-        //Debug.Log(transform.rotation.y);
+        currentAngle = Camera.main.transform.rotation.y;
+        //Debug.Log(DetermineZone());
 
     }
 
@@ -55,6 +58,7 @@ public class cameraRotate : MonoBehaviour {
         if(camLerp.finished == true) 
             StartCoroutine(ResetPos());
     }
+    //Returns the camera to the default (0,0,0) state
     IEnumerator ResetPos()
     {
         if(camLerp.finished == true && reset == false)
@@ -72,5 +76,18 @@ public class cameraRotate : MonoBehaviour {
             reset = true;
             camLerp.finished = true;
         }
+    }
+    //Determine if the PT is left/right/in front of the patient
+    public string DetermineZone()
+    {
+        string zone="";
+        if (currentAngle > 0.30)
+            zone = "right";         //The patients right side
+        else if (currentAngle < -0.30)
+            zone = "left";          //The patients left side
+        else
+            zone = "front";
+            
+        return zone;
     }
 }

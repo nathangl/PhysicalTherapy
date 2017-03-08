@@ -35,13 +35,13 @@ public class animPaths : MonoBehaviour {
             {
                 position = (DeterminePos(objPosition) * 0.83f);
                 anim.Play(gameObject.name, 0, position);
-                Debug.Log(position);
+                //Debug.Log(position);
             }
             else
             {
                 position = (DeterminePos(objPosition) * 0.83f) / 2;
                 anim.Play(gameObject.name, 0, position);
-                Debug.Log(position);
+                //Debug.Log(position);
             }
             manager.prevPos = position;
             manager.prevAnim = gameObject.name;
