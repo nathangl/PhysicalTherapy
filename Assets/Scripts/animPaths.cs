@@ -10,6 +10,7 @@ public class animPaths : MonoBehaviour {
     public Animator anim;
     bool active = false;
     public animPathsManager manager;
+    float position; //the position in animation or time in animation
     void Start()
     {
         iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), 0);
@@ -29,11 +30,20 @@ public class animPaths : MonoBehaviour {
             
             iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), pos);
 
-            anim.speed = 0;
-            if(gameObject.name=="PROMRightArm")
-                anim.Play(gameObject.name, 0, (DeterminePos(objPosition) * 0.83f));
+            //anim.speed = 0;
+            if (gameObject.name == "PROMRightArm")
+            {
+                position = (DeterminePos(objPosition) * 0.83f);
+                anim.Play(gameObject.name, 0, position);
+                Debug.Log(position);
+            }
             else
-                anim.Play(gameObject.name, 0, (DeterminePos(objPosition) * 0.83f) / 2);
+            {
+                position = (DeterminePos(objPosition) * 0.83f) / 2;
+                anim.Play(gameObject.name, 0, position);
+                Debug.Log(position);
+            }
+            manager.prevPos = position;
             manager.prevAnim = gameObject.name;
             manager.prevObj = gameObject;
             manager.first = false;
