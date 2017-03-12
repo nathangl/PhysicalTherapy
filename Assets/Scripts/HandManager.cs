@@ -8,15 +8,34 @@ public class HandManager : MonoBehaviour {
     private RaycastHit hit;
     GameObject leftHandObj;
     GameObject rightHandObj;
-
-    string currentHand;     //Hand being tested in CheckDrag
+    
     string leftLocation = null;     //Left hand current location
     string rightLocation = null;        //Right hand current location
+
+    bool active = false;
+    public bool success = false;
+
+    public string currentlyTesting = "";
 
     void Start()
     {
         leftHandObj = GameObject.Find("LeftHand");
         rightHandObj = GameObject.Find("RightHand");
+        this.gameObject.SetActive(false);
+    }
+
+    public void ToggleHands()
+    {
+        if (active)
+        {
+            this.gameObject.SetActive(false);
+            active = false;
+        }
+        else
+        {
+            this.gameObject.SetActive(true);
+            active = true;
+        }
     }
 
     //
@@ -39,10 +58,30 @@ public class HandManager : MonoBehaviour {
                     break;
             }
 
+            if(leftLocation!=null)
+            {
+                leftHandObj.SetActive(false);
+            }
+            if(rightLocation!=null)
+            {
+                rightHandObj.SetActive(false);
+            }
+
             if(leftLocation!=null && rightLocation!=null)
             {
-                Debug.Log("left hand at " + leftLocation + "  and right hand at " + rightLocation);
+                CheckLocations();
             }
         }
+    }
+
+    public void CheckLocations()
+    {
+        if (currentlyTesting == "prom" && leftLocation == "RightElbow" && rightLocation == "RightHand")
+        {
+            Debug.Log("HANDS IN CORRECT SPOT");
+            success = true;
+        }
+        else
+            Debug.Log("HANDS IN INCORRECT SPOT");
     }
 }

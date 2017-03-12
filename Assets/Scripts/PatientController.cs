@@ -21,11 +21,14 @@ public class PatientController : MonoBehaviour
     Manager manager;
     public GameObject PROMAnims;
     string prevMode = ""; //Previous mode (AROM/PROM)
+    HandManager handManager;
+    bool dropdownEnabled = true;
 
     void Awake()
     {
         chart = GameObject.FindGameObjectWithTag("Chart");
         manager = chart.GetComponent<Manager>();
+        handManager = GameObject.Find("Hands").GetComponent<HandManager>();
         patientAnim = GetComponent<Animator>();
     }
 
@@ -36,16 +39,21 @@ public class PatientController : MonoBehaviour
 
     void Update()
     {
-        if (currentScreen != "PROM")
+        if (currentScreen != prevMode)
         {
-            if(currentScreen != prevMode) {
-                patientAnim.speed = 1;
-                patientAnim.Play("Idle");
-                prevMode = currentScreen;
-            }
+            patientAnim.speed = 1;
+            patientAnim.Play("Idle");
+            prevMode = currentScreen;
+        }
+        if (currentScreen != "PROM")
             PROMAnims.SetActive(false);
-            //TODO: fix weird spacing
-            if (Input.GetMouseButtonDown(0)) // if left mouse clicked
+        else if (handManager.success == true)
+        {
+            dropdownEnabled = false;
+            PROMAnims.SetActive(true);
+        }
+        //TODO: fix weird spacing
+        if (Input.GetMouseButtonDown(0) && dropdownEnabled) // if left mouse clicked
             {
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
 
@@ -82,10 +90,7 @@ public class PatientController : MonoBehaviour
                         DisableDropdown();
                     }
                 }
-            }
         }
-        else
-            PROMAnims.SetActive(true);
     }
 
     public void SetDropdown(string clicked)
@@ -149,15 +154,8 @@ public class PatientController : MonoBehaviour
         else if (userDropdown.value == 1 && currentScreen == "PROM")
         {
             Debug.Log("PROM Animation Accessed");
-            if (dropdownIndex == "LeftShoulder")
-            {
-                patientAnim.SetTrigger("PROMLeftArm");
-            }
-            if (dropdownIndex == "RightShoulder")
-            {
-                patientAnim.SetTrigger("PROMRightArm");
-            }
-            currentScreen = "";
+            handManager.ToggleHands();
+            handManager.currentlyTesting = "prom";
         }/*
         else if (userDropdown.value == 1)
         {
@@ -199,6 +197,7 @@ public class PatientController : MonoBehaviour
 
     public void ButtonInput(string mode)
     {
+        dropdownEnabled = true;
         currentScreen = mode;
         Debug.Log(mode + " MODE");
     }
