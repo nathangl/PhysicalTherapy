@@ -40,7 +40,7 @@ public class CameraLerp : MonoBehaviour {
             StartCoroutine(LerpCamera(active));
             prevState = !prevState;
         }
-        Debug.Log(finished);
+        //Debug.Log(finished);
 	}
     IEnumerator LerpCamera(bool active)
     {

@@ -86,6 +86,8 @@
     <Compile Include="Assets\Scripts\Database\LoginUser.cs" />
     <Compile Include="Assets\Scripts\Database\RegisterUser.cs" />
     <Compile Include="Assets\Scripts\Database\UserClass.cs" />
+    <Compile Include="Assets\Scripts\DragHandler.cs" />
+    <Compile Include="Assets\Scripts\HandManager.cs" />
     <Compile Include="Assets\Scripts\HintTimer.cs" />
     <Compile Include="Assets\Scripts\IfClick.cs" />
     <Compile Include="Assets\Scripts\JumpScenes.cs" />
