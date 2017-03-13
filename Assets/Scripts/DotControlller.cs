@@ -12,6 +12,7 @@ public class DotControlller : MonoBehaviour {
     public GameObject RHand;
 
     bool dropdown = false;
+    bool hand = false;
 
     void Start()
     {
@@ -33,5 +34,16 @@ public class DotControlller : MonoBehaviour {
         RElbow.SetActive(false);
         LHand.SetActive(false);
         RHand.SetActive(false);
+    }
+
+    public void EnableHandDots()
+    {
+        LShoulder.SetActive(true);
+        RShoulder.SetActive(true);
+        LElbow.SetActive(true);
+        RElbow.SetActive(true);
+        LHand.SetActive(true);
+        RHand.SetActive(true);
+        hand = true;
     }
 }

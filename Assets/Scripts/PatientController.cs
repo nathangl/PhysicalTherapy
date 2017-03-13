@@ -24,6 +24,7 @@ public class PatientController : MonoBehaviour
     HandManager handManager;
     bool dropdownEnabled = true;
     bool PROMActive = false;
+    DotControlller dotController;
 
     void Awake()
     {
@@ -31,6 +32,7 @@ public class PatientController : MonoBehaviour
         manager = chart.GetComponent<Manager>();
         handManager = GameObject.Find("Hands").GetComponent<HandManager>();
         patientAnim = GetComponent<Animator>();
+        dotController = GetComponent<DotControlller>();
     }
 
     void Start()
@@ -53,6 +55,8 @@ public class PatientController : MonoBehaviour
         }
         else if (handManager.success == true)
         {
+            dotController.DisableDots();
+
             PROMAnims.SetActive(true);
             PROMActive = true;
         }
@@ -146,6 +150,8 @@ public class PatientController : MonoBehaviour
 
         else if (userDropdown.value == 1 && currentScreen == "AROM")        //AROM
         {
+            dotController.DisableDots();
+
             Debug.Log("AROM Flexion Animation Accessed");
             if (dropdownIndex == "LeftShoulder")
             {
@@ -159,6 +165,8 @@ public class PatientController : MonoBehaviour
         }
         else if (userDropdown.value == 1 && currentScreen == "PROM")
         {
+            dotController.EnableHandDots();
+
             Debug.Log("PROM Animation Accessed");
             handManager.ToggleHands();
             handManager.currentlyTesting = "prom";
@@ -208,6 +216,7 @@ public class PatientController : MonoBehaviour
         dropdownEnabled = true;
         PROMActive = false;
         currentScreen = mode;
+        dotController.EnableDropdownDots();
         Debug.Log(mode + " MODE");
     }
 
