@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HandManager : MonoBehaviour {
+public class HandManager : MonoBehaviour
+{
 
     private RaycastHit hit;
     GameObject leftHandObj;
     GameObject rightHandObj;
-    
+
     string leftLocation = null;     //Left hand current location
     string rightLocation = null;        //Right hand current location
 
@@ -45,7 +46,7 @@ public class HandManager : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            switch(whichHand)
+            switch (whichHand)
             {
                 case "left":
                     leftLocation = hit.collider.transform.tag;
@@ -58,18 +59,20 @@ public class HandManager : MonoBehaviour {
                     break;
             }
 
-            if(leftLocation!=null)
+            if (leftLocation != null)
             {
                 leftHandObj.SetActive(false);
             }
-            if(rightLocation!=null)
+            if (rightLocation != null)
             {
                 rightHandObj.SetActive(false);
             }
 
-            if(leftLocation!=null && rightLocation!=null)
+            if (leftLocation != null && rightLocation != null)
             {
                 CheckLocations();
+                leftHandObj.SetActive(true);
+                rightHandObj.SetActive(true);
             }
         }
     }
@@ -80,8 +83,19 @@ public class HandManager : MonoBehaviour {
         {
             Debug.Log("HANDS IN CORRECT SPOT");
             success = true;
+            ToggleHands();
+            active = false;
         }
         else
+        {
             Debug.Log("HANDS IN INCORRECT SPOT");
+        }
+        ResetLocations();
+    }
+
+    public void ResetLocations()
+    {
+        leftLocation = null;
+        rightLocation = null;
     }
 }

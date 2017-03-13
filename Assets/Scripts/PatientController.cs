@@ -23,6 +23,7 @@ public class PatientController : MonoBehaviour
     string prevMode = ""; //Previous mode (AROM/PROM)
     HandManager handManager;
     bool dropdownEnabled = true;
+    bool PROMActive = false;
 
     void Awake()
     {
@@ -46,12 +47,17 @@ public class PatientController : MonoBehaviour
             prevMode = currentScreen;
         }
         if (currentScreen != "PROM")
+        {
             PROMAnims.SetActive(false);
+            PROMActive = false;
+        }
         else if (handManager.success == true)
         {
-            dropdownEnabled = false;
             PROMAnims.SetActive(true);
+            PROMActive = true;
         }
+        if (PROMActive = true && handManager.success == true)
+            handManager.success = false;
         //TODO: fix weird spacing
         if (Input.GetMouseButtonDown(0) && dropdownEnabled) // if left mouse clicked
             {
@@ -156,6 +162,7 @@ public class PatientController : MonoBehaviour
             Debug.Log("PROM Animation Accessed");
             handManager.ToggleHands();
             handManager.currentlyTesting = "prom";
+            dropdownEnabled = false;
         }/*
         else if (userDropdown.value == 1)
         {
@@ -197,7 +204,9 @@ public class PatientController : MonoBehaviour
 
     public void ButtonInput(string mode)
     {
+        currentScreen = "";
         dropdownEnabled = true;
+        PROMActive = false;
         currentScreen = mode;
         Debug.Log(mode + " MODE");
     }

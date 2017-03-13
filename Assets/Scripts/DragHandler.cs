@@ -35,6 +35,7 @@ public class DragHandler : MonoBehaviour {
 
     public void EndDrag()
     {
+        transform.position = originalPosition;
         manager.CheckDrag(transform.position, whichHand);
     }
 }
