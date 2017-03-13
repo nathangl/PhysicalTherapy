@@ -169,7 +169,10 @@ public class PatientController : MonoBehaviour
 
             Debug.Log("PROM Animation Accessed");
             handManager.ToggleHands();
-            handManager.currentlyTesting = "prom";
+            if(currentTag == "LeftShoulder")
+                handManager.currentlyTesting = "leftprom";
+            else if(currentTag == "RightShoulder")
+                handManager.currentlyTesting = "rightprom";
             dropdownEnabled = false;
         }/*
         else if (userDropdown.value == 1)

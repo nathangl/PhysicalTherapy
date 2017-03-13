@@ -11,8 +11,8 @@ public class DotControlller : MonoBehaviour {
     public GameObject LHand;
     public GameObject RHand;
 
-    bool dropdown = false;
-    bool hand = false;
+    public bool dropdown = false;
+    public bool hand = false;
 
     void Start()
     {
