@@ -21,12 +21,18 @@ public class PatientController : MonoBehaviour
     Manager manager;
     public GameObject PROMAnims;
     string prevMode = ""; //Previous mode (AROM/PROM)
+    HandManager handManager;
+    bool dropdownEnabled = true;
+    bool PROMActive = false;
+    DotControlller dotController;
 
     void Awake()
     {
         chart = GameObject.FindGameObjectWithTag("Chart");
         manager = chart.GetComponent<Manager>();
+        handManager = GameObject.Find("Hands").GetComponent<HandManager>();
         patientAnim = GetComponent<Animator>();
+        dotController = GetComponent<DotControlller>();
     }
 
     void Start()
@@ -36,16 +42,28 @@ public class PatientController : MonoBehaviour
 
     void Update()
     {
+        if (currentScreen != prevMode)
+        {
+            patientAnim.speed = 1;
+            patientAnim.Play("Idle");
+            prevMode = currentScreen;
+        }
         if (currentScreen != "PROM")
         {
-            if(currentScreen != prevMode) {
-                patientAnim.speed = 1;
-                patientAnim.Play("Idle");
-                prevMode = currentScreen;
-            }
             PROMAnims.SetActive(false);
-            //TODO: fix weird spacing
-            if (Input.GetMouseButtonDown(0)) // if left mouse clicked
+            PROMActive = false;
+        }
+        else if (handManager.success == true)
+        {
+            dotController.DisableDots();
+
+            PROMAnims.SetActive(true);
+            PROMActive = true;
+        }
+        if (PROMActive = true && handManager.success == true)
+            handManager.success = false;
+        //TODO: fix weird spacing
+        if (Input.GetMouseButtonDown(0) && dropdownEnabled) // if left mouse clicked
             {
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
 
@@ -82,10 +100,7 @@ public class PatientController : MonoBehaviour
                         DisableDropdown();
                     }
                 }
-            }
         }
-        else
-            PROMAnims.SetActive(true);
     }
 
     public void SetDropdown(string clicked)
@@ -135,6 +150,8 @@ public class PatientController : MonoBehaviour
 
         else if (userDropdown.value == 1 && currentScreen == "AROM")        //AROM
         {
+            dotController.DisableDots();
+
             Debug.Log("AROM Flexion Animation Accessed");
             if (dropdownIndex == "LeftShoulder")
             {
@@ -148,16 +165,15 @@ public class PatientController : MonoBehaviour
         }
         else if (userDropdown.value == 1 && currentScreen == "PROM")
         {
+            dotController.EnableHandDots();
+
             Debug.Log("PROM Animation Accessed");
-            if (dropdownIndex == "LeftShoulder")
-            {
-                patientAnim.SetTrigger("PROMLeftArm");
-            }
-            if (dropdownIndex == "RightShoulder")
-            {
-                patientAnim.SetTrigger("PROMRightArm");
-            }
-            currentScreen = "";
+            handManager.ToggleHands();
+            if(currentTag == "LeftShoulder")
+                handManager.currentlyTesting = "leftprom";
+            else if(currentTag == "RightShoulder")
+                handManager.currentlyTesting = "rightprom";
+            dropdownEnabled = false;
         }/*
         else if (userDropdown.value == 1)
         {
@@ -199,7 +215,11 @@ public class PatientController : MonoBehaviour
 
     public void ButtonInput(string mode)
     {
+        currentScreen = "";
+        dropdownEnabled = true;
+        PROMActive = false;
         currentScreen = mode;
+        dotController.EnableDropdownDots();
         Debug.Log(mode + " MODE");
     }
 
