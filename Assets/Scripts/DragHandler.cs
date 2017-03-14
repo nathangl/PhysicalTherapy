@@ -17,7 +17,7 @@ public class DragHandler : MonoBehaviour {
         manager = container.GetComponent<HandManager>();
         if (whichHand == "left")
         {
-            offset = -50;
+            offset = -30;
         }
         else
             offset = 0;
