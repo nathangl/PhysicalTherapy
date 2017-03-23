@@ -1,0 +1,175 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 960M (ID=0x139b)
+    Vendor:   NVIDIA
+    VRAM:     4065 MB
+    Driver:   21.21.13.7878
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\Mono.Data.Sqlite.dll (this message is harmless)
+Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\Mono.Data.Sqlite.dll into Unity Child Domain
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Data.dll (this message is harmless)
+Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Data.dll into Unity Child Domain
+- Completed reload, in  0.225 seconds
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 3.262219 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 19c -> priority: 1 
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.951993 ms
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 410.
+Total: 0.270221 ms (FindLiveObjects: 0.037777 ms CreateObjectMapping: 0.019555 ms MarkObjects: 0.206222 ms  DeleteObjects: 0.005777 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.167998 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1122.
+Total: 0.668443 ms (FindLiveObjects: 0.103555 ms CreateObjectMapping: 0.012888 ms MarkObjects: 0.545332 ms  DeleteObjects: 0.006222 ms)
+
+chart MODE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+chart MODE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+AROM MODE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+LeftShoulder
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+LeftShoulder CLICKED!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+(1137.0, 666.0, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+AROM Flexion Animation Accessed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PROM MODE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+LeftShoulder
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+LeftShoulder CLICKED!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+(1131.0, 668.0, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PROM Animation Accessed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+HANDS IN CORRECT SPOT
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Transactions.dll (this message is harmless)
+Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Xml.dll (this message is harmless)
+input:
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+False
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.552887 ms
+
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 358.
+Total: 0.449332 ms (FindLiveObjects: 0.036444 ms CreateObjectMapping: 0.009777 ms MarkObjects: 0.246666 ms  DeleteObjects: 0.155999 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.529777 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 414.
+Total: 0.519555 ms (FindLiveObjects: 0.056888 ms CreateObjectMapping: 0.009333 ms MarkObjects: 0.406221 ms  DeleteObjects: 0.046666 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.545777 ms
+
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1124.
+Total: 0.805332 ms (FindLiveObjects: 0.188888 ms CreateObjectMapping: 0.015999 ms MarkObjects: 0.592443 ms  DeleteObjects: 0.007111 ms)
+
+PROM MODE
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+LeftShoulder
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+LeftShoulder CLICKED!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+(1124.0, 668.0, 0.0)
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+PROM Animation Accessed
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.036443 ms
+
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 359.
+Total: 0.427110 ms (FindLiveObjects: 0.051111 ms CreateObjectMapping: 0.008888 ms MarkObjects: 0.259999 ms  DeleteObjects: 0.106666 ms)
+

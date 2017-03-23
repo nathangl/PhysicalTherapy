@@ -105,11 +105,11 @@ public class PatientController : MonoBehaviour
 
     public void SetDropdown(string clicked)
     {
-        //manager.BeginMenu(true);
-        /*if (clicked == "Choose")
+        if(clicked == "Untagged")
         {
-            currentScreen = "";
-        }*/
+            return;
+        }
+        Debug.Log(clicked);
         List<string> dropdownList = new List<string>();
         Action<TreeNode> traverse = null;
         traverse = (n) => {
@@ -207,19 +207,28 @@ public class PatientController : MonoBehaviour
 
     public void DisableDropdown()
     {
-        //userDropdown.gameObject.SetActive(false);
         userDropdown.value = 0;
-        userDropdown.transform.position = new Vector3(1000, 0, 0);
+        userDropdown.transform.position = new Vector3(10000, 0, 0);
         dropdownActive = false;
+        //userDropdown.gameObject.SetActive(false);
     }
 
     public void ButtonInput(string mode)
     {
         currentScreen = "";
-        dropdownEnabled = true;
         PROMActive = false;
-        currentScreen = mode;
-        dotController.EnableDropdownDots();
+        PROMAnims.SetActive(false);
+        dotController.DisableDots();
+        if (mode != "chart")
+        {
+            currentScreen = mode;
+            dropdownEnabled = true;
+            dotController.EnableDropdownDots();
+        }
+        if(handManager.active)
+        {
+            handManager.ToggleHands();
+        }
         Debug.Log(mode + " MODE");
     }
 
