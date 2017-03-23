@@ -207,10 +207,10 @@ public class PatientController : MonoBehaviour
 
     public void DisableDropdown()
     {
-        //userDropdown.gameObject.SetActive(false);
         userDropdown.value = 0;
-        userDropdown.transform.position = new Vector3(1000, 0, 0);
+        userDropdown.transform.position = new Vector3(10000, 0, 0);
         dropdownActive = false;
+        //userDropdown.gameObject.SetActive(false);
     }
 
     public void ButtonInput(string mode)

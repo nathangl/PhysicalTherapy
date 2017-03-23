@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class HandManager : MonoBehaviour
@@ -16,12 +17,17 @@ public class HandManager : MonoBehaviour
     public bool active = false;
     public bool success = false;
 
+    //LayoutElement leftLayout;
+    //LayoutElement rightLayout;
+
     public string currentlyTesting = "";
 
     void Start()
     {
         leftHandObj = GameObject.Find("LeftHand");
+        //leftLayout = leftHandObj.gameObject.GetComponent<LayoutElement>();
         rightHandObj = GameObject.Find("RightHand");
+        //rightLayout = leftHandObj.gameObject.GetComponent<LayoutElement>();
         this.gameObject.SetActive(false);
     }
 
@@ -33,6 +39,7 @@ public class HandManager : MonoBehaviour
             active = false;
             leftLocation = null;
             rightLocation = null;
+            //ToggleLayout();
         }
         else
         {
@@ -40,6 +47,7 @@ public class HandManager : MonoBehaviour
             active = true;
             leftHandObj.SetActive(true);
             rightHandObj.SetActive(true);
+            //ToggleLayout();
         }
     }
 
@@ -109,6 +117,13 @@ public class HandManager : MonoBehaviour
         Debug.Log("HANDS IN CORRECT SPOT");
         success = true;
         ToggleHands();
-        active = false;
     }
+
+    /*public void ToggleLayout()
+    {
+        leftLayout.ignoreLayout = true;
+        leftHandObj.transform.position = originalPosLeft;
+        rightLayout.ignoreLayout = true;
+        rightHandObj.transform.position = originalPosRight;
+    }*/
 }
