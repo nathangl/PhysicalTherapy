@@ -13,7 +13,7 @@ public class HandManager : MonoBehaviour
     string leftLocation = null;     //Left hand current location
     string rightLocation = null;        //Right hand current location
 
-    bool active = false;
+    public bool active = false;
     public bool success = false;
 
     public string currentlyTesting = "";
@@ -31,11 +31,15 @@ public class HandManager : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             active = false;
+            leftLocation = null;
+            rightLocation = null;
         }
         else
         {
             this.gameObject.SetActive(true);
             active = true;
+            leftHandObj.SetActive(true);
+            rightHandObj.SetActive(true);
         }
     }
 
