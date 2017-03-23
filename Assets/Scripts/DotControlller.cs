@@ -11,8 +11,13 @@ public class DotControlller : MonoBehaviour {
     public GameObject LHand;
     public GameObject RHand;
 
+<<<<<<< HEAD
     bool dropdown = false;
     bool hand = false;
+=======
+    public bool dropdown = false;
+    public bool hand = false;
+>>>>>>> refs/remotes/origin/master
 
     void Start()
     {

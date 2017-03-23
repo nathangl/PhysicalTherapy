@@ -7,12 +7,12 @@ public class Keywords : MonoBehaviour {
 	int numKeywords=0;
     public QSearch qSearch;
 	public int NumKeywords { get { return numKeywords; } }
-	List<string> beginsWith = new List<string> { "What", "Why", "Do", "Are", "Does", "How", "Is", "Where" };
+	List<string> beginsWith = new List<string> { "What", "Why", "Do", "Are", "Does", "How", "Is", "Where", "Can" };
 	Dictionary<string, string> keywordsDict = new Dictionary<string, string> {
         //The following are for subjective questions
 		{ "happened", "happened" }, { "problem", "happened" }, { "issue", "happened" }, { "issues", "happened" },  { "problems", "happened" },
 		{ "goals", "goals" }, { "goal", "goals"}, 
-		{ "pain", "pain" }, { "pains", "pain" }, { "aches", "pain" }, { "feeling", "pain" },
+		{ "pain", "pain" }, { "pains", "pain" }, { "aches", "pain" }, { "feeling", "pain" }, { "discomfort", "pain" },
 		{ "live", "live" }, { "lives", "live" }, { "living", "live" },
 		{ "home", "home" }, { "house", "home" }, { "apartment", "home" }, { "housing", "home" }, 
 		{ "set up", "set up" }, { "setup", "set up" }, { "arrangement", "set up" }, { "arranged", "set up" }, { "organized", "set up" },
@@ -74,6 +74,7 @@ public class Keywords : MonoBehaviour {
 	{
 		var match = beginsWith.Exists (x => x.ToLower() == input [0].ToLower());
 		Debug.Log (match);
+        /*
 		if(match == true)
 		{
 			for(int i=0; i<input.Length; i++)
@@ -85,5 +86,10 @@ public class Keywords : MonoBehaviour {
 			}
 		}
 		return false;
+        */
+        if (match == true)
+            return true;
+        else
+            return false;
 	}
 }

@@ -43,7 +43,8 @@ public class HintTimer : MonoBehaviour
 
     public void OnClick()
     {
-        if (qSearch.instructorQ == true)
+        Debug.Log(qSearch.instructorQ);
+        if (qSearch.SubjectiveBegun == true)
         {
             if (qSearch.Asked.Count > oldAsked)
             {

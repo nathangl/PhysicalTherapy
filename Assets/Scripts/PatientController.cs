@@ -64,41 +64,45 @@ public class PatientController : MonoBehaviour
             handManager.success = false;
         //TODO: fix weird spacing
         if (Input.GetMouseButtonDown(0) && dropdownEnabled) // if left mouse clicked
+<<<<<<< HEAD
             {
                 var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
+=======
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
+>>>>>>> refs/remotes/origin/master
 
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity)) // if the raycast hit something
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity)) // if the raycast hit something
+            {
+                if (currentScreen != "")
                 {
-                    if (currentScreen != "")
+                    if (currentTag != hit.collider.transform.tag && dropdownActive == true) //if raycast hits a new collider
                     {
-                        if (currentTag != hit.collider.transform.tag && dropdownActive == true) //if raycast hits a new collider
-                        {
-                            currentTag = hit.collider.transform.tag;
-                            SetDropdown(hit.collider.transform.tag);
-                        }
-                        else if (dropdownActive == false)   //if raycast hits a collider
-                        {
-                            currentTag = hit.collider.transform.tag;
-                            SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
-                        }
+                        currentTag = hit.collider.transform.tag;
+                        SetDropdown(hit.collider.transform.tag);
+                    }
+                    else if (dropdownActive == false)   //if raycast hits a collider
+                    {
+                        currentTag = hit.collider.transform.tag;
+                        SetDropdown(hit.collider.transform.tag);   // if (hit.collider.transform.tag == "Patient")
                     }
                 }
+            }
 
-                if (dropdownActive && EventSystem.current.currentSelectedGameObject == null && currentScreen == "")
+            if (dropdownActive && EventSystem.current.currentSelectedGameObject == null && currentScreen == "")
+            {
+                /*dropChecker = EventSystem.current.currentSelectedGameObject.layer;    //get gameobject's layer
+                if (dropChecker != 8)
                 {
-                    /*dropChecker = EventSystem.current.currentSelectedGameObject.layer;    //get gameobject's layer
-                    if (dropChecker != 8)
-                    {
-                        DisableDropdown();
-                    }*/
                     DisableDropdown();
-                }
-                else if (EventSystem.current.currentSelectedGameObject)
+                }*/
+                DisableDropdown();
+            }
+            else if (EventSystem.current.currentSelectedGameObject)
+            {
+                if (EventSystem.current.currentSelectedGameObject.layer != 8)
                 {
-                    if (EventSystem.current.currentSelectedGameObject.layer != 8)
-                    {
-                        DisableDropdown();
-                    }
+                    DisableDropdown();
                 }
         }
     }
@@ -169,7 +173,14 @@ public class PatientController : MonoBehaviour
 
             Debug.Log("PROM Animation Accessed");
             handManager.ToggleHands();
+<<<<<<< HEAD
             handManager.currentlyTesting = "prom";
+=======
+            if (currentTag == "LeftShoulder")
+                handManager.currentlyTesting = "leftprom";
+            else if (currentTag == "RightShoulder")
+                handManager.currentlyTesting = "rightprom";
+>>>>>>> refs/remotes/origin/master
             dropdownEnabled = false;
         }/*
         else if (userDropdown.value == 1)

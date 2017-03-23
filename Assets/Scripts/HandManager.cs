@@ -79,12 +79,22 @@ public class HandManager : MonoBehaviour
 
     public void CheckLocations()
     {
+<<<<<<< HEAD
         if (currentlyTesting == "prom" && leftLocation == "RightElbow" && rightLocation == "RightHand")
         {
             Debug.Log("HANDS IN CORRECT SPOT");
             success = true;
             ToggleHands();
             active = false;
+=======
+        if (currentlyTesting == "rightprom" && leftLocation == "RightElbow" && rightLocation == "RightHand")
+        {
+            Success();
+        }
+        else if (currentlyTesting == "leftprom" && leftLocation == "LeftHand" && rightLocation == "LeftElbow")
+        {
+            Success();
+>>>>>>> refs/remotes/origin/master
         }
         else
         {
@@ -98,4 +108,15 @@ public class HandManager : MonoBehaviour
         leftLocation = null;
         rightLocation = null;
     }
+<<<<<<< HEAD
+=======
+
+    public void Success()
+    {
+        Debug.Log("HANDS IN CORRECT SPOT");
+        success = true;
+        ToggleHands();
+        active = false;
+    }
+>>>>>>> refs/remotes/origin/master
 }
