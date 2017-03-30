@@ -2,56 +2,50 @@ Initialize engine version: 5.5.0f3 (38b4efef76f0)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: NVIDIA GeForce GTX 960M (ID=0x139b)
+    Renderer: NVIDIA GeForce GTX 670 (ID=0x1189)
     Vendor:   NVIDIA
-    VRAM:     4065 MB
-    Driver:   21.21.13.7878
+    VRAM:     2017 MB
+    Driver:   21.21.13.7849
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
-Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\Mono.Data.Sqlite.dll (this message is harmless)
-Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\Mono.Data.Sqlite.dll into Unity Child Domain
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Data.dll (this message is harmless)
-Loading C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Data.dll into Unity Child Domain
-- Completed reload, in  0.225 seconds
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.dll (this message is harmless)
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\Mono.Data.Sqlite.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\Mono.Data.Sqlite.dll into Unity Child Domain
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Data.dll (this message is harmless)
+Loading C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Data.dll into Unity Child Domain
+- Completed reload, in  0.032 seconds
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3520x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 3.262219 ms
+UnloadTime: 1.397577 ms
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 19c -> priority: 1 
+  Thread -> id: 2308 -> priority: 1 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 6.951993 ms
+UnloadTime: 6.156806 ms
 
 Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 410.
-Total: 0.270221 ms (FindLiveObjects: 0.037777 ms CreateObjectMapping: 0.019555 ms MarkObjects: 0.206222 ms  DeleteObjects: 0.005777 ms)
+Total: 0.308847 ms (FindLiveObjects: 0.030389 ms CreateObjectMapping: 0.025764 ms MarkObjects: 0.244435 ms  DeleteObjects: 0.007597 ms)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.167998 ms
+UnloadTime: 1.070562 ms
 
 Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1122.
-Total: 0.668443 ms (FindLiveObjects: 0.103555 ms CreateObjectMapping: 0.012888 ms MarkObjects: 0.545332 ms  DeleteObjects: 0.006222 ms)
+Total: 0.672198 ms (FindLiveObjects: 0.070688 ms CreateObjectMapping: 0.014203 ms MarkObjects: 0.579048 ms  DeleteObjects: 0.007597 ms)
 
-chart MODE
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-chart MODE
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-False
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Transactions.dll (this message is harmless)
+Platform assembly: C:\Users\Patrick\Desktop\Unity Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Xml.dll (this message is harmless)
+input:left brain
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -59,117 +53,83 @@ False
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-False
+answer LIKE '%left%' 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-False
+left
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-AROM MODE
+SELECT * FROM AnswerData WHERE answer LIKE '%left%' 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-LeftShoulder
+Mono.Data.Sqlite.SqliteException: SQLite error
+no such table: AnswerData
+  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String& strRemain) [0x00000] in <filename unknown>:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in <filename unknown>:0 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-LeftShoulder CLICKED!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-(1137.0, 666.0, 0.0)
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-AROM Flexion Animation Accessed
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-PROM MODE
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-LeftShoulder
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-LeftShoulder CLICKED!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-(1131.0, 668.0, 0.0)
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-PROM Animation Accessed
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-False
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-HANDS IN CORRECT SPOT
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-False
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Transactions.dll (this message is harmless)
-Platform assembly: C:\Users\Nathan\Desktop\Unity\Projects\PhysicalTherapy\PTBuild_Data\Managed\System.Xml.dll (this message is harmless)
-input:
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-False
+True
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.552887 ms
+UnloadTime: 2.301659 ms
 
-Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 358.
-Total: 0.449332 ms (FindLiveObjects: 0.036444 ms CreateObjectMapping: 0.009777 ms MarkObjects: 0.246666 ms  DeleteObjects: 0.155999 ms)
+Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 357.
+Total: 0.489862 ms (FindLiveObjects: 0.054502 ms CreateObjectMapping: 0.021140 ms MarkObjects: 0.264915 ms  DeleteObjects: 0.148643 ms)
 
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.529777 ms
+UnloadTime: 0.484246 ms
 
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 414.
-Total: 0.519555 ms (FindLiveObjects: 0.056888 ms CreateObjectMapping: 0.009333 ms MarkObjects: 0.406221 ms  DeleteObjects: 0.046666 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 413.
+Total: 0.332961 ms (FindLiveObjects: 0.039307 ms CreateObjectMapping: 0.027086 ms MarkObjects: 0.259300 ms  DeleteObjects: 0.006606 ms)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.545777 ms
+UnloadTime: 0.666252 ms
 
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1124.
-Total: 0.805332 ms (FindLiveObjects: 0.188888 ms CreateObjectMapping: 0.015999 ms MarkObjects: 0.592443 ms  DeleteObjects: 0.007111 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 1123.
+Total: 0.638175 ms (FindLiveObjects: 0.082249 ms CreateObjectMapping: 0.015855 ms MarkObjects: 0.533464 ms  DeleteObjects: 0.005945 ms)
 
-PROM MODE
+input:decreased left side strength
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-LeftShoulder
+False
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-LeftShoulder CLICKED!
+answer LIKE '%decreased%' AND answer LIKE '%left%' AND answer LIKE '%strength%' 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-(1124.0, 668.0, 0.0)
+decreased
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-PROM Animation Accessed
+SELECT * FROM AnswerData WHERE answer LIKE '%decreased%' AND answer LIKE '%left%' AND answer LIKE '%strength%' 
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.036443 ms
+Mono.Data.Sqlite.SqliteException: SQLite error
+no such table: AnswerData
+  at Mono.Data.Sqlite.SQLite3.Prepare (Mono.Data.Sqlite.SqliteConnection cnn, System.String strSql, Mono.Data.Sqlite.SqliteStatement previous, UInt32 timeoutMS, System.String& strRemain) [0x00000] in <filename unknown>:0 
+  at Mono.Data.Sqlite.SqliteCommand.BuildNextCommand () [0x00000] in <filename unknown>:0 
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Unloading 39 unused Assets to reduce memory usage. Loaded Objects now: 359.
-Total: 0.427110 ms (FindLiveObjects: 0.051111 ms CreateObjectMapping: 0.008888 ms MarkObjects: 0.259999 ms  DeleteObjects: 0.106666 ms)
+True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+input:decreased left side strength
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+True
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
