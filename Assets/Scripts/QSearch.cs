@@ -70,6 +70,7 @@ public class QSearch : MonoBehaviour
             instructorQ = true;
             testing = true;
         }
+        Tracker.LogData(input);
     }
     //Creates a query and queries the databse to get question responses
     void DBQuery(string tableName)

@@ -129,6 +129,7 @@
     <Compile Include="Assets\Scripts\iTween\Pixelplacement 1\iTweenPath\Editor\iTweenPathEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Data.txt" />
     <None Include="Assets\Fonts\archivo-black\SIL Open Font License.txt" />
     <None Include="Assets\Scripts\iTween\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Text Files\answerFile.txt" />

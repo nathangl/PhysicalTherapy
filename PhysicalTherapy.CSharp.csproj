@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\QuestionReader.cs" />
     <Compile Include="Assets\Scripts\SubjectiveExam.cs" />
     <Compile Include="Assets\Scripts\TextReadDisplay.cs" />
+    <Compile Include="Assets\Scripts\Tracker.cs" />
     <Compile Include="Assets\Scripts\Typer.cs" />
     <Compile Include="Assets\Scripts\animPaths.cs" />
     <Compile Include="Assets\Scripts\animPathsManager.cs" />
@@ -113,6 +114,7 @@
     <Compile Include="Assets\Scripts\iTween\Pixelplacement\iTween\iTween.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Data.txt" />
     <None Include="Assets\Fonts\archivo-black\SIL Open Font License.txt" />
     <None Include="Assets\Scripts\iTween\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Text Files\answerFile.txt" />

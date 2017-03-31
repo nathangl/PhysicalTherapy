@@ -77,6 +77,7 @@ public class HintTimer : MonoBehaviour
                     {
                         qSearch.scrollRect.verticalNormalizedPosition = 0.0f;
                         qSearch.textArea.text += nv.Value + "\n\n";
+                        Tracker.LogData("Hint given: " + nv.Value);
                         nv.Given = true;
                         Done = true;
                         break;
