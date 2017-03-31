@@ -28,6 +28,7 @@ public class Manager : MonoBehaviour
             menuAnim.SetTrigger("FadeIn");
             menuOn = true;
 			OnOff (menuOn);
+            Tracker.LogData("Chart Accessed");
         }
         else
         {
@@ -62,6 +63,7 @@ public class Manager : MonoBehaviour
             menuAnim.SetTrigger("FadeInQuestions");
             menuOn = true;
 			OnOff (menuOn);
+            Tracker.LogData("Dialogue Accessed");
         }
         else
         {
