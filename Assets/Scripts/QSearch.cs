@@ -8,22 +8,23 @@ using UnityEngine.UI;
 
 public class QSearch : MonoBehaviour
 {
+    int hypothesisCount = 1;                    //Count answers to instructorQ
     string input, prevInput = null;
-    public List<int> Asked = new List<int>(); //stores which questions have been asked already
+    public List<int> Asked = new List<int>();   //stores which questions have been asked already
     string[] result;
     public Text textArea;
     public Text totalAskedText;
     public ScrollRect scrollRect;
     public GameObject AROM, PROM, Strength;
-    public PatientController pController; //Need to get the currentScreen
+    public PatientController pController;       //Need to get the currentScreen
     public Animator pAnimator;
     public bool testing = false;
     public bool SubjectiveBegun = false;
     [HideInInspector]
-    public bool instructorQ = false;   //So you know if the first question has been answered
-    string instructorQanswer; //Stores the users answer to the instructorQ
+    public bool instructorQ = false;            //So you know if the first question has been answered
+    string instructorQanswer;                   //Stores the users answer to the instructorQ
     AnimatorStateInfo pAnimInfo;
-    Keywords keywords;
+    //Keywords keywords;
     //public string[] questions = { "Can you try raising your arm?", "Why are you here?", "What are your goals ?", "Do you have any pain", "Do you live alone?", "What is your home set up?", "How were you managing at home prior to this illness?" };
     [HideInInspector]
     public string[] answers = { "", "They say I had a stroke", "To go home.", "No", "No, my husband is home but he works full-time.", "A 2 story split-level home, with bedroom on 2 nd floor and laundry in the basement.", "I worked, drove, did the shopping, walked regularly for exercise", "7", "8", "9", "10" };
@@ -33,13 +34,13 @@ public class QSearch : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        textArea.text = "Before beginning the patient examination please answer the following question:\nWhat impairments might you hypothesize are present in this patient before you begin your screen?\n\n";
-        keywords = gameObject.GetComponent<Keywords>();
-        //sExam = gameObject.GetComponent<SubjectiveExam> ();
+        textArea.text = "Before beginning the patient examination please answer the following question:\nWhat are at least 3 impairments you hypothesize are present in this patient before you begin your screen?\n\n";
+        //keywords = gameObject.GetComponent<Keywords>();
     }
 
     void Update()
     {
+        //Activate AROM/PROM/Strength button after 6 subjective questions are asked
         if (Asked.Count == 6 || testing == true)
         {
             AROM.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
@@ -47,14 +48,14 @@ public class QSearch : MonoBehaviour
             Strength.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
         }
     }
-
+    //Called when user clicks button to submit dialogue
     public void OnClick()
     {
-        string tableName;
+        string tableName; //Name of table to query
         input = gameObject.GetComponent<InputField>().text;
         Debug.Log("input:" + input);
-        scrollRect.verticalNormalizedPosition = 0.0f;                       //moves scroll rect to bottom
-        if (input != "IAMTESTING")                                          //demo purposes
+        scrollRect.verticalNormalizedPosition = 0.0f; //moves scroll rect to bottom
+        if (input != "IAMTESTING") //demo purposes
         {
             if (input != "")
             {
@@ -72,21 +73,21 @@ public class QSearch : MonoBehaviour
         }
         Tracker.LogData(input);
     }
-    //Creates a query and queries the databse to get question responses
+    //Creates a query and queries the databse to get patient responses to questions
     void DBQuery(string tableName)
     {
         string temp;
         bool approved;
         input.Replace("?", "");
         result = input.Split(' ');
-        temp = keywords.FindKeywords(result);
+        temp = Keywords.FindKeywords(result, instructorQ);   //Finds keywords and returns a string to complete SQL query
 
         string conn = "URI=file:" + Application.dataPath + "/UserDB.s3db";  //Connecting to database
         IDbConnection dbconn = new SqliteConnection(conn);
         dbconn.Open();
         try
         {
-            string sqlQuery = "SELECT * " + "FROM " + tableName + " WHERE " + temp;
+            string sqlQuery = "SELECT * FROM " + tableName + " WHERE " + temp;
 
             IDbCommand dbcmd = dbconn.CreateCommand();
             dbcmd.CommandText = sqlQuery;
@@ -110,10 +111,12 @@ public class QSearch : MonoBehaviour
                     //Scoring Placeholder
                 }
                 instructorQanswer = input;
-                textArea.text += "Thanks you, you may now move on to the subjective exam.\n\n";
-                instructorQ = true;
+                //textArea.text += "Thanks you, you may now move on to the subjective exam.\n\n";
+                //instructorQ = true;
+                textArea.text += "Response " + hypothesisCount + ": " + input + "\n\n";
+                hypothesisCount++;
             }
-            else if (instructorQ)
+            else
             {
                 if (approved)
                 {
@@ -126,7 +129,11 @@ public class QSearch : MonoBehaviour
                 }
                 SubjectiveBegun = true;
             }
-
+            if (hypothesisCount > 3 && instructorQ == false)
+            {
+                instructorQ = true;
+                textArea.text += "Thanks you, you may now move on to the subjective exam.\n\n";
+            }
             reader.Close();
             dbcmd.Dispose();
             dbconn.Close();
@@ -134,8 +141,14 @@ public class QSearch : MonoBehaviour
         }
         catch (Exception e)
         {
-            textArea.text += instructorQ ? "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n" : "Thanks you, you may now move on to the subjective exam.\n\n";
-            instructorQ = true;
+            textArea.text += instructorQ ? "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n" : "Response " + hypothesisCount + ": " + input + "\n\n"; ;
+            //instructorQ = true;
+            hypothesisCount++;
+            if (hypothesisCount > 3 && instructorQ == false)
+            {
+                instructorQ = true;
+                textArea.text += "Thanks you, you may now move on to the subjective exam.\n\n";
+            }
             Debug.Log("Error: " + e.ToString());
         }
     }
@@ -150,13 +163,13 @@ public class QSearch : MonoBehaviour
                 case 5:
                 case 9:
                 case 10:
-                    approved = keywords.NumKeywords < 2 ? false : true;
+                    approved = Keywords.NumKeywords < 2 ? false : true;
                     break;
                 case 7:
-                    approved = keywords.NumKeywords < 3 ? false : true;
+                    approved = Keywords.NumKeywords < 3 ? false : true;
                     break;
                 case 8:
-                    approved = keywords.NumKeywords < 6 ? false : true;
+                    approved = Keywords.NumKeywords < 6 ? false : true;
                     break;
                 default:
                     approved = true;
@@ -169,10 +182,10 @@ public class QSearch : MonoBehaviour
             {
                 case 2:
                 case 3:
-                    approved = keywords.NumKeywords < 3 ? false : true;
+                    approved = Keywords.NumKeywords < 3 ? false : true;
                     break;
                 default:
-                    approved = keywords.NumKeywords < 2 ? false : true;
+                    approved = Keywords.NumKeywords < 2 ? false : true;
                     break;
             }
         }
@@ -196,16 +209,16 @@ public class QSearch : MonoBehaviour
             pAnimator.Play("LookLeft", 1);
         }
     }
-
+    //Sets the Asked list to keep track of what questions have been asked
     void SetList(int num)
-    { //Sets the Asked list to keep track of what questions have been asked
+    {
         if (Asked.Contains(num) == false)
         {
             Asked.Add(num);
             totalAskedText.text = "Questions Asked " + Asked.Count + "/10";
         }
     }
-
+    
     void OutputAnswer(int num, IDataReader reader)
     {
         SetList(num);

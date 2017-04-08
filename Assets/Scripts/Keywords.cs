@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Keywords : MonoBehaviour {
-	int numKeywords=0;
-    public QSearch qSearch;
-	public int NumKeywords { get { return numKeywords; } }
-	List<string> beginsWith = new List<string> { "What", "Why", "Do", "Are", "Does", "How", "Is", "Where", "Can" };
-	Dictionary<string, string> keywordsDict = new Dictionary<string, string> {
+public class Keywords {
+    static int numKeywords =0;
+	public static int NumKeywords { get { return numKeywords; } }
+	static List<string> beginsWith = new List<string> { "What", "Why", "Do", "Are", "Does", "How", "Is", "Where", "Can" };
+    static Dictionary<string, string> keywordsDict = new Dictionary<string, string> {
         //The following are for subjective questions
 		{ "happened", "happened" }, { "problem", "happened" }, { "issue", "happened" }, { "issues", "happened" },  { "problems", "happened" },
 		{ "goals", "goals" }, { "goal", "goals"}, 
@@ -24,27 +23,13 @@ public class Keywords : MonoBehaviour {
         { "left", "left" }, { "hemiparesis", "hemiparesis" }, { "decreased", "decreased" }, { "strength", "strength" }, { "sensation", "sensation" }, { "visual", "visual" },
         { "tone", "tone" }, { "low", "low" }, { "alertness", "alertness" },
 	};
-	// Use this for initialization
-	void Start () {
-		/*
-		string temp = "goal";
-		string temp2;
-		if (keywordsDict.ContainsKey(temp)) {
-			keywordsDict.TryGetValue (temp, out temp2);
 
-		}
-		string test = "What happened to you";
-		string[] test1 = test.Split (' ');
-		FindKeywords (test1);
-		*/
-	}
-
-	public string FindKeywords(string[] input)
+	public static string FindKeywords(string[] input, bool instructorQ)
 	{
 		int count=0;
 		numKeywords = 0;
 		string strMain="", temp;
-		if(CheckFor(input) == true || qSearch.instructorQ == false)
+		if(CheckFor(input) == true || instructorQ == false)
 		{
 			foreach (var str in input) {
 				string search = str;
@@ -52,11 +37,11 @@ public class Keywords : MonoBehaviour {
 					search = "setup";
 				}
 				keywordsDict.TryGetValue (search, out temp);
-				if (temp != null && qSearch.instructorQ == true) {
+				if (temp != null && instructorQ == true) {
 					strMain += "Question LIKE '%" + temp + "%' AND ";
 					numKeywords++;
 				}
-                else if (temp != null && qSearch.instructorQ == false)
+                else if (temp != null && instructorQ == false)
                 {
                     strMain += "answer LIKE '%" + temp + "%' AND ";
                     numKeywords++;
@@ -70,7 +55,7 @@ public class Keywords : MonoBehaviour {
 		return strMain;
 	}
 
-	bool CheckFor(string[] input)//Checks the begging of input and to see if it contains you/your
+	static bool CheckFor(string[] input)//Checks the begging of input and to see if it contains you/your
 	{
 		var match = beginsWith.Exists (x => x.ToLower() == input [0].ToLower());
 		Debug.Log (match);
