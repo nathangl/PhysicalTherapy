@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\QuestionReader.cs" />
     <Compile Include="Assets\Scripts\SubjectiveExam.cs" />
     <Compile Include="Assets\Scripts\TextReadDisplay.cs" />
+    <Compile Include="Assets\Scripts\TipHover.cs" />
     <Compile Include="Assets\Scripts\Tracker.cs" />
     <Compile Include="Assets\Scripts\Typer.cs" />
     <Compile Include="Assets\Scripts\animPaths.cs" />
