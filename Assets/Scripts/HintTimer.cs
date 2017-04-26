@@ -7,7 +7,6 @@ using System;
 
 public class HintTimer : MonoBehaviour
 {
-    QSearch qSearch;
     public Text timetest;
     bool startTimer = false;
     public int inactiveTime = 15;   //Time before someone is counted as inactive
@@ -15,6 +14,7 @@ public class HintTimer : MonoBehaviour
     float TimeSinceClick = 0f;      //Time between Clicking to enter a question 
     int oldAsked = 0;                   //Stores how many quesations were in the Asked list before OnClick
     int totalHints = 0;
+    QSearch qSearch;
 
     HintTreeNode root = new HintTreeNode { Value = "Hints" };
 
@@ -27,7 +27,7 @@ public class HintTimer : MonoBehaviour
 
     void Update()
     {
-        if (startTimer == true && qSearch.Asked.Count != 6)
+        if (startTimer == true && QSearch.Asked.Count != 6)
         {
             TimeSinceClick += Time.deltaTime;
             timetest.text = TimeSinceClick.ToString();
@@ -43,13 +43,13 @@ public class HintTimer : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log(qSearch.instructorQ);
-        if (qSearch.SubjectiveBegun == true)
+        Debug.Log(QSearch.instructorQ);
+        if (QSearch.SubjectiveBegun == true)
         {
-            if (qSearch.Asked.Count > oldAsked)
+            if (QSearch.Asked.Count > oldAsked)
             {
                 TimeSinceClick = 0f;
-                oldAsked = qSearch.Asked.Count;
+                oldAsked = QSearch.Asked.Count;
             }
             startTimer = true;
         }
@@ -64,7 +64,7 @@ public class HintTimer : MonoBehaviour
         SubjectiveTraverse = (n, c) => {
             int result;
             int.TryParse(n.Value, out result);
-            if (qSearch.Asked.Contains(result) || n.Value == "Hints")
+            if (QSearch.Asked.Contains(result) || n.Value == "Hints")
             {
                 foreach (HintTreeNode node in n.Nodes)
                     SubjectiveTraverse(node, c);
