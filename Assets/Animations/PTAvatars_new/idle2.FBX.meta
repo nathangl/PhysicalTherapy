@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: 8798ad389f6c1a846afdae06da89bc88
+timeCreated: 1485487636
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Base Human
+    100002: Base HumanHead
+    100004: Base HumanLCalf
+    100006: Base HumanLCollarbone
+    100008: Base HumanLDigit11
+    100010: Base HumanLDigit11 1
+    100012: Base HumanLDigit12
+    100014: Base HumanLDigit13
+    100016: Base HumanLDigit21
+    100018: Base HumanLDigit22
+    100020: Base HumanLDigit23
+    100022: Base HumanLDigit31
+    100024: Base HumanLDigit32
+    100026: Base HumanLDigit33
+    100028: Base HumanLDigit41
+    100030: Base HumanLDigit42
+    100032: Base HumanLDigit43
+    100034: Base HumanLDigit51
+    100036: Base HumanLDigit52
+    100038: Base HumanLDigit53
+    100040: Base HumanLFoot
+    100042: Base HumanLForearm1
+    100044: Base HumanLForearm2
+    100046: Base HumanLForearm3
+    100048: Base HumanLPalm
+    100050: Base HumanLPlatform
+    100052: Base HumanLThigh
+    100054: Base HumanLUpperarm
+    100056: Base HumanNeck1
+    100058: Base HumanNeck2
+    100060: Base HumanPelvis
+    100062: Base HumanRCalf
+    100064: Base HumanRCollarbone
+    100066: Base HumanRDigit11
+    100068: Base HumanRDigit11 1
+    100070: Base HumanRDigit12
+    100072: Base HumanRDigit13
+    100074: Base HumanRDigit21
+    100076: Base HumanRDigit22
+    100078: Base HumanRDigit23
+    100080: Base HumanRDigit31
+    100082: Base HumanRDigit32
+    100084: Base HumanRDigit33
+    100086: Base HumanRDigit41
+    100088: Base HumanRDigit42
+    100090: Base HumanRDigit43
+    100092: Base HumanRDigit51
+    100094: Base HumanRDigit52
+    100096: Base HumanRDigit53
+    100098: Base HumanRFoot
+    100100: Base HumanRForearm1
+    100102: Base HumanRForearm2
+    100104: Base HumanRForearm3
+    100106: Base HumanRibcage
+    100108: Base HumanRIKTarget
+    100110: Base HumanRPalm
+    100112: Base HumanRPlatform
+    100114: Base HumanRThigh
+    100116: Base HumanRUpperarm
+    100118: Base HumanSpine1
+    100120: Base HumanSpine2
+    100122: Base HumanSpine3
+    100124: Base HumanSpine4
+    100126: //RootNode
+    100128: Sphere001
+    100130: Sphere002
+    100132: Sphere003
+    400000: Base Human
+    400002: Base HumanHead
+    400004: Base HumanLCalf
+    400006: Base HumanLCollarbone
+    400008: Base HumanLDigit11
+    400010: Base HumanLDigit11 1
+    400012: Base HumanLDigit12
+    400014: Base HumanLDigit13
+    400016: Base HumanLDigit21
+    400018: Base HumanLDigit22
+    400020: Base HumanLDigit23
+    400022: Base HumanLDigit31
+    400024: Base HumanLDigit32
+    400026: Base HumanLDigit33
+    400028: Base HumanLDigit41
+    400030: Base HumanLDigit42
+    400032: Base HumanLDigit43
+    400034: Base HumanLDigit51
+    400036: Base HumanLDigit52
+    400038: Base HumanLDigit53
+    400040: Base HumanLFoot
+    400042: Base HumanLForearm1
+    400044: Base HumanLForearm2
+    400046: Base HumanLForearm3
+    400048: Base HumanLPalm
+    400050: Base HumanLPlatform
+    400052: Base HumanLThigh
+    400054: Base HumanLUpperarm
+    400056: Base HumanNeck1
+    400058: Base HumanNeck2
+    400060: Base HumanPelvis
+    400062: Base HumanRCalf
+    400064: Base HumanRCollarbone
+    400066: Base HumanRDigit11
+    400068: Base HumanRDigit11 1
+    400070: Base HumanRDigit12
+    400072: Base HumanRDigit13
+    400074: Base HumanRDigit21
+    400076: Base HumanRDigit22
+    400078: Base HumanRDigit23
+    400080: Base HumanRDigit31
+    400082: Base HumanRDigit32
+    400084: Base HumanRDigit33
+    400086: Base HumanRDigit41
+    400088: Base HumanRDigit42
+    400090: Base HumanRDigit43
+    400092: Base HumanRDigit51
+    400094: Base HumanRDigit52
+    400096: Base HumanRDigit53
+    400098: Base HumanRFoot
+    400100: Base HumanRForearm1
+    400102: Base HumanRForearm2
+    400104: Base HumanRForearm3
+    400106: Base HumanRibcage
+    400108: Base HumanRIKTarget
+    400110: Base HumanRPalm
+    400112: Base HumanRPlatform
+    400114: Base HumanRThigh
+    400116: Base HumanRUpperarm
+    400118: Base HumanSpine1
+    400120: Base HumanSpine2
+    400122: Base HumanSpine3
+    400124: Base HumanSpine4
+    400126: //RootNode
+    400128: Sphere001
+    400130: Sphere002
+    400132: Sphere003
+    2300000: Sphere001
+    2300002: Sphere002
+    3300000: Sphere001
+    3300002: Sphere002
+    4300000: Sphere002
+    4300002: Sphere001
+    4300004: Sphere003
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Sphere003
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
