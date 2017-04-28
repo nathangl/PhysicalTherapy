@@ -21,7 +21,7 @@ public class PatientController : MonoBehaviour
     Manager manager;
     public GameObject PROMAnims;
     string prevMode = ""; //Previous mode (AROM/PROM)
-    HandManager handManager;
+    public HandManager handManager;
     bool dropdownEnabled = true;
     bool PROMActive = false;
     DotControlller dotController;
@@ -30,7 +30,7 @@ public class PatientController : MonoBehaviour
     {
         chart = GameObject.FindGameObjectWithTag("Chart");
         manager = chart.GetComponent<Manager>();
-        handManager = GameObject.Find("Hands").GetComponent<HandManager>();
+        //handManager = GameObject.Find("Hands").GetComponent<HandManager>();
         patientAnim = GetComponent<Animator>();
         dotController = GetComponent<DotControlller>();
     }
