@@ -45,7 +45,7 @@ public class PatientController : MonoBehaviour
         if (currentScreen != prevMode)
         {
             patientAnim.speed = 1;
-            patientAnim.Play("Idle");
+            patientAnim.Play("Idle2");
             prevMode = currentScreen;
         }
         if (currentScreen != "PROM")
