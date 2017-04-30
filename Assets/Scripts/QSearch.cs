@@ -16,8 +16,8 @@ public class QSearch : MonoBehaviour
     public Text totalAskedText;
     public ScrollRect scrollRect;
     public GameObject AROM, PROM, Strength;
-    PatientController pController;       //Need to get the currentScreen
-    Animator pAnimator;
+    public PatientController pController;       //Need to get the currentScreen
+    public Animator pAnimator;
     public bool testing = false;
     public static bool SubjectiveBegun = false;
     [HideInInspector]
@@ -30,13 +30,11 @@ public class QSearch : MonoBehaviour
     public string[] answers = { "", "They say I had a stroke", "To go home.", "No", "No, my husband is home but he works full-time.", "A 2 story split-level home, with bedroom on 2 nd floor and laundry in the basement.", "I worked, drove, did the shopping, walked regularly for exercise", "7", "8", "9", "10" };
     [HideInInspector]
     public string[] instructorQanswers = { "left sided hemiparesis", "decreased left side strength", "decreased left side sensation", "left visual neglect", "low tone", "low level of alertness" };
-    public GameObject model1;
-    public GameObject model2;
+    //public GameObject model1;
+    //public GameObject model2;
     // Use this for initialization
     void Awake()
     {
-        pController = model1.GetComponent<PatientController>();
-        pAnimator = model1.GetComponent<Animator>();
         textArea.text = "Before beginning the patient examination please answer the following question:\nWhat are at least 3 impairments you hypothesize are present in this patient before you begin your screen?\n\n";
         //scrollRect = GetComponent<>
         //keywords = gameObject.GetComponent<Keywords>();
@@ -244,10 +242,10 @@ public class QSearch : MonoBehaviour
 
     void ActivateModel2()
     {
-        model1.SetActive(false);
-        model2.SetActive(true);
-        pController = model2.GetComponent<PatientController>();
-        pAnimator = model2.GetComponent<Animator>();
+        //model1.SetActive(false);
+        //model2.SetActive(true);
+        //pController = model2.GetComponent<PatientController>();
+        //pAnimator = model2.GetComponent<Animator>();
         pAnimator.SetTrigger("Idle2");
     }
 }
