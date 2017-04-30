@@ -45,6 +45,7 @@ public class QSearch : MonoBehaviour
         //Activate AROM/PROM/Strength button after 6 subjective questions are asked
         if (Asked.Count == 6 || testing == true)
         {
+            ActivateModel2();
             AROM.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
             PROM.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
             Strength.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
@@ -136,7 +137,6 @@ public class QSearch : MonoBehaviour
             }
             if (hypothesisCount > 5 && instructorQ == false)
             {
-                ActivateModel2();
                 instructorQ = true;
                 textArea.text += "Thanks you, you may now move on to the subjective exam.\n\n";
                 textArea.text += "Please use this box to ask the patient at least six subjective questions before moving on.\n\n";
@@ -153,7 +153,6 @@ public class QSearch : MonoBehaviour
             hypothesisCount++;
             if (hypothesisCount >= 4 && instructorQ == false)
             {
-                ActivateModel2();
                 instructorQ = true;
                 textArea.text += "Thanks you, you may now move on to the subjective exam.\n\n";
                 textArea.text += "Please use this box to ask the patient at least six subjective questions before moving on.\n\n";
