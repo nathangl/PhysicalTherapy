@@ -127,6 +127,7 @@ public class DatabaseManager : MonoBehaviour
                         UserClass.currentUser.username = tempUsername;
                         UserClass.currentUser.firstName = tempFirstName;
                         UserClass.currentUser.lastName = tempLastName;
+                        Tracker.LogData(tempFirstName + " " + tempLastName);
                         Login(questionID);
                     }
                     else if ((tempUsername == username && tempPassword != password) || (tempUsername != username && tempPassword == password))
