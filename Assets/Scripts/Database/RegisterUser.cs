@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class RegisterUser : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class RegisterUser : MonoBehaviour {
             string tempLastName = lastName.text;
 
             DatabaseManager.registerUser(tempUsername, tempPassword, tempFirstName, tempLastName, questionID);
+            SceneManager.LoadScene("Login");
         }
     }
 }
