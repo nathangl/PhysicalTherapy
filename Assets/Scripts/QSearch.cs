@@ -109,10 +109,12 @@ public class QSearch : MonoBehaviour
                 if (approved)
                 {
                     //Scoring Placeholder
+                    Tracker.LogData("Correct Hypothesis: ");
                     textArea.text += "correct";
                 }
                 else
                 {
+                    Tracker.LogData("Incorrect Hypothesis: ");
                     textArea.text += "incorrect";
                     //Scoring Placeholder
                 }
@@ -149,6 +151,11 @@ public class QSearch : MonoBehaviour
         catch (Exception e)
         {
             textArea.text += instructorQ ? "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n" : "Response " + hypothesisCount + ": " + input + "\n\n";
+            if (!instructorQ)
+                Tracker.LogData("Incorrect Hypothesis: ");
+            else
+                Tracker.LogData("Insufficient Question: ");
+
             //instructorQ = true;
             hypothesisCount++;
             if (hypothesisCount >= 4 && instructorQ == false)
