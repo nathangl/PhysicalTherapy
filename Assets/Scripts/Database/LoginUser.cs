@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LoginUser : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class LoginUser : MonoBehaviour
 
     public void Login()
     {
-        DatabaseManager.correctLogin = true;
         DatabaseManager.inDB = true;
 
         if (username.text != "" && password.text != "")
@@ -21,6 +21,10 @@ public class LoginUser : MonoBehaviour
             string tempPassword = password.text;
 
             DatabaseManager.loginUser(tempUsername, tempPassword, questionID);
+            if(DatabaseManager.correctLogin == true)
+            {
+                SceneManager.LoadScene("MainMenu");
+            }
         }
     }
 }

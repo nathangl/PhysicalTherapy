@@ -52,7 +52,7 @@ public class DatabaseManager : MonoBehaviour
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = String.Format("CREATE TABLE UserRecords (UserName TEXT  NOT NULL PRIMARY KEY, QuestionID TEXT  NOT NULL, Correct BOOLEAN  NOT NULL)");
+                string sqlQuery = String.Format("CREATE TABLE if not exists UserRecords (UserName TEXT  NOT NULL PRIMARY KEY, QuestionID TEXT  NOT NULL, Correct BOOLEAN  NOT NULL)");
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
@@ -63,7 +63,7 @@ public class DatabaseManager : MonoBehaviour
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = String.Format("CREATE TABLE Question (Question_ID INTEGER  NOT NULL PRIMARY KEY, Question TEXT  NOT NULL, Answer TEXT  NOT NULL)");
+                string sqlQuery = String.Format("CREATE TABLE if not exists Question (Question_ID INTEGER  NOT NULL PRIMARY KEY, Question TEXT  NOT NULL, Answer TEXT  NOT NULL)");
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
@@ -109,9 +109,9 @@ public class DatabaseManager : MonoBehaviour
                     while (dbReader.Read())
                     {
                         tempUsername = dbReader.GetString(0);
-                        tempPassword = dbReader.GetString(0);
-                        tempFirstName = dbReader.GetString(0);
-                        tempLastName = dbReader.GetString(0);
+                        tempPassword = dbReader.GetString(1);
+                        tempFirstName = dbReader.GetString(2);
+                        tempLastName = dbReader.GetString(3);
                         //tempQuestionID = dbReader.GetString(0);
 
                         if (tempUsername == username && tempPassword == password)
@@ -142,6 +142,7 @@ public class DatabaseManager : MonoBehaviour
     static void Login(string questionID)
     {
         //Progress to next
+        correctLogin = true;
     }
 
     static void LoginError()
