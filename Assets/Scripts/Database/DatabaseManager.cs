@@ -71,14 +71,14 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
-    private static void InsertUserInfo(string username, string password, string firstName, string lastName, string questionID)
+    private static void InsertUserInfo(string username, string password, string firstName, string lastName, string questionID, string email)
     {
         using (IDbConnection dbConnection = new SqliteConnection(connectionString))
         {
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = String.Format("INSERT INTO UserInfo (UserName, Password, FirstName, LastName) VALUES(\"{0}\",\"{1}\",\"{2}\",\"{3}\")", username, password, firstName, lastName);    //INSERT INFO SQL COMMAND
+                string sqlQuery = String.Format("INSERT INTO UserInfo (UserName, Password, FirstName, LastName, Email) VALUES(\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\")", username, password, firstName, lastName, email);    //INSERT INFO SQL COMMAND
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
@@ -188,9 +188,9 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
-    public static void registerUser(string username, string password, string firstName, string lastName, string questionID)
+    public static void registerUser(string username, string password, string firstName, string lastName, string questionID, string email)
     {
-        InsertUserInfo(username, password, firstName, lastName, questionID);
+        InsertUserInfo(username, password, firstName, lastName, questionID, email);
     }
 
     public static void loginUser(string username, string password, string questionID)
