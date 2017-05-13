@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: e2bebf3b5b55ac64986f62c3e8b4e10b
-timeCreated: 1473262923
-licenseType: Pro
+guid: 2ee9f50c90a61304eb75592e5e72a089
+timeCreated: 1478662044
+licenseType: Free
 PluginImporter:
   serializedVersion: 1
   iconMap: {}
@@ -9,15 +9,16 @@ PluginImporter:
   isPreloaded: 0
   platformData:
     Any:
-      enabled: 0
+      enabled: 1
       settings: {}
     Editor:
       enabled: 0
       settings:
         DefaultValueInitialized: true
-    Xbox360:
-      enabled: 1
-      settings: {}
+    WindowsStoreApps:
+      enabled: 0
+      settings:
+        CPU: AnyCPU
   userData: 
   assetBundleName: 
   assetBundleVariant: 

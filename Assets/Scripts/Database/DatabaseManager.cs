@@ -6,18 +6,48 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using Mono.Data.Sqlite;
+using System.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 public class DatabaseManager : MonoBehaviour
 {
-
+    MySql.Data.MySqlClient.MySqlConnection conn;
     public static bool inDB = false;
     public static bool correctLogin = false;
-    private static string connectionString;
+    //private static string connectionString;
+
+    /*private static string connectionString =
+            @"Data Source=csci03.is.uindy.edu;" +
+            "Database=TEST;" +
+            "UserID=test;" +
+            "Password=Test1234!;";
+    //"Pooling=false";*/
+
+    private static string connectionString = "server=csci03.is.uindy.edu;uid=test;" +
+"pwd=Test1234!;database=TEST;";
 
     void Start()
     {
-        connectionString = "URI=file:" + Application.dataPath + "/UserDB.s3db";
-        CreateTable();
+        try
+        {
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+            conn.ConnectionString = connectionString;
+            conn.Open();
+            using (IDbCommand dbCmd = conn.CreateCommand())
+            {
+                string sqlQuery = String.Format("CREATE TABLE if not exists UserInfo (Username VARCHAR(20) NOT NULL UNIQUE, Password VARCHAR(9)  NOT NULL, FirstName VARCHAR(10)  NOT NULL, LastName  VARCHAR(10)  NOT NULL)");
+                dbCmd.CommandText = sqlQuery;
+                Debug.Log(dbCmd.CommandText);
+                dbCmd.ExecuteScalar();
+                conn.Close();
+            }
+        }
+        catch (MySql.Data.MySqlClient.MySqlException ex)
+        {
+            Debug.Log(ex.Message);
+        }
+        //connectionString = "URI=file:" + Application.dataPath + "/UserDB.s3db";
+        //CreateTable();
     }
 
     void Update()
@@ -32,43 +62,6 @@ public class DatabaseManager : MonoBehaviour
             //Set text for returning user
         }
         //else  //new user
-    }
-
-    private void CreateTable()
-    {
-        using (IDbConnection dbConnection = new SqliteConnection(connectionString))
-        {
-            dbConnection.Open();
-            using (IDbCommand dbCmd = dbConnection.CreateCommand())
-            {
-                string sqlQuery = String.Format("CREATE TABLE if not exists UserInfo (Username TEXT NOT NULL UNIQUE, Password TEXT  NOT NULL, FirstName TEXT  NOT NULL, LastName  TEXT  NOT NULL)");
-                dbCmd.CommandText = sqlQuery;
-                dbCmd.ExecuteScalar();
-                dbConnection.Close();
-            }
-        }
-        using (IDbConnection dbConnection = new SqliteConnection(connectionString))
-        {
-            dbConnection.Open();
-            using (IDbCommand dbCmd = dbConnection.CreateCommand())
-            {
-                string sqlQuery = String.Format("CREATE TABLE if not exists UserRecords (UserName TEXT  NOT NULL PRIMARY KEY, QuestionID TEXT  NOT NULL, Correct BOOLEAN  NOT NULL)");
-                dbCmd.CommandText = sqlQuery;
-                dbCmd.ExecuteScalar();
-                dbConnection.Close();
-            }
-        }
-        using (IDbConnection dbConnection = new SqliteConnection(connectionString))
-        {
-            dbConnection.Open();
-            using (IDbCommand dbCmd = dbConnection.CreateCommand())
-            {
-                string sqlQuery = String.Format("CREATE TABLE if not exists Question (Question_ID INTEGER  NOT NULL PRIMARY KEY, Question TEXT  NOT NULL, Answer TEXT  NOT NULL)");
-                dbCmd.CommandText = sqlQuery;
-                dbCmd.ExecuteScalar();
-                dbConnection.Close();
-            }
-        }
     }
 
     private static void InsertUserInfo(string username, string password, string firstName, string lastName, string questionID)
