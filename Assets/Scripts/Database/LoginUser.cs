@@ -20,7 +20,7 @@ public class LoginUser : MonoBehaviour
             string tempUsername = username.text;
             string tempPassword = password.text;
 
-            DatabaseManager.loginUser(tempUsername, tempPassword, questionID);
+            DatabaseManager.loginUser(tempUsername, tempPassword);
             if(DatabaseManager.correctLogin == true)
             {
                 SceneManager.LoadScene("MainMenu");

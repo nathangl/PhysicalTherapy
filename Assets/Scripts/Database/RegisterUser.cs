@@ -14,8 +14,6 @@ public class RegisterUser : MonoBehaviour {
     public InputField emailAddress;
     public Text errorTxt;
 
-    public string questionID;
-
     public void Register()
     {
         if (username.text != "" && password.text != "" && firstName.text != "" && lastName.text != "")
@@ -27,7 +25,7 @@ public class RegisterUser : MonoBehaviour {
             string tempEmail = emailAddress.text;
             if (IsValidEmailAddress(tempEmail))
             {
-                DatabaseManager.registerUser(tempUsername, tempPassword, tempFirstName, tempLastName, questionID, tempEmail);
+                DatabaseManager.registerUser(tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail);
                 SceneManager.LoadScene("Login");
             }
             else
