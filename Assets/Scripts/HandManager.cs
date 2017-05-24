@@ -117,6 +117,7 @@ public class HandManager : MonoBehaviour
     {
         Debug.Log("HANDS IN CORRECT SPOT");
         Tracker.LogData("HANDS IN CORRECT SPOT");
+        Tracker.clicked.Add("PROMLHP");
         success = true;
         ToggleHands();
     }
