@@ -117,6 +117,14 @@ public class PatientController : MonoBehaviour
             {
                 Debug.Log(n.Value + " CLICKED!");
                 Tracker.LogData(n.Value + " CLICKED!");
+                if(currentScreen == "PROM")
+                {
+                    Tracker.clicked.Add("PROM" + n.Value);
+                }
+                else
+                {
+                    Tracker.clicked.Add("AROM" + n.Value);
+                }
                 dropdownIndex = n.Value;
                 dropdownList.Add(n.Value);
                 foreach (TreeNode nv in n.Nodes)
@@ -158,10 +166,12 @@ public class PatientController : MonoBehaviour
             if (dropdownIndex == "LeftShoulder")
             {
                 patientAnim.SetTrigger("AROMLeftArm");
+                Tracker.clicked.Add("AROMLF");
             }
             if (dropdownIndex == "RightShoulder")
             {
                 patientAnim.SetTrigger("AROMRightArm");
+                Tracker.clicked.Add("AROMRF");
             }
             currentScreen = "";
         }
@@ -175,11 +185,13 @@ public class PatientController : MonoBehaviour
             {
                 handManager.currentlyTesting = "leftprom";
                 Tracker.LogData("PROM Flexion Animation Accessed");
+                Tracker.clicked.Add("PROMLF");
             }
             else if (currentTag == "RightShoulder")
             {
                 handManager.currentlyTesting = "rightprom";
                 Tracker.LogData("PROM Flexion Animation Accessed");
+                Tracker.clicked.Add("PROMRF");
             }
             dropdownEnabled = false;
         }/*
@@ -239,6 +251,7 @@ public class PatientController : MonoBehaviour
         }
         Debug.Log(mode + " MODE");
         Tracker.LogData(mode + " MODE");
+        Tracker.clicked.Add(mode);
     }
 
     public void CreatePatientTree()
