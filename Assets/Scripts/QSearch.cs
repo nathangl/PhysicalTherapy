@@ -27,7 +27,7 @@ public class QSearch : MonoBehaviour
     //Keywords keywords;
     //public string[] questions = { "Can you try raising your arm?", "Why are you here?", "What are your goals ?", "Do you have any pain", "Do you live alone?", "What is your home set up?", "How were you managing at home prior to this illness?" };
     [HideInInspector]
-    public string[] answers = { "", "They say I had a stroke", "To go home.", "No", "No, my husband is home but he works full-time.", "A 2 story split-level home, with bedroom on 2 nd floor and laundry in the basement.", "I worked, drove, did the shopping, walked regularly for exercise", "7", "8", "9", "10" };
+    public static string[] answers = { "", "They say I had a stroke", "To go home.", "No", "No, my husband is home but he works full-time.", "A 2 story split-level home, with bedroom on 2 nd floor and laundry in the basement.", "I worked, drove, did the shopping, walked regularly for exercise", "7", "8", "9", "10" };
     [HideInInspector]
     public string[] instructorQanswers = { "left sided hemiparesis", "decreased left side strength", "decreased left side sensation", "left visual neglect", "low tone", "low level of alertness" };
     //public GameObject model1;
@@ -83,7 +83,7 @@ public class QSearch : MonoBehaviour
         string temp;
         bool approved;
         //Remove excess question marks
-        input.Replace("?", "");
+        input = input.Replace("?", "");
         //Split the input into an array
         result = input.Split(' ');
         temp = Keywords.FindKeywords(result, instructorQ);   //Finds keywords and returns a string to complete SQL query
@@ -109,6 +109,7 @@ public class QSearch : MonoBehaviour
                 if (approved)
                 {
                     //Scoring Placeholder
+                    Tracker.clicked.Add("Hypothesis");
                     Tracker.LogData("Correct Hypothesis: ");
                     textArea.text += "correct";
                 }
@@ -123,6 +124,7 @@ public class QSearch : MonoBehaviour
                 //instructorQ = true;
                 textArea.text += "Response " + hypothesisCount + ": " + input + "\n\n";
                 hypothesisCount++;
+                Tracker.clicked.Add("Hypothesis" + hypothesisCount);
             }
             else
             {
@@ -152,12 +154,16 @@ public class QSearch : MonoBehaviour
         {
             textArea.text += instructorQ ? "ERROR: Insufficient Question: '" + input + "' Please try again.\n\n" : "Response " + hypothesisCount + ": " + input + "\n\n";
             if (!instructorQ)
+            {
                 Tracker.LogData("Incorrect Hypothesis: ");
+                Tracker.clicked.Add("Hypothesis" + hypothesisCount);
+            }
             else
                 Tracker.LogData("Insufficient Question: ");
 
             //instructorQ = true;
             hypothesisCount++;
+            //Tracker.clicked.Add("Hypothesis" + hypothesisCount);
             if (hypothesisCount >= 4 && instructorQ == false)
             {
                 instructorQ = true;
@@ -234,6 +240,7 @@ public class QSearch : MonoBehaviour
     {
         if (Asked.Contains(num) == false)
         {
+            Tracker.clicked.Add("Q" + num);
             Asked.Add(num);
             totalAskedText.text = "Questions Asked " + Asked.Count + "/10";
         }

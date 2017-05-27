@@ -1,0 +1,6 @@
+[00:07]Dialogue Accessed
+[00:12]IAMTESTING
+[02:41]PROM MODE
+[02:42]LeftShoulder CLICKED!
+[02:45]PROM Flexion Animation Accessed
+[02:49]HANDS IN CORRECT SPOT
