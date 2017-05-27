@@ -70,7 +70,7 @@ public class Tracker : MonoBehaviour {
         timer += Time.deltaTime;
         minutes = Mathf.Floor(timer / 60).ToString("00");
         seconds = Mathf.Floor(timer % 60).ToString("00");
-        Debug.Log(CalculateScore());
+        //Debug.Log(CalculateScore());
     }
 
     public static void LogData(string input)

@@ -6,8 +6,7 @@ using System.Text.RegularExpressions;
 using System;
 
 public class RegisterUser : MonoBehaviour {
-
-    public InputField username;
+    
     public InputField password;
     public InputField firstName;
     public InputField lastName;
@@ -16,16 +15,15 @@ public class RegisterUser : MonoBehaviour {
 
     public void Register()
     {
-        if (username.text != "" && password.text != "" && firstName.text != "" && lastName.text != "")
+        if (password.text != "" && firstName.text != "" && lastName.text != "")
         {
-            string tempUsername = username.text;
             string tempPassword = password.text;
             string tempFirstName = firstName.text;
             string tempLastName = lastName.text;
             string tempEmail = emailAddress.text;
             if (IsValidEmailAddress(tempEmail))
             {
-                DatabaseManager.registerUser(tempUsername, tempPassword, tempFirstName, tempLastName, tempEmail);
+                DatabaseManager.registerUser(tempEmail, tempPassword, tempFirstName, tempLastName);
                 SceneManager.LoadScene("Login");
             }
             else

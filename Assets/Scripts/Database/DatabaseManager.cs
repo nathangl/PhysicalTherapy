@@ -18,6 +18,8 @@ public class DatabaseManager : MonoBehaviour
     private static string connectionString = "server=csci03.is.uindy.edu;uid=test;" +
 "pwd=Test1234!;database=TEST;";
 
+    bool created = true;
+
     void Start()
     {
         CreateTables();
@@ -39,6 +41,10 @@ public class DatabaseManager : MonoBehaviour
 
     private void CreateTables()
     {
+        if (created)
+        {
+            return;
+        }
         try
         {
             conn = new MySql.Data.MySqlClient.MySqlConnection();
@@ -47,16 +53,27 @@ public class DatabaseManager : MonoBehaviour
             //UserInfo Table
             using (IDbCommand dbCmd = conn.CreateCommand())
             {
-                string sqlQuery = String.Format("CREATE TABLE if not exists UserInfo (UserID INT NOT NULL UNIQUE AUTO_INCREMENT, Username VARCHAR(10)  NOT NULL, Password VARCHAR(10) NOT NULL, FirstName VARCHAR(10)  NOT NULL, LastName  VARCHAR(10)  NOT NULL, Email VARCHAR(20) NOT NULL");
+                string sqlQuery = String.Format("CREATE TABLE IF NOT EXISTS UserInfo (UserID INT NOT NULL AUTO_INCREMENT, Email VARCHAR(255) NOT NULL, Password VARCHAR(255) NOT NULL, FirstName VARCHAR(255) NOT NULL, LastName VARCHAR(255) NOT NULL, PRIMARY KEY (UserID))");
                 dbCmd.CommandText = sqlQuery;
                 Debug.Log(dbCmd.CommandText);
                 dbCmd.ExecuteScalar();
-                //conn.Close();
+                conn.Close();
             }
+        }
+        catch (MySql.Data.MySqlClient.MySqlException ex)
+        {
+            Debug.Log(ex.Message);
+        }
+
+        try
+        {
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+            conn.ConnectionString = connectionString;
+            conn.Open();
             //ChatLog Table
             using (IDbCommand dbCmd = conn.CreateCommand())
             {
-                string sqlQuery = String.Format("CREATE TABLE if not exists ChatLog (LogID INT NOT NULL UNIQUE AUTO_INCREMENT, UserID INT NOT NULL, ChatText VARCHAR(1000)");
+                string sqlQuery = String.Format("CREATE TABLE if not exists ChatLog (LogID INT NOT NULL UNIQUE AUTO_INCREMENT, UserID INT NOT NULL, ChatText VARCHAR(1000))");
                 dbCmd.CommandText = sqlQuery;
                 Debug.Log(dbCmd.CommandText);
                 dbCmd.ExecuteScalar();
@@ -69,32 +86,95 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
-    private static void InsertUserInfo(string username, string password, string firstName, string lastName, string email)
+    private static void InsertUserInfo(string email, string password, string firstname, string lastname)
     {
-        using (IDbConnection dbConnection = new SqliteConnection(connectionString))
+        MySql.Data.MySqlClient.MySqlConnection conn;
+
+        try
         {
-            dbConnection.Open();
-            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+            conn.ConnectionString = connectionString;
+            conn.Open();
+            //UserInfo Table
+            using (IDbCommand dbCmd = conn.CreateCommand())
             {
-                string sqlQuery = String.Format("INSERT INTO UserInfo (Username, Password, FirstName, LastName, Email) VALUES(\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\")", username, password, firstName, lastName, email);    //INSERT INFO SQL COMMAND
+                string sqlQuery = String.Format("INSERT INTO UserInfo (Email, Password, FirstName, LastName) VALUES(\"{0}\",\"{1}\",\"{2}\",\"{3}\")", email, password, firstname, lastname);
                 dbCmd.CommandText = sqlQuery;
+                Debug.Log(dbCmd.CommandText);
                 dbCmd.ExecuteScalar();
-                dbConnection.Close();
+                conn.Close();
             }
+        }
+        catch (MySql.Data.MySqlClient.MySqlException ex)
+        {
+            Debug.Log(ex.Message);
         }
     }
 
-    private static void CheckUser(string username, string password)
+    private static void CheckUser(string email, string password)
     {
         string tempID = null;
-        string tempUsername = null;
         string tempPassword = null;
         string tempFirstName = null;
         string tempLastName = null;
+        string tempEmail = null;
         bool foundLogin = false;
+        MySql.Data.MySqlClient.MySqlConnection conn;
 
-        using (IDbConnection dbConnection = new SqliteConnection(connectionString))
+        try
         {
+            conn = new MySql.Data.MySqlClient.MySqlConnection();
+            conn.ConnectionString = connectionString;
+            conn.Open();
+            //UserInfo Table
+            using (IDbCommand dbCmd = conn.CreateCommand())
+            {
+                string sqlQuery = String.Format("SELECT * FROM UserInfo");
+                dbCmd.CommandText = sqlQuery;
+                Debug.Log(dbCmd.CommandText);
+                using (IDataReader dbReader = dbCmd.ExecuteReader())
+                {
+                    while (dbReader.Read())
+                    {
+                        tempID = dbReader.GetString(0);
+                        tempEmail = dbReader.GetString(1);
+                        tempPassword = dbReader.GetString(2);
+                        tempFirstName = dbReader.GetString(3);
+                        tempLastName = dbReader.GetString(4);
+
+                        if (tempEmail == email && tempPassword == password)
+                        {
+                            foundLogin = true;
+                            break;
+                        }
+                    }
+
+                    if (foundLogin == true)
+                    {
+                        //UserCLass storage
+                        UserClass.currentUser.firstName = tempFirstName;
+                        UserClass.currentUser.lastName = tempLastName;
+                        UserClass.currentUser.userID = Int32.Parse(tempID);
+                        UserClass.currentUser.email = tempEmail;
+                        Tracker.LogData(tempFirstName + " " + tempLastName);
+                        Login();
+                    }
+                    else if ((tempEmail == email && tempPassword != password) || (tempEmail != email && tempPassword == password))
+                        LoginError();
+                    else Register();
+                    conn.Close();
+                    dbReader.Close();
+                }
+            }
+        }
+        catch (MySql.Data.MySqlClient.MySqlException ex)
+        {
+            Debug.Log(ex.Message);
+        }
+
+        /*using (MySql.Data.MySqlClient.MySqlConnection dbConnection = new MySql.Data.MySqlClient.MySqlConnection())
+        {
+            dbConnection.ConnectionString = connectionString;
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
@@ -105,12 +185,12 @@ public class DatabaseManager : MonoBehaviour
                     while (dbReader.Read())
                     {
                         tempID = dbReader.GetString(0);
-                        tempUsername = dbReader.GetString(1);
+                        tempEmail = dbReader.GetString(1);
                         tempPassword = dbReader.GetString(2);
                         tempFirstName = dbReader.GetString(3);
                         tempLastName = dbReader.GetString(4);
 
-                        if (tempUsername == username && tempPassword == password)
+                        if (tempEmail == email && tempPassword == password)
                         {
                             foundLogin = true;
                             break;
@@ -120,21 +200,21 @@ public class DatabaseManager : MonoBehaviour
                     if (foundLogin == true)
                     {
                         //UserCLass storage
-                        UserClass.currentUser.username = tempUsername;
                         UserClass.currentUser.firstName = tempFirstName;
                         UserClass.currentUser.lastName = tempLastName;
                         UserClass.currentUser.userID = Int32.Parse(tempID);
+                        UserClass.currentUser.email = tempEmail;
                         Tracker.LogData(tempFirstName + " " + tempLastName);
                         Login();
                     }
-                    else if ((tempUsername == username && tempPassword != password) || (tempUsername != username && tempPassword == password))
+                    else if ((tempEmail == email && tempPassword != password) || (tempEmail != email && tempPassword == password))
                         LoginError();
                     else Register();
                     dbConnection.Close();
                     dbReader.Close();
                 }
             }
-        }
+        }*/
     }
 
     static void Login()
@@ -153,14 +233,15 @@ public class DatabaseManager : MonoBehaviour
         inDB = false;
     }
 
-    static private void DeleteUser(string username)
+    static private void DeleteUser(string email)
     {
-        using (IDbConnection dbConnection = new SqliteConnection(connectionString))
+        using (MySql.Data.MySqlClient.MySqlConnection dbConnection = new MySql.Data.MySqlClient.MySqlConnection())
         {
+            dbConnection.ConnectionString = connectionString;
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
-                string sqlQuery = String.Format("DELETE FROM UserInfo WHERE username = \"{0}\"", username);    //DELETE FROM (table) WHERE (username) = \"{0}\"
+                string sqlQuery = String.Format("DELETE FROM UserInfo WHERE Email = \"{0}\"", email);    //DELETE FROM (table) WHERE (email) = \"{0}\"
                 dbCmd.CommandText = sqlQuery;
                 dbCmd.ExecuteScalar();
                 dbConnection.Close();
@@ -170,8 +251,9 @@ public class DatabaseManager : MonoBehaviour
 
     private static void InsertUserRecord(int userID, string chatTxt)
     {
-        using (IDbConnection dbConnection = new MySql.Data.MySqlClient.MySqlConnection())
+        using (MySql.Data.MySqlClient.MySqlConnection dbConnection = new MySql.Data.MySqlClient.MySqlConnection())
         {
+            dbConnection.ConnectionString = connectionString;
             dbConnection.Open();
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
@@ -183,19 +265,19 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
-    public static void registerUser(string username, string password, string firstName, string lastName, string email)
+    public static void registerUser(string email, string password, string firstName, string lastName)
     {
-        InsertUserInfo(username, password, firstName, lastName, email);
+        InsertUserInfo(email, password, firstName, lastName);
     }
 
-    public static void loginUser(string username, string password)
+    public static void loginUser(string email, string password)
     {
-        CheckUser(username, password);
+        CheckUser(email, password);
     }
 
-    public static void deleteUser(string username)
+    public static void deleteUser(string email)
     {
-        DeleteUser(username);
+        DeleteUser(email);
     }
 
     public static void insetStudentRecord(int userID, string chatTxt)
