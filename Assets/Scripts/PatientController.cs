@@ -157,6 +157,16 @@ public class PatientController : MonoBehaviour
             return;
         }
 
+        if (currentScreen == "AROM")
+        {
+            dotController.DisableDots();
+            //patientAnim.SetTrigger("A" + dropdownIndex + userDropdown.value);
+            patientAnim.Play("A" + dropdownIndex + userDropdown.value, 0);
+        }
+
+
+        /*
+
         else if (userDropdown.value == 1 && currentScreen == "AROM")        //AROM
         {
             dotController.DisableDots();
@@ -194,7 +204,7 @@ public class PatientController : MonoBehaviour
                 Tracker.clicked.Add("PROMRF");
             }
             dropdownEnabled = false;
-        }/*
+        }*//*
         else if (userDropdown.value == 1)
         {
             currentScreen = "AROM";

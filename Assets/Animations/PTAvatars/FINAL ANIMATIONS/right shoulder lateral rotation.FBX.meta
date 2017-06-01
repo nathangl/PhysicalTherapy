@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: cce0e1aef3300f04f8668a510c615cbd
-timeCreated: 1495913244
+guid: 9afe3f5aedf316f48ba75f0ff31f94c1
+timeCreated: 1496254248
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -34,44 +34,43 @@ ModelImporter:
     100052: Base HumanLThigh
     100054: Base HumanLUpperarm
     100056: Base HumanNeck1
-    100058: Base HumanNeck2
-    100060: Base HumanPelvis
-    100062: Base HumanRCalf
-    100064: Base HumanRCollarbone
-    100066: Base HumanRDigit11
-    100068: Base HumanRDigit11 1
-    100070: Base HumanRDigit12
-    100072: Base HumanRDigit13
-    100074: Base HumanRDigit21
-    100076: Base HumanRDigit22
-    100078: Base HumanRDigit23
-    100080: Base HumanRDigit31
-    100082: Base HumanRDigit32
-    100084: Base HumanRDigit33
-    100086: Base HumanRDigit41
-    100088: Base HumanRDigit42
-    100090: Base HumanRDigit43
-    100092: Base HumanRDigit51
-    100094: Base HumanRDigit52
-    100096: Base HumanRDigit53
-    100098: Base HumanRFoot
-    100100: Base HumanRForearm1
-    100102: Base HumanRForearm2
-    100104: Base HumanRForearm3
-    100106: Base HumanRibcage
-    100108: Base HumanRIKTarget
-    100110: Base HumanRPalm
-    100112: Base HumanRPlatform
-    100114: Base HumanRThigh
-    100116: Base HumanRUpperarm
-    100118: Base HumanSpine1
-    100120: Base HumanSpine2
-    100122: Base HumanSpine3
-    100124: Base HumanSpine4
-    100126: //RootNode
-    100128: Sphere001
-    100130: Sphere002
-    100132: Sphere003
+    100058: Base HumanPelvis
+    100060: Base HumanRCalf
+    100062: Base HumanRCollarbone
+    100064: Base HumanRDigit11
+    100066: Base HumanRDigit11 1
+    100068: Base HumanRDigit12
+    100070: Base HumanRDigit13
+    100072: Base HumanRDigit21
+    100074: Base HumanRDigit22
+    100076: Base HumanRDigit23
+    100078: Base HumanRDigit31
+    100080: Base HumanRDigit32
+    100082: Base HumanRDigit33
+    100084: Base HumanRDigit41
+    100086: Base HumanRDigit42
+    100088: Base HumanRDigit43
+    100090: Base HumanRDigit51
+    100092: Base HumanRDigit52
+    100094: Base HumanRDigit53
+    100096: Base HumanRFoot
+    100098: Base HumanRForearm1
+    100100: Base HumanRForearm2
+    100102: Base HumanRForearm3
+    100104: Base HumanRibcage
+    100106: Base HumanRIKTarget
+    100108: Base HumanRPalm
+    100110: Base HumanRPlatform
+    100112: Base HumanRThigh
+    100114: Base HumanRUpperarm
+    100116: Base HumanSpine1
+    100118: Base HumanSpine2
+    100120: Base HumanSpine3
+    100122: Base HumanSpine4
+    100124: //RootNode
+    100126: Sphere001
+    100128: Sphere002
+    100130: Sphere003
     400000: Base Human
     400002: Base HumanHead
     400004: Base HumanLCalf
@@ -101,51 +100,50 @@ ModelImporter:
     400052: Base HumanLThigh
     400054: Base HumanLUpperarm
     400056: Base HumanNeck1
-    400058: Base HumanNeck2
-    400060: Base HumanPelvis
-    400062: Base HumanRCalf
-    400064: Base HumanRCollarbone
-    400066: Base HumanRDigit11
-    400068: Base HumanRDigit11 1
-    400070: Base HumanRDigit12
-    400072: Base HumanRDigit13
-    400074: Base HumanRDigit21
-    400076: Base HumanRDigit22
-    400078: Base HumanRDigit23
-    400080: Base HumanRDigit31
-    400082: Base HumanRDigit32
-    400084: Base HumanRDigit33
-    400086: Base HumanRDigit41
-    400088: Base HumanRDigit42
-    400090: Base HumanRDigit43
-    400092: Base HumanRDigit51
-    400094: Base HumanRDigit52
-    400096: Base HumanRDigit53
-    400098: Base HumanRFoot
-    400100: Base HumanRForearm1
-    400102: Base HumanRForearm2
-    400104: Base HumanRForearm3
-    400106: Base HumanRibcage
-    400108: Base HumanRIKTarget
-    400110: Base HumanRPalm
-    400112: Base HumanRPlatform
-    400114: Base HumanRThigh
-    400116: Base HumanRUpperarm
-    400118: Base HumanSpine1
-    400120: Base HumanSpine2
-    400122: Base HumanSpine3
-    400124: Base HumanSpine4
-    400126: //RootNode
-    400128: Sphere001
-    400130: Sphere002
-    400132: Sphere003
+    400058: Base HumanPelvis
+    400060: Base HumanRCalf
+    400062: Base HumanRCollarbone
+    400064: Base HumanRDigit11
+    400066: Base HumanRDigit11 1
+    400068: Base HumanRDigit12
+    400070: Base HumanRDigit13
+    400072: Base HumanRDigit21
+    400074: Base HumanRDigit22
+    400076: Base HumanRDigit23
+    400078: Base HumanRDigit31
+    400080: Base HumanRDigit32
+    400082: Base HumanRDigit33
+    400084: Base HumanRDigit41
+    400086: Base HumanRDigit42
+    400088: Base HumanRDigit43
+    400090: Base HumanRDigit51
+    400092: Base HumanRDigit52
+    400094: Base HumanRDigit53
+    400096: Base HumanRFoot
+    400098: Base HumanRForearm1
+    400100: Base HumanRForearm2
+    400102: Base HumanRForearm3
+    400104: Base HumanRibcage
+    400106: Base HumanRIKTarget
+    400108: Base HumanRPalm
+    400110: Base HumanRPlatform
+    400112: Base HumanRThigh
+    400114: Base HumanRUpperarm
+    400116: Base HumanSpine1
+    400118: Base HumanSpine2
+    400120: Base HumanSpine3
+    400122: Base HumanSpine4
+    400124: //RootNode
+    400126: Sphere001
+    400128: Sphere002
+    400130: Sphere003
     2300000: Sphere001
     2300002: Sphere002
     3300000: Sphere001
     3300002: Sphere002
-    4300000: Sphere002
-    4300002: Sphere001
-    4300004: Sphere003
+    4300000: Sphere003
+    4300002: Sphere002
+    4300004: Sphere001
     7400000: Take 001
     9500000: //RootNode
     13700000: Sphere003

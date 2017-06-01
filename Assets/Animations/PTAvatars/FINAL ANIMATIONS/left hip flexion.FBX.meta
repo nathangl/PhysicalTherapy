@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8d85932bf68fbcf448e000676c4f2f5c
-timeCreated: 1495913215
+guid: b2fb798ecaaf0df4cbefe19ceb91a069
+timeCreated: 1496254253
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -69,11 +69,9 @@ ModelImporter:
     100122: Base HumanSpine3
     100124: Base HumanSpine4
     100126: //RootNode
-    100128: PhysCamera001
-    100130: PhysCamera001.Target
-    100132: Sphere001
-    100134: Sphere002
-    100136: Sphere003
+    100128: Sphere001
+    100130: Sphere002
+    100132: Sphere003
     400000: Base Human
     400002: Base HumanHead
     400004: Base HumanLCalf
@@ -138,11 +136,9 @@ ModelImporter:
     400122: Base HumanSpine3
     400124: Base HumanSpine4
     400126: //RootNode
-    400128: PhysCamera001
-    400130: PhysCamera001.Target
-    400132: Sphere001
-    400134: Sphere002
-    400136: Sphere003
+    400128: Sphere001
+    400130: Sphere002
+    400132: Sphere003
     2300000: Sphere001
     2300002: Sphere002
     3300000: Sphere001
