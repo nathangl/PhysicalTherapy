@@ -8,7 +8,7 @@ public class Tracker : MonoBehaviour {
     static string path;
     static float timer;
     static string minutes, seconds;
-    static Dictionary<string, int> idealOrder = new Dictionary<string, int> {
+    Dictionary<string, int> idealOrder = new Dictionary<string, int> {
         {"Hypothesis1", 0 }, {"Hypothesis2", 0 }, {"Hypothesis3", 0 }, {"AROM", 2 }, {"AROMLeftShoulder", 3 }, {"AROMRightShoulder", 3 },
         {"PROMLeftShoulder", 5 }, {"AROMLF", 3 }, {"AROMRF", 3 }, {"PROMLF", 5 }, {"PROM", 4 },
         {"PROMLHP", 5 }
@@ -70,7 +70,7 @@ public class Tracker : MonoBehaviour {
         timer += Time.deltaTime;
         minutes = Mathf.Floor(timer / 60).ToString("00");
         seconds = Mathf.Floor(timer % 60).ToString("00");
-        Debug.Log(CalculateScore());
+        //Debug.Log(CalculateScore());
     }
 
     public static void LogData(string input)

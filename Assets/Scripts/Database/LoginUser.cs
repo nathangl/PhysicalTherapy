@@ -6,23 +6,22 @@ using UnityEngine.SceneManagement;
 public class LoginUser : MonoBehaviour
 {
 
-    public InputField username;
+    public InputField email;
     public InputField password;
-
-    public string questionID;
 
     public void Login()
     {
         DatabaseManager.inDB = true;
 
-        if (username.text != "" && password.text != "")
+        if (email.text != "" && password.text != "")
         {
-            string tempUsername = username.text;
+            string tempEmail = email.text;
             string tempPassword = password.text;
 
-            DatabaseManager.loginUser(tempUsername, tempPassword, questionID);
+            DatabaseManager.loginUser(tempEmail, tempPassword);
             if(DatabaseManager.correctLogin == true)
             {
+                Debug.Log(UserClass.currentUser.email + " is now logged in!");
                 SceneManager.LoadScene("MainMenu");
             }
         }
