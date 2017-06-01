@@ -16,6 +16,9 @@ public class animPaths : MonoBehaviour {
         iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), 0);
     }
 
+    /*
+     * MAKE SURE THAT THE ANIMATION SPEED IS SET TO 0
+     */
     void OnMouseDrag()
     {
         if (gameObject.name == manager.prevAnim || manager.first == true)
@@ -33,13 +36,13 @@ public class animPaths : MonoBehaviour {
             //anim.speed = 0;
             if (gameObject.name == "PROMRightArm")
             {
-                position = (DeterminePos(objPosition) * 0.83f);
+                position = DeterminePos(objPosition);
                 anim.Play(gameObject.name, 0, position);
                 //Debug.Log(position);
             }
             else
             {
-                position = (DeterminePos(objPosition) * 0.83f) / 2;
+                position = (DeterminePos(objPosition)) / 2;
                 anim.Play(gameObject.name, 0, position);
                 //Debug.Log(position);
             }
