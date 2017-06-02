@@ -164,8 +164,7 @@ public class PatientController : MonoBehaviour
             patientAnim.Play("A" + dropdownIndex + userDropdown.value, 0);
         }
 
-
-        /*
+        
 
         else if (userDropdown.value == 1 && currentScreen == "AROM")        //AROM
         {
@@ -204,14 +203,14 @@ public class PatientController : MonoBehaviour
                 Tracker.clicked.Add("PROMRF");
             }
             dropdownEnabled = false;
-        }*//*
+        }
         else if (userDropdown.value == 1)
         {
             currentScreen = "AROM";
             Debug.Log("AROM MODE");
-        }*/
+        }
 
-        /*else if (userDropdown.value == 2 && currentScreen == "PROM")       //PROM
+        else if (userDropdown.value == 2 && currentScreen == "PROM")       //PROM
         {
             Debug.Log("PROM Animation Accessed");
             if (dropdownIndex == "LeftShoulder")
@@ -223,7 +222,7 @@ public class PatientController : MonoBehaviour
                 patientAnim.SetTrigger("PROMRightArm");
             }
             currentScreen = "";
-        }*/
+        }
         else if (userDropdown.value == 2 && currentScreen == "")
         {
             currentScreen = "PROM";
