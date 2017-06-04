@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class PatientController : MonoBehaviour
 {
@@ -25,7 +26,10 @@ public class PatientController : MonoBehaviour
     bool dropdownEnabled = true;
     bool PROMActive = false;
     DotControlller dotController;
-
+    IEnumerable<GameObject> currentPROM; //The current PROM animation object
+    [HideInInspector]
+    public List<GameObject> PROMObjs = new List<GameObject>(); //List of all PROM gameobjects
+    List<string> currentDD = new List<string>(); //the current dropdown list
     void Awake()
     {
         chart = GameObject.FindGameObjectWithTag("Chart");
@@ -37,6 +41,11 @@ public class PatientController : MonoBehaviour
 
     void Start()
     {
+        for (int i = 1; i < PROMAnims.transform.childCount; i++)
+        {
+            PROMObjs.Add(PROMAnims.transform.GetChild(i).gameObject);
+        }
+        PROMObjs.ForEach(x => x.SetActive(false));
         CreatePatientTree();
     }
 
@@ -46,6 +55,8 @@ public class PatientController : MonoBehaviour
         {
             patientAnim.speed = 1;
             patientAnim.Play("Idle2");
+            if(currentPROM != null)
+                currentPROM.GetEnumerator().Current.SetActive(false);
             prevMode = currentScreen;
         }
         if (currentScreen != "PROM")
@@ -127,10 +138,12 @@ public class PatientController : MonoBehaviour
                 }
                 dropdownIndex = n.Value;
                 dropdownList.Add(n.Value);
+                currentDD.Add(n.Value);
                 foreach (TreeNode nv in n.Nodes)
                 {
                     //Debug.Log(nv.Value);
                     dropdownList.Add(nv.Value);
+                    currentDD.Add(nv.Value);
                 }
             }
             else
@@ -152,6 +165,7 @@ public class PatientController : MonoBehaviour
 
     public void DetermineDropdown()
     {
+        patientAnim.Play("Idle2");
         if (userDropdown.value == 0)
         {
             return;
@@ -164,8 +178,33 @@ public class PatientController : MonoBehaviour
             patientAnim.Play("A" + dropdownIndex + userDropdown.value, 0);
         }
 
-        
+        else if (currentScreen == "PROM")
+        {
+            dotController.DisableDots();
+            dotController.EnableHandDots();
+            Debug.Log("PROM Animation Accessed");
+            handManager.ToggleHands();
+            handManager.currentlyTesting = dropdownIndex;
+            Tracker.LogData("PROM " + dropdownIndex + " " + currentDD[userDropdown.value]);
+            string find = (dropdownIndex == "RightShoulder") ? "R" : "L";
+            try
+            {
+                //currentPROM = GameObject.Find("PROMAnims/PROM" + find + currentDD[userDropdown.value]);
+                string tempName = "PROM" + find + currentDD[userDropdown.value];
+                PROMObjs.ForEach(x => x.SetActive(true));
+                //currentPROM = from obj in PROMObjs where obj.name == tempName select obj;
+                PROMObjs.Where(x => x.name != tempName).ToList().ForEach(x => x.SetActive(false));
+                //currentPROM.GetEnumerator().Current.SetActive(true);
+            }
+            catch(Exception e)
+            {
+                Debug.Log(e);
+                Debug.Log("Object not found " + "PROM" + find + currentDD[userDropdown.value]);
+            }
+        }
 
+        
+/*
         else if (userDropdown.value == 1 && currentScreen == "AROM")        //AROM
         {
             dotController.DisableDots();
@@ -222,7 +261,7 @@ public class PatientController : MonoBehaviour
                 patientAnim.SetTrigger("PROMRightArm");
             }
             currentScreen = "";
-        }
+        }*/
         else if (userDropdown.value == 2 && currentScreen == "")
         {
             currentScreen = "PROM";

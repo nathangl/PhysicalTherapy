@@ -91,11 +91,11 @@ public class HandManager : MonoBehaviour
 
     public void CheckLocations()
     {
-        if (currentlyTesting == "rightprom" && leftLocation == "RightElbow" && rightLocation == "RightHand")
+        if (currentlyTesting == "RightShoulder" && leftLocation == "RightElbow" && rightLocation == "RightHand")
         {
             Success();
         }
-        else if (currentlyTesting == "leftprom" && leftLocation == "LeftHand" && rightLocation == "LeftElbow")
+        else if (currentlyTesting == "LeftShoulder" && leftLocation == "LeftHand" && rightLocation == "LeftElbow")
         {
             Success();
         }
