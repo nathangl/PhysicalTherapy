@@ -10,10 +10,11 @@ public class animPathsManager : MonoBehaviour {
     public PatientController pController;
     string prev="";
     public Animator anim;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Awake () {
         prev = pController.currentScreen;
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {

@@ -1,12 +1,6 @@
-[00:11]Chart Accessed
-[00:12]Chart Accessed
-[00:13]Chart Accessed
-[00:14]Chart Accessed
-[00:14]Chart Accessed
-[00:15]Chart Accessed
-[00:15]Chart Accessed
-[00:15]Chart Accessed
-[00:16]Chart Accessed
-[00:16]Chart Accessed
-[00:16]Chart Accessed
-[00:16]Chart Accessed
+[00:00]Dialogue Accessed
+[00:05]IAMTESTING
+[00:06]PROM MODE
+[00:07]LeftShoulder CLICKED!
+[00:08]PROM LeftShoulder Flexion
+[00:11]HANDS IN CORRECT SPOT
