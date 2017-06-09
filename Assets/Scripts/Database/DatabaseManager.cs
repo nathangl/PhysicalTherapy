@@ -280,7 +280,7 @@ public class DatabaseManager : MonoBehaviour
         DeleteUser(email);
     }
 
-    public static void insetStudentRecord(int userID, string chatTxt)
+    public static void insertStudentRecord(int userID, string chatTxt)
     {
         InsertUserRecord(userID, chatTxt);
     }
