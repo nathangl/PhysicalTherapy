@@ -29,6 +29,9 @@ public class PatientController : MonoBehaviour
     IEnumerable<GameObject> currentPROM; //The current PROM animation object
     [HideInInspector]
     public List<GameObject> PROMObjs = new List<GameObject>(); //List of all PROM gameobjects
+    public Slider slider;
+
+
     List<string> currentDD = new List<string>(); //the current dropdown list
     void Awake()
     {
@@ -203,65 +206,73 @@ public class PatientController : MonoBehaviour
             }
         }
 
-        
-/*
-        else if (userDropdown.value == 1 && currentScreen == "AROM")        //AROM
+        else if (currentScreen == "STRENGTH")
         {
             dotController.DisableDots();
-
-            Debug.Log("AROM Flexion Animation Accessed");
-            Tracker.LogData("AROM Flexion Animation Accessed");
-            if (dropdownIndex == "LeftShoulder")
-            {
-                patientAnim.SetTrigger("AROMLeftArm");
-                Tracker.clicked.Add("AROMLF");
-            }
-            if (dropdownIndex == "RightShoulder")
-            {
-                patientAnim.SetTrigger("AROMRightArm");
-                Tracker.clicked.Add("AROMRF");
-            }
-            currentScreen = "";
-        }
-        else if (userDropdown.value == 1 && currentScreen == "PROM")
-        {
-            dotController.EnableHandDots();
-
-            Debug.Log("PROM Animation Accessed");
-            handManager.ToggleHands();
-            if (currentTag == "LeftShoulder")
-            {
-                handManager.currentlyTesting = "leftprom";
-                Tracker.LogData("PROM Flexion Animation Accessed");
-                Tracker.clicked.Add("PROMLF");
-            }
-            else if (currentTag == "RightShoulder")
-            {
-                handManager.currentlyTesting = "rightprom";
-                Tracker.LogData("PROM Flexion Animation Accessed");
-                Tracker.clicked.Add("PROMRF");
-            }
-            dropdownEnabled = false;
-        }
-        else if (userDropdown.value == 1)
-        {
-            currentScreen = "AROM";
-            Debug.Log("AROM MODE");
+            patientAnim.speed = 0;
+            patientAnim.Play("A" + dropdownIndex + userDropdown.value, 0, 0.50f);
+            slider.gameObject.SetActive(true);
         }
 
-        else if (userDropdown.value == 2 && currentScreen == "PROM")       //PROM
-        {
-            Debug.Log("PROM Animation Accessed");
-            if (dropdownIndex == "LeftShoulder")
-            {
-                patientAnim.SetTrigger("PROMLeftArm");
-            }
-            if (dropdownIndex == "RightShoulder")
-            {
-                patientAnim.SetTrigger("PROMRightArm");
-            }
-            currentScreen = "";
-        }*/
+
+        /*
+                else if (userDropdown.value == 1 && currentScreen == "AROM")        //AROM
+                {
+                    dotController.DisableDots();
+
+                    Debug.Log("AROM Flexion Animation Accessed");
+                    Tracker.LogData("AROM Flexion Animation Accessed");
+                    if (dropdownIndex == "LeftShoulder")
+                    {
+                        patientAnim.SetTrigger("AROMLeftArm");
+                        Tracker.clicked.Add("AROMLF");
+                    }
+                    if (dropdownIndex == "RightShoulder")
+                    {
+                        patientAnim.SetTrigger("AROMRightArm");
+                        Tracker.clicked.Add("AROMRF");
+                    }
+                    currentScreen = "";
+                }
+                else if (userDropdown.value == 1 && currentScreen == "PROM")
+                {
+                    dotController.EnableHandDots();
+
+                    Debug.Log("PROM Animation Accessed");
+                    handManager.ToggleHands();
+                    if (currentTag == "LeftShoulder")
+                    {
+                        handManager.currentlyTesting = "leftprom";
+                        Tracker.LogData("PROM Flexion Animation Accessed");
+                        Tracker.clicked.Add("PROMLF");
+                    }
+                    else if (currentTag == "RightShoulder")
+                    {
+                        handManager.currentlyTesting = "rightprom";
+                        Tracker.LogData("PROM Flexion Animation Accessed");
+                        Tracker.clicked.Add("PROMRF");
+                    }
+                    dropdownEnabled = false;
+                }
+                else if (userDropdown.value == 1)
+                {
+                    currentScreen = "AROM";
+                    Debug.Log("AROM MODE");
+                }
+
+                else if (userDropdown.value == 2 && currentScreen == "PROM")       //PROM
+                {
+                    Debug.Log("PROM Animation Accessed");
+                    if (dropdownIndex == "LeftShoulder")
+                    {
+                        patientAnim.SetTrigger("PROMLeftArm");
+                    }
+                    if (dropdownIndex == "RightShoulder")
+                    {
+                        patientAnim.SetTrigger("PROMRightArm");
+                    }
+                    currentScreen = "";
+                }*/
         else if (userDropdown.value == 2 && currentScreen == "")
         {
             currentScreen = "PROM";
