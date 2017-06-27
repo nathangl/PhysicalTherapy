@@ -1,6 +1,6 @@
-[00:00]Dialogue Accessed
-[00:05]IAMTESTING
-[00:06]PROM MODE
-[00:07]LeftShoulder CLICKED!
-[00:08]PROM LeftShoulder Flexion
-[00:11]HANDS IN CORRECT SPOT
+[00:00]Chart Accessed
+[00:02]Dialogue Accessed
+[00:07]IAMTESTING
+[00:08]Chart Accessed
+[00:14]STRENGTH MODE
+[00:16]RightShoulder CLICKED!
