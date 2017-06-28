@@ -23,6 +23,10 @@ public class DotControlller : MonoBehaviour {
     {
         LShoulder.SetActive(true);
         RShoulder.SetActive(true);
+        LElbow.SetActive(true);
+        RElbow.SetActive(true);
+        LHand.SetActive(true);
+        RHand.SetActive(true);
         dropdown = true;
     }
 
