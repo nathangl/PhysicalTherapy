@@ -54,6 +54,14 @@ public class PatientController : MonoBehaviour
 
     void Update()
     {
+        if(currentScreen == "STRENGTH")
+        {
+            if(slider.value == 1)
+            {
+                patientAnim.speed = 10;
+                DisableSlider();
+            }
+        }
         if (currentScreen != prevMode)
         {
             patientAnim.speed = 1;
@@ -214,65 +222,6 @@ public class PatientController : MonoBehaviour
             slider.gameObject.SetActive(true);
         }
 
-
-        /*
-                else if (userDropdown.value == 1 && currentScreen == "AROM")        //AROM
-                {
-                    dotController.DisableDots();
-
-                    Debug.Log("AROM Flexion Animation Accessed");
-                    Tracker.LogData("AROM Flexion Animation Accessed");
-                    if (dropdownIndex == "LeftShoulder")
-                    {
-                        patientAnim.SetTrigger("AROMLeftArm");
-                        Tracker.clicked.Add("AROMLF");
-                    }
-                    if (dropdownIndex == "RightShoulder")
-                    {
-                        patientAnim.SetTrigger("AROMRightArm");
-                        Tracker.clicked.Add("AROMRF");
-                    }
-                    currentScreen = "";
-                }
-                else if (userDropdown.value == 1 && currentScreen == "PROM")
-                {
-                    dotController.EnableHandDots();
-
-                    Debug.Log("PROM Animation Accessed");
-                    handManager.ToggleHands();
-                    if (currentTag == "LeftShoulder")
-                    {
-                        handManager.currentlyTesting = "leftprom";
-                        Tracker.LogData("PROM Flexion Animation Accessed");
-                        Tracker.clicked.Add("PROMLF");
-                    }
-                    else if (currentTag == "RightShoulder")
-                    {
-                        handManager.currentlyTesting = "rightprom";
-                        Tracker.LogData("PROM Flexion Animation Accessed");
-                        Tracker.clicked.Add("PROMRF");
-                    }
-                    dropdownEnabled = false;
-                }
-                else if (userDropdown.value == 1)
-                {
-                    currentScreen = "AROM";
-                    Debug.Log("AROM MODE");
-                }
-
-                else if (userDropdown.value == 2 && currentScreen == "PROM")       //PROM
-                {
-                    Debug.Log("PROM Animation Accessed");
-                    if (dropdownIndex == "LeftShoulder")
-                    {
-                        patientAnim.SetTrigger("PROMLeftArm");
-                    }
-                    if (dropdownIndex == "RightShoulder")
-                    {
-                        patientAnim.SetTrigger("PROMRightArm");
-                    }
-                    currentScreen = "";
-                }*/
         else if (userDropdown.value == 2 && currentScreen == "")
         {
             currentScreen = "PROM";
@@ -282,6 +231,12 @@ public class PatientController : MonoBehaviour
             Debug.Log("Not Yet Implemented");
 
         DisableDropdown();
+    }
+
+    public void DisableSlider()
+    {
+        slider.value = 0;
+        slider.gameObject.SetActive(false);
     }
 
     public void DisableDropdown()
@@ -294,6 +249,8 @@ public class PatientController : MonoBehaviour
 
     public void ButtonInput(string mode)
     {
+        patientAnim.Play("Idle2");
+        patientAnim.speed = 1;
         currentScreen = "";
         PROMActive = false;
         PROMAnims.SetActive(false);
@@ -303,6 +260,10 @@ public class PatientController : MonoBehaviour
             currentScreen = mode;
             dropdownEnabled = true;
             dotController.EnableDropdownDots();
+        }
+        if(slider.gameObject.activeSelf == true)
+        {
+            DisableSlider();
         }
         if(handManager.active)
         {
@@ -340,7 +301,27 @@ public class PatientController : MonoBehaviour
         root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Visual-spatial" });
         root.Nodes[0].Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "Findings" });
         root.Nodes[0].Nodes.Add(new TreeNode { Value = "Elbow" });
+        root.Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "LeftElbow" });
+        root.Nodes[0].Nodes[1].Nodes[0].Nodes.Add(new TreeNode { Value = "Flexion" });
+        root.Nodes[0].Nodes[1].Nodes[0].Nodes.Add(new TreeNode { Value = "Extension" });
+        root.Nodes[0].Nodes[1].Nodes[0].Nodes.Add(new TreeNode { Value = "Abduction" });
+        root.Nodes[0].Nodes[1].Nodes[0].Nodes.Add(new TreeNode { Value = "Adduction" });
+        root.Nodes[0].Nodes[1].Nodes[0].Nodes.Add(new TreeNode { Value = "Internal Rotation" });
+        root.Nodes[0].Nodes[1].Nodes[0].Nodes.Add(new TreeNode { Value = "External Rotation" });
+        root.Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "RightElbow" });
+        root.Nodes[0].Nodes[1].Nodes[1].Nodes.Add(new TreeNode { Value = "Flexion" });
+        root.Nodes[0].Nodes[1].Nodes[1].Nodes.Add(new TreeNode { Value = "Extension" });
+        root.Nodes[0].Nodes[1].Nodes[1].Nodes.Add(new TreeNode { Value = "Abduction" });
+        root.Nodes[0].Nodes[1].Nodes[1].Nodes.Add(new TreeNode { Value = "Adduction" });
+        root.Nodes[0].Nodes[1].Nodes[1].Nodes.Add(new TreeNode { Value = "Internal Rotation" });
+        root.Nodes[0].Nodes[1].Nodes[1].Nodes.Add(new TreeNode { Value = "External Rotation" });
         root.Nodes[0].Nodes.Add(new TreeNode { Value = "Hand" });
+        root.Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "LeftHand" });
+        root.Nodes[0].Nodes[2].Nodes[0].Nodes.Add(new TreeNode { Value = "Flexion" });
+        root.Nodes[0].Nodes[2].Nodes[0].Nodes.Add(new TreeNode { Value = "Extension" });
+        root.Nodes[0].Nodes[2].Nodes.Add(new TreeNode { Value = "RightHand" });
+        root.Nodes[0].Nodes[2].Nodes[1].Nodes.Add(new TreeNode { Value = "Flexion" });
+        root.Nodes[0].Nodes[2].Nodes[1].Nodes.Add(new TreeNode { Value = "Extension" });
         root.Nodes.Add(new TreeNode { Value = "LowerExtremity" });
         root.Nodes[1].Nodes.Add(new TreeNode { Value = "LEFT" });
         root.Nodes[1].Nodes.Add(new TreeNode { Value = "RIGHT" });
