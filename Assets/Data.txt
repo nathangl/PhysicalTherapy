@@ -1,19 +1,10 @@
-[00:09]Dialogue Accessed
-[00:13]IAMTESTING
-[00:15]PROM MODE
-[00:17]LeftShoulder CLICKED!
-[00:18]PROM LeftShoulder Flexion
-[00:22]HANDS IN CORRECT SPOT
-[00:30]PROM MODE
-[00:32]RightShoulder CLICKED!
-[00:34]PROM RightShoulder Flexion
-[00:36]HANDS IN CORRECT SPOT
-[00:41]PROM MODE
-[00:43]LeftShoulder CLICKED!
-[00:45]PROM LeftShoulder Extension
-[00:48]HANDS IN CORRECT SPOT
-[00:56]PROM MODE
-[00:59]LeftShoulder CLICKED!
-[01:00]PROM LeftShoulder Extension
-[01:04]HANDS IN INCORRECT SPOT Left: LeftHand Right: LeftShoulder
-[01:10]HANDS IN CORRECT SPOT
+[00:02]Chart Accessed
+[00:04]Dialogue Accessed
+[00:08]IAMTESTING
+[00:11]AROM MODE
+[00:12]RightAnkle CLICKED!
+[00:16]RightElbow CLICKED!
+[00:19]RightAnkle CLICKED!
+[00:23]RightHand CLICKED!
+[00:24]RightKnee CLICKED!
+[00:27]RightAnkle CLICKED!
