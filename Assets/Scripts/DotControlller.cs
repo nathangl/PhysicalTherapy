@@ -10,6 +10,12 @@ public class DotControlller : MonoBehaviour {
     public GameObject RElbow;
     public GameObject LHand;
     public GameObject RHand;
+    public GameObject LHip;
+    public GameObject RHip;
+    public GameObject LKnee;
+    public GameObject RKnee;
+    public GameObject LAnkle;
+    public GameObject RAnkle;
 
     public bool dropdown = false;
     public bool hand = false;
@@ -27,6 +33,12 @@ public class DotControlller : MonoBehaviour {
         RElbow.SetActive(true);
         LHand.SetActive(true);
         RHand.SetActive(true);
+        LHip.SetActive(true);
+        RHip.SetActive(true);
+        LAnkle.SetActive(true);
+        RAnkle.SetActive(true);
+        LKnee.SetActive(true);
+        RKnee.SetActive(true);
         dropdown = true;
     }
 
@@ -38,6 +50,12 @@ public class DotControlller : MonoBehaviour {
         RElbow.SetActive(false);
         LHand.SetActive(false);
         RHand.SetActive(false);
+        LHip.SetActive(false);
+        RHip.SetActive(false);
+        LAnkle.SetActive(false);
+        RAnkle.SetActive(false);
+        LKnee.SetActive(false);
+        RKnee.SetActive(false);
     }
 
     public void EnableHandDots()
