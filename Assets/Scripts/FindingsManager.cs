@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class FindingsManager : MonoBehaviour {
 
-    public string mode = "Deficit";
+    public string mode;
 
     public GameObject Options;
     public Toggle toggle;
@@ -55,13 +55,15 @@ public class FindingsManager : MonoBehaviour {
         {"STRENGTH", new List<bool>()}
     };
 
-    public Button bed, sitstand, sitting, standing, walking, submit;
-    public Text info;
+    public Button bed, sitstand, sitting, standing, walking;
+    public Text tInfo, dInfo;
     public Dropdown amountD, typeD, positionD, equipmentD;
     public string button;
+    public GameObject transferUI, deficitUI;
 
     void Start()
     {
+        mode = "Transfer";
         Default();
         SetupSaves();
     }
@@ -71,7 +73,7 @@ public class FindingsManager : MonoBehaviour {
         if (mode == "Transfer")
         {
             button = "Transfer w/c to/from bed";
-            info.text = button;
+            tInfo.text = button;
             amountD.AddOptions(amount);
             equipmentD.AddOptions(equipment);
             positionD.AddOptions(position);
@@ -80,7 +82,7 @@ public class FindingsManager : MonoBehaviour {
         else if (mode == "Deficit")
         {
             button = "AROM";
-            info.text = button;
+            dInfo.text = button;
             LoadToggles();
         }
 
@@ -90,6 +92,7 @@ public class FindingsManager : MonoBehaviour {
     {
         Save();
         button = b;
+        tInfo.text = button;
         UpdateUI();
         Load();
     }
@@ -98,15 +101,14 @@ public class FindingsManager : MonoBehaviour {
     {
         SaveToggles();
         button = b;
+        dInfo.text = button;
         DeleteToggles();
         LoadToggles();
-        info.text = button;
     }
 
     void UpdateUI()     //updates dropdown options
     {
         typeD.ClearOptions();
-        info.text = button;
         typeD.AddOptions(type[button]);
     }
 
@@ -210,5 +212,18 @@ public class FindingsManager : MonoBehaviour {
             Destroy(child.gameObject);
         }
         children.Clear();
+    }
+
+    public void Continue()
+    {
+        mode = "Deficit";
+        transferUI.SetActive(false);
+        deficitUI.SetActive(true);
+        Default();
+    }
+
+    public void Submit()
+    {
+
     }
 }
