@@ -46,13 +46,24 @@ public class FindingsManager : MonoBehaviour {
         "Right shoulder rotators", "Right elbow flexors", "Right elbow extensors", "Right wrist flexors/extensors" , "Right hand grip strength", "Left shoulder flexors/abductors", "Left shoulder rotators", "Left elbow flexors", "Left elbow extensors", "Left wrist flexors/extensors", "Left hand grip strength", "Right hip flexors/extensors",
         "Right hip abductors", "Right knee extensors/flexors", "Right ankle dorsiflexion/plantar flexion", "Left hip flexors/extensors", "Left hip abductors", "Left knee extensors/flexors", "Left ankle dorsiflexion/plantar flexion"};
 
+    public List<string> TONE = new List<string> { "No abnormal tone noted", "Left shoulder (flexors, extensors, adductors, rotators)", "Left elbow (flexors or extensors)", "Left wrist/hand (flexors or extensors)", "Right shoulder (flexors, extensors, adductors, rotators)", "Right elbow (flexors or extensors",
+        "Right wrist/hand (flexors or extensors", "Left hip (flexors, extensors, adductors, rotators)", "Left knee (flexors or extensors)", "Left ankle (dorsiflexors or plantar flexors)", "Right hip (flexors, extensors, adductors, rotators)", "Right knee (flexors or extensors)", "Right ankle (dorsiflexors or plantar flexors)" };
+
+    public List<string> COGNITION = new List<string> { "This patient did not demonstrate any cognitive deficits", "Suspect mild cognitive deficits that will require further examination" };
+
+    public List<string> VISUAL = new List<string> { "this patient does not demonstrate any deficits", "this patient demonstrates the following deficits: Left inattention" };
+
     public List<Toggle> children = new List<Toggle>();
+    public List<Toggle> choices = new List<Toggle>();
 
     Dictionary<string, List<bool>> toggled = new Dictionary<string, List<bool>>()
     {
         {"AROM", new List<bool>()},
         {"PROM", new List<bool>()},
-        {"STRENGTH", new List<bool>()}
+        {"STRENGTH", new List<bool>()},
+        {"TONE", new List<bool>()},
+        {"COGNITION", new List<bool>()},
+        {"VISUAL SPACIAL", new List<bool>()}
     };
 
     public Button bed, sitstand, sitting, standing, walking;
@@ -166,9 +177,63 @@ public class FindingsManager : MonoBehaviour {
                 }
             }
         }
+        else if (button == "TONE")
+        {
+            for (int i = 0; i < TONE.Count; i++)
+            {
+                Toggle temp = Instantiate(toggle);
+                temp.gameObject.GetComponentInChildren<Text>().text = TONE[i];
+                temp.transform.SetParent(Options.transform);
+                try
+                {
+                    if (toggled[button][i])
+                        temp.isOn = true;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+        else if (button == "COGNITION")
+        {
+            for (int i = 0; i < COGNITION.Count; i++)
+            {
+                Toggle temp = Instantiate(toggle);
+                temp.gameObject.GetComponentInChildren<Text>().text = COGNITION[i];
+                temp.transform.SetParent(Options.transform);
+                try
+                {
+                    if (toggled[button][i])
+                        temp.isOn = true;
+                }
+                catch
+                {
+
+                }
+            }
+        }
+        else if (button == "VISUAL SPACIAL")
+        {
+            for (int i = 0; i < VISUAL.Count; i++)
+            {
+                Toggle temp = Instantiate(toggle);
+                temp.gameObject.GetComponentInChildren<Text>().text = VISUAL[i];
+                temp.transform.SetParent(Options.transform);
+                try
+                {
+                    if (toggled[button][i])
+                        temp.isOn = true;
+                }
+                catch
+                {
+
+                }
+            }
+        }
     }
 
-    void SaveToggles()
+    void SaveToggles()      //saves which toggles are active in dictionaries
     {
         foreach (Transform child in Options.transform)
         {
@@ -190,6 +255,30 @@ public class FindingsManager : MonoBehaviour {
                     toggled[button][i] = true;
             }
         }
+        else if(button == "TONE")
+        {
+            for (int i = 0; i < TONE.Count; i++)
+            {
+                if (children[i].isOn)
+                    toggled[button][i] = true;
+            }
+        }
+        else if (button == "COGNITION")
+        {
+            for (int i = 0; i < COGNITION.Count; i++)
+            {
+                if (children[i].isOn)
+                    toggled[button][i] = true;
+            }
+        }
+        else if (button == "VISUAL SPACIAL")
+        {
+            for (int i = 0; i < VISUAL.Count; i++)
+            {
+                if (children[i].isOn)
+                    toggled[button][i] = true;
+            }
+        }
     }
 
     void SetupSaves()       //Setup lists for toggle saves
@@ -202,6 +291,18 @@ public class FindingsManager : MonoBehaviour {
         for (int i = 0; i < STRENGTH.Count; i++)
         {
             toggled["STRENGTH"].Add(false);
+        }
+        for (int i = 0; i < TONE.Count; i++)
+        {
+            toggled["TONE"].Add(false);
+        }
+        for (int i = 0; i < COGNITION.Count; i++)
+        {
+            toggled["COGNITION"].Add(false);
+        }
+        for (int i = 0; i < VISUAL.Count; i++)
+        {
+            toggled["VISUAL SPACIAL"].Add(false);
         }
     }
 
@@ -221,6 +322,22 @@ public class FindingsManager : MonoBehaviour {
         deficitUI.SetActive(true);
         Default();
     }
+
+    /*public void Switch(int i)         //switches between two options, but cant attach to prefab...
+    {
+        foreach (Transform child in Options.transform)
+        {
+            choices.Add(child.gameObject.GetComponent<Toggle>());
+        }
+        if(choices[0].isOn && i == 1)
+        {
+            choices[0].isOn = false;
+        }
+        else if(choices[1].isOn && i == 0)
+        {
+            choices[1].isOn = false;
+        }
+    }*/
 
     public void Submit()
     {
