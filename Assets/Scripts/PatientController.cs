@@ -81,11 +81,10 @@ public class PatientController : MonoBehaviour
 
             PROMAnims.SetActive(true);
             PROMActive = true;
-        }
-        if (PROMActive = true && handManager.success == true)
             handManager.success = false;
+        }
         //TODO: fix weird spacing
-        if (Input.GetMouseButtonDown(0) && dropdownEnabled) // if left mouse clicked
+        if (Input.GetMouseButtonDown(0) && dropdownEnabled && EventSystem.current.IsPointerOverGameObject() == false) // if left mouse clicked
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
 
@@ -197,11 +196,11 @@ public class PatientController : MonoBehaviour
             handManager.ToggleHands();
             handManager.currentlyTesting = dropdownIndex;
             Tracker.LogData("PROM " + dropdownIndex + " " + currentDD[userDropdown.value]);
-            string find = (dropdownIndex == "RightShoulder") ? "R" : "L";
+            //string find = (dropdownIndex == "RightShoulder") ? "R" : "L";
             try
             {
                 //currentPROM = GameObject.Find("PROMAnims/PROM" + find + currentDD[userDropdown.value]);
-                string tempName = "PROM" + find + currentDD[userDropdown.value];
+                string tempName = "PROM" + currentDD[0] + currentDD[userDropdown.value];
                 PROMObjs.ForEach(x => x.SetActive(true));
                 //currentPROM = from obj in PROMObjs where obj.name == tempName select obj;
                 PROMObjs.Where(x => x.name != tempName).ToList().ForEach(x => x.SetActive(false));
@@ -210,7 +209,7 @@ public class PatientController : MonoBehaviour
             catch(Exception e)
             {
                 Debug.Log(e);
-                Debug.Log("Object not found " + "PROM" + find + currentDD[userDropdown.value]);
+                Debug.Log("Object not found " + "PROM" + currentDD[0] + currentDD[userDropdown.value]);
             }
         }
 
