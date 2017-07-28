@@ -99,6 +99,10 @@ public class HandManager : MonoBehaviour
         {
             Success();
         }
+        else if (currentlyTesting == "LeftElbow" && leftLocation == "LeftHand" && rightLocation == "LeftElbow")
+        {
+            Success();
+        }
         else
         {
             Debug.Log("HANDS IN INCORRECT SPOT Left: " + leftLocation + " Right: " + rightLocation);
