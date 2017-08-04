@@ -7,7 +7,7 @@ public class FindingsManager : MonoBehaviour {
 
     public string mode;
 
-    public GameObject Options;
+    public GameObject Options, oOptions;
     public Toggle toggle;
 
 
@@ -46,12 +46,11 @@ public class FindingsManager : MonoBehaviour {
         "Right shoulder rotators", "Right elbow flexors", "Right elbow extensors", "Right wrist flexors/extensors" , "Right hand grip strength", "Left shoulder flexors/abductors", "Left shoulder rotators", "Left elbow flexors", "Left elbow extensors", "Left wrist flexors/extensors", "Left hand grip strength", "Right hip flexors/extensors",
         "Right hip abductors", "Right knee extensors/flexors", "Right ankle dorsiflexion/plantar flexion", "Left hip flexors/extensors", "Left hip abductors", "Left knee extensors/flexors", "Left ankle dorsiflexion/plantar flexion"};
 
-    public List<string> TONE = new List<string> { "No abnormal tone noted", "Left shoulder (flexors, extensors, adductors, rotators)", "Left elbow (flexors or extensors)", "Left wrist/hand (flexors or extensors)", "Right shoulder (flexors, extensors, adductors, rotators)", "Right elbow (flexors or extensors",
-        "Right wrist/hand (flexors or extensors", "Left hip (flexors, extensors, adductors, rotators)", "Left knee (flexors or extensors)", "Left ankle (dorsiflexors or plantar flexors)", "Right hip (flexors, extensors, adductors, rotators)", "Right knee (flexors or extensors)", "Right ankle (dorsiflexors or plantar flexors)" };
+    public List<string> tone1 = new List<string> { "No abnormalities noted at this time", "Abnormalities noted and will require further examination" };
 
-    public List<string> COGNITION = new List<string> { "This patient did not demonstrate any cognitive deficits", "Suspect mild cognitive deficits that will require further examination" };
+    public List<string> COGNITION = new List<string> { "This patient did not demonstrate any obvious cognitive deficits", "Suspect cognitive deficits that will require further examination" };
 
-    public List<string> VISUAL = new List<string> { "this patient does not demonstrate any deficits", "this patient demonstrates the following deficits: Left inattention" };
+    public List<string> VISUAL = new List<string> { "This patient does not demonstrate any obvious deficits", "This patient demonstrates deficts that will require further examination" };
 
     public List<Toggle> children = new List<Toggle>();
     public List<Toggle> choices = new List<Toggle>();
@@ -67,10 +66,10 @@ public class FindingsManager : MonoBehaviour {
     };
 
     public Button bed, sitstand, sitting, standing, walking;
-    public Text tInfo, dInfo;
+    public Text tInfo, dInfo, oInfo;
     public Dropdown amountD, typeD, positionD, equipmentD;
     public string button;
-    public GameObject transferUI, deficitUI;
+    public GameObject transferUI, deficitUI, otherUI;
 
     void Start()
     {
@@ -94,6 +93,12 @@ public class FindingsManager : MonoBehaviour {
         {
             button = "AROM";
             dInfo.text = button;
+            LoadToggles();
+        }
+        else if (mode == "Other")
+        {
+            button = "TONE";
+            oInfo.text = button;
             LoadToggles();
         }
 
@@ -141,93 +146,99 @@ public class FindingsManager : MonoBehaviour {
 
     void LoadToggles()      //loads toggles
     {
-        if(button == "AROM" || button == "PROM")
+        if (mode == "Deficit")
         {
-            for(int i = 0; i < ROMS.Count; i++)
+            if (button == "AROM" || button == "PROM")
             {
-                Toggle temp = Instantiate(toggle);
-                temp.gameObject.GetComponentInChildren<Text>().text = ROMS[i];
-                temp.transform.SetParent(Options.transform);
-                try
+                for (int i = 0; i < ROMS.Count; i++)
                 {
-                    if (toggled[button][i])
-                        temp.isOn = true;
-                }
-                catch
-                {
+                    Toggle temp = Instantiate(toggle);
+                    temp.gameObject.GetComponentInChildren<Text>().text = ROMS[i];
+                    temp.transform.SetParent(Options.transform);
+                    try
+                    {
+                        if (toggled[button][i])
+                            temp.isOn = true;
+                    }
+                    catch
+                    {
 
+                    }
+                }
+            }
+            else if (button == "STRENGTH")
+            {
+                for (int i = 0; i < STRENGTH.Count; i++)
+                {
+                    Toggle temp = Instantiate(toggle);
+                    temp.gameObject.GetComponentInChildren<Text>().text = STRENGTH[i];
+                    temp.transform.SetParent(Options.transform);
+                    try
+                    {
+                        if (toggled[button][i])
+                            temp.isOn = true;
+                    }
+                    catch
+                    {
+
+                    }
                 }
             }
         }
-        else if(button == "STRENGTH")
+        else
         {
-            for (int i = 0; i < STRENGTH.Count; i++)
+            if (button == "TONE")
             {
-                Toggle temp = Instantiate(toggle);
-                temp.gameObject.GetComponentInChildren<Text>().text = STRENGTH[i];
-                temp.transform.SetParent(Options.transform);
-                try
+                for (int i = 0; i < tone1.Count; i++)
                 {
-                    if (toggled[button][i])
-                        temp.isOn = true;
-                }
-                catch
-                {
+                    Toggle temp = Instantiate(toggle);
+                    temp.gameObject.GetComponentInChildren<Text>().text = tone1[i];
+                    temp.transform.SetParent(oOptions.transform);
+                    try
+                    {
+                        if (toggled[button][i])
+                            temp.isOn = true;
+                    }
+                    catch
+                    {
 
+                    }
                 }
             }
-        }
-        else if (button == "TONE")
-        {
-            for (int i = 0; i < TONE.Count; i++)
+            else if (button == "COGNITION")
             {
-                Toggle temp = Instantiate(toggle);
-                temp.gameObject.GetComponentInChildren<Text>().text = TONE[i];
-                temp.transform.SetParent(Options.transform);
-                try
+                for (int i = 0; i < COGNITION.Count; i++)
                 {
-                    if (toggled[button][i])
-                        temp.isOn = true;
-                }
-                catch
-                {
+                    Toggle temp = Instantiate(toggle);
+                    temp.gameObject.GetComponentInChildren<Text>().text = COGNITION[i];
+                    temp.transform.SetParent(oOptions.transform);
+                    try
+                    {
+                        if (toggled[button][i])
+                            temp.isOn = true;
+                    }
+                    catch
+                    {
 
+                    }
                 }
             }
-        }
-        else if (button == "COGNITION")
-        {
-            for (int i = 0; i < COGNITION.Count; i++)
+            else if (button == "VISUAL SPACIAL")
             {
-                Toggle temp = Instantiate(toggle);
-                temp.gameObject.GetComponentInChildren<Text>().text = COGNITION[i];
-                temp.transform.SetParent(Options.transform);
-                try
+                for (int i = 0; i < VISUAL.Count; i++)
                 {
-                    if (toggled[button][i])
-                        temp.isOn = true;
-                }
-                catch
-                {
+                    Toggle temp = Instantiate(toggle);
+                    temp.gameObject.GetComponentInChildren<Text>().text = VISUAL[i];
+                    temp.transform.SetParent(oOptions.transform);
+                    try
+                    {
+                        if (toggled[button][i])
+                            temp.isOn = true;
+                    }
+                    catch
+                    {
 
-                }
-            }
-        }
-        else if (button == "VISUAL SPACIAL")
-        {
-            for (int i = 0; i < VISUAL.Count; i++)
-            {
-                Toggle temp = Instantiate(toggle);
-                temp.gameObject.GetComponentInChildren<Text>().text = VISUAL[i];
-                temp.transform.SetParent(Options.transform);
-                try
-                {
-                    if (toggled[button][i])
-                        temp.isOn = true;
-                }
-                catch
-                {
-
+                    }
                 }
             }
         }
@@ -235,48 +246,58 @@ public class FindingsManager : MonoBehaviour {
 
     void SaveToggles()      //saves which toggles are active in dictionaries
     {
-        foreach (Transform child in Options.transform)
+        if (mode == "Deficit")
         {
-            children.Add(child.gameObject.GetComponent<Toggle>());
-        }
-        if(button == "AROM" || button == "PROM")
-        {
-            for (int i = 0; i < ROMS.Count; i++)
+            foreach (Transform child in Options.transform)
             {
-                if (children[i].isOn)
-                    toggled[button][i] = true;
+                children.Add(child.gameObject.GetComponent<Toggle>());
+            }
+            if (button == "AROM" || button == "PROM")
+            {
+                for (int i = 0; i < ROMS.Count; i++)
+                {
+                    if (children[i].isOn)
+                        toggled[button][i] = true;
+                }
+            }
+            else if (button == "STRENGTH")
+            {
+                for (int i = 0; i < STRENGTH.Count; i++)
+                {
+                    if (children[i].isOn)
+                        toggled[button][i] = true;
+                }
             }
         }
-        else if(button == "STRENGTH")
+        else
         {
-            for (int i = 0; i < STRENGTH.Count; i++)
+            foreach (Transform child in oOptions.transform)
             {
-                if (children[i].isOn)
-                    toggled[button][i] = true;
+                children.Add(child.gameObject.GetComponent<Toggle>());
             }
-        }
-        else if(button == "TONE")
-        {
-            for (int i = 0; i < TONE.Count; i++)
+            if (button == "TONE")
             {
-                if (children[i].isOn)
-                    toggled[button][i] = true;
+                for (int i = 0; i < tone1.Count; i++)
+                {
+                    if (children[i].isOn)
+                        toggled[button][i] = true;
+                }
             }
-        }
-        else if (button == "COGNITION")
-        {
-            for (int i = 0; i < COGNITION.Count; i++)
+            else if (button == "COGNITION")
             {
-                if (children[i].isOn)
-                    toggled[button][i] = true;
+                for (int i = 0; i < COGNITION.Count; i++)
+                {
+                    if (children[i].isOn)
+                        toggled[button][i] = true;
+                }
             }
-        }
-        else if (button == "VISUAL SPACIAL")
-        {
-            for (int i = 0; i < VISUAL.Count; i++)
+            else if (button == "VISUAL SPACIAL")
             {
-                if (children[i].isOn)
-                    toggled[button][i] = true;
+                for (int i = 0; i < VISUAL.Count; i++)
+                {
+                    if (children[i].isOn)
+                        toggled[button][i] = true;
+                }
             }
         }
     }
@@ -292,7 +313,7 @@ public class FindingsManager : MonoBehaviour {
         {
             toggled["STRENGTH"].Add(false);
         }
-        for (int i = 0; i < TONE.Count; i++)
+        for (int i = 0; i < tone1.Count; i++)
         {
             toggled["TONE"].Add(false);
         }
@@ -308,18 +329,37 @@ public class FindingsManager : MonoBehaviour {
 
     void DeleteToggles()
     {
-        foreach (Transform child in Options.transform)
+        if (mode == "Deficit")
         {
-            Destroy(child.gameObject);
+            foreach (Transform child in Options.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+        else
+        {
+            foreach (Transform child in oOptions.transform)
+            {
+                Destroy(child.gameObject);
+            }
         }
         children.Clear();
     }
 
     public void Continue()
     {
-        mode = "Deficit";
-        transferUI.SetActive(false);
-        deficitUI.SetActive(true);
+        if(mode != "Deficit")
+        {
+            mode = "Deficit";
+            transferUI.SetActive(false);
+            deficitUI.SetActive(true);
+        }
+        else
+        {
+            mode = "Other";
+            deficitUI.SetActive(false);
+            otherUI.SetActive(true);
+        }
         Default();
     }
 

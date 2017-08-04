@@ -265,6 +265,32 @@ public class DatabaseManager : MonoBehaviour
         }
     }
 
+    private static string GetLogSample(int userID, int logID)
+    {
+        string logText = "default";
+        using (MySql.Data.MySqlClient.MySqlConnection dbConnection = new MySql.Data.MySqlClient.MySqlConnection())
+        {
+            dbConnection.ConnectionString = connectionString;
+            dbConnection.Open();
+            using (IDbCommand dbCmd = dbConnection.CreateCommand())
+            {
+                string sqlQuery = String.Format("SELECT ChatText FROM ChatLog WHERE UserID = " + userID + " AND LogId = " + logID);
+                Debug.Log(sqlQuery);
+                dbCmd.CommandText = sqlQuery;
+                using (IDataReader dbReader = dbCmd.ExecuteReader())
+                {
+                    if (dbReader.Read())
+                    {
+                        logText = dbReader.GetString(0);
+                        dbReader.Close();
+                    }
+                }
+                dbConnection.Close();
+            }
+        }
+        return logText;
+    }
+
     public static void registerUser(string email, string password, string firstName, string lastName)
     {
         InsertUserInfo(email, password, firstName, lastName);
@@ -283,5 +309,11 @@ public class DatabaseManager : MonoBehaviour
     public static void insertStudentRecord(int userID, string chatTxt)
     {
         InsertUserRecord(userID, chatTxt);
+    }
+
+    public static string getLogSample(int userID, int logID)
+    {
+        string log = GetLogSample(userID, logID);
+        return log;
     }
 }

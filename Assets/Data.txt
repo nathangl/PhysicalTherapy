@@ -1,10 +1,6 @@
-[00:00]Dialogue Accessed
-[00:04]IAMTESTING
-[00:49]PROM MODE
-[00:50]LeftElbow CLICKED!
-[00:51]PROM LeftElbow Flexion
-[00:54]HANDS IN CORRECT SPOT
-[01:40]PROM MODE
-[01:41]LeftShoulder CLICKED!
-[01:42]PROM LeftShoulder Flexion
-[01:46]HANDS IN CORRECT SPOT
+[00:01]Dialogue Accessed
+[00:05]IAMTESTING
+[00:08]PROM MODE
+[00:08]LeftShoulder CLICKED!
+[00:10]PROM LeftShoulder Extension
+[00:13]HANDS IN CORRECT SPOT
