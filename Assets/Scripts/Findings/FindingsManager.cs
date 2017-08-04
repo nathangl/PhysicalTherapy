@@ -70,6 +70,11 @@ public class FindingsManager : MonoBehaviour {
     public Dropdown amountD, typeD, positionD, equipmentD;
     public string button;
     public GameObject transferUI, deficitUI, otherUI;
+    public InputField input;
+
+
+    //temp values
+    string sTone = "", sCognition = "", sVisual = "";
 
     void Start()
     {
@@ -117,7 +122,10 @@ public class FindingsManager : MonoBehaviour {
     {
         SaveToggles();
         button = b;
-        dInfo.text = button;
+        if (mode == "Deficit")
+            dInfo.text = button;
+        else
+            oInfo.text = button;
         DeleteToggles();
         LoadToggles();
     }
@@ -204,6 +212,7 @@ public class FindingsManager : MonoBehaviour {
 
                     }
                 }
+                input.text = sTone;
             }
             else if (button == "COGNITION")
             {
@@ -222,6 +231,7 @@ public class FindingsManager : MonoBehaviour {
 
                     }
                 }
+                input.text = sCognition;
             }
             else if (button == "VISUAL SPACIAL")
             {
@@ -240,6 +250,7 @@ public class FindingsManager : MonoBehaviour {
 
                     }
                 }
+                input.text = sVisual;
             }
         }
     }
@@ -282,6 +293,7 @@ public class FindingsManager : MonoBehaviour {
                     if (children[i].isOn)
                         toggled[button][i] = true;
                 }
+                sTone = input.text;
             }
             else if (button == "COGNITION")
             {
@@ -290,6 +302,7 @@ public class FindingsManager : MonoBehaviour {
                     if (children[i].isOn)
                         toggled[button][i] = true;
                 }
+                sCognition = input.text;
             }
             else if (button == "VISUAL SPACIAL")
             {
@@ -298,6 +311,7 @@ public class FindingsManager : MonoBehaviour {
                     if (children[i].isOn)
                         toggled[button][i] = true;
                 }
+                sVisual = input.text;
             }
         }
     }
