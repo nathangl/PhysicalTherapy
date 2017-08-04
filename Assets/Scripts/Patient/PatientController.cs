@@ -30,6 +30,7 @@ public class PatientController : MonoBehaviour
     [HideInInspector]
     public List<GameObject> PROMObjs = new List<GameObject>(); //List of all PROM gameobjects
     public Slider slider;
+    public InputField notes;
 
 
     List<string> currentDD = new List<string>(); //the current dropdown list
@@ -254,7 +255,14 @@ public class PatientController : MonoBehaviour
         PROMActive = false;
         PROMAnims.SetActive(false);
         dotController.DisableDots();
-        if (mode != "chart")
+        if (mode == "NOTES")
+        {
+            if (notes.IsActive())
+                notes.gameObject.SetActive(false);
+            else
+                notes.gameObject.SetActive(true);
+        }
+        if (mode != "chart" && mode != "NOTES")
         {
             currentScreen = mode;
             dropdownEnabled = true;
