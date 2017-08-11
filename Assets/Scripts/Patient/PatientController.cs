@@ -32,6 +32,11 @@ public class PatientController : MonoBehaviour
     public Slider slider;
     public InputField notes;
 
+    //temp
+    string strengthTest = "";
+    bool moving = false;
+    bool found = false;
+
 
     List<string> currentDD = new List<string>(); //the current dropdown list
     void Awake()
@@ -57,10 +62,34 @@ public class PatientController : MonoBehaviour
     {
         if(currentScreen == "STRENGTH")
         {
-            if(slider.value == 1)
+            if(strengthTest == "Extension" && currentTag == "RightShoulder")
             {
-                patientAnim.speed = 10;
-                DisableSlider();
+                if (slider.value == 3 && !found)
+                {
+                    found = true;
+                    //DisableSlider();
+                    moving = true;
+                    //patientAnim.speed = -1.0f;
+                    //patientAnim.SetBool("Mirror", true);
+                    patientAnim.SetFloat("Speed", -1f);
+                    patientAnim.speed = patientAnim.GetCurrentAnimatorStateInfo(0).speed;
+                }
+                if(moving)
+                {
+                    Debug.Log(patientAnim.speed);
+                    if(patientAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < .3)
+                    {
+                        //patientAnim.speed = 1;
+                        //patientAnim.SetBool("Mirror", false);
+                        patientAnim.SetFloat("Speed", 1f);
+                        patientAnim.speed = patientAnim.GetCurrentAnimatorStateInfo(0).speed;
+                    }
+                    if(patientAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > .5)
+                    {
+                        patientAnim.speed = 0;
+                        moving = false;
+                    }
+                }
             }
         }
         if (currentScreen != prevMode)
@@ -216,9 +245,10 @@ public class PatientController : MonoBehaviour
 
         else if (currentScreen == "STRENGTH")
         {
+            strengthTest = currentDD[userDropdown.value];
             dotController.DisableDots();
             patientAnim.speed = 0;
-            patientAnim.Play("A" + dropdownIndex + userDropdown.value, 0, 0.50f);
+            patientAnim.Play("A" + dropdownIndex + userDropdown.value, 0, 0.40f);
             slider.gameObject.SetActive(true);
         }
 
@@ -237,6 +267,7 @@ public class PatientController : MonoBehaviour
     {
         slider.value = 0;
         slider.gameObject.SetActive(false);
+        found = false;
     }
 
     public void DisableDropdown()
@@ -249,6 +280,7 @@ public class PatientController : MonoBehaviour
 
     public void ButtonInput(string mode)
     {
+        DisableSlider();
         patientAnim.Play("Idle2");
         patientAnim.speed = 1;
         currentScreen = "";
