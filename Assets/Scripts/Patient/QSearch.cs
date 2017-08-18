@@ -49,6 +49,9 @@ public class QSearch : MonoBehaviour
             AROM.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
             PROM.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
             Strength.GetComponent<Manager>().OnOff(AROM.GetComponent<Manager>().menuOn = true);
+
+            //
+            //pController.screen = true;
         }
     }
     //Called when user clicks button to submit dialogue

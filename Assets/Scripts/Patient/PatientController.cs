@@ -37,6 +37,9 @@ public class PatientController : MonoBehaviour
     bool moving = false;
     bool found = false;
 
+    public bool screen = false;
+    public Text screenInfo;
+
 
     List<string> currentDD = new List<string>(); //the current dropdown list
     void Awake()
@@ -60,6 +63,12 @@ public class PatientController : MonoBehaviour
 
     void Update()
     {
+        if(screen)
+        {
+            screenInfo.gameObject.SetActive(true);
+            WaitFor(.1f);
+            screen = false;
+        }
         if(currentScreen == "STRENGTH")
         {
             if(strengthTest == "Extension" && currentTag == "RightShoulder")
@@ -281,11 +290,11 @@ public class PatientController : MonoBehaviour
     public void ButtonInput(string mode)
     {
         DisableSlider();
-        patientAnim.Play("Idle2");
-        patientAnim.speed = 1;
         currentScreen = "";
         PROMActive = false;
         PROMAnims.SetActive(false);
+        patientAnim.Play("Idle2");
+        patientAnim.speed = 1;
         dotController.DisableDots();
         if (mode == "NOTES")
         {
@@ -311,6 +320,13 @@ public class PatientController : MonoBehaviour
         Debug.Log(mode + " MODE");
         Tracker.LogData(mode + " MODE");
         Tracker.clicked.Add(mode);
+    }
+
+    IEnumerator WaitFor(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        screenInfo.gameObject.SetActive(false);
     }
 
     public void CreatePatientTree()

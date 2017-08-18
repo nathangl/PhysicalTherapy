@@ -105,6 +105,7 @@ public class HandManager : MonoBehaviour
         }
         else
         {
+            Success();
             Debug.Log("HANDS IN INCORRECT SPOT Left: " + leftLocation + " Right: " + rightLocation);
             Tracker.LogData("HANDS IN INCORRECT SPOT Left: " + leftLocation + " Right: " + rightLocation);
         }
