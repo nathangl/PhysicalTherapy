@@ -219,7 +219,6 @@ public class PatientController : MonoBehaviour
         {
             return;
         }
-
         if (currentScreen == "AROM")
         {
             dotController.DisableDots();
@@ -230,7 +229,29 @@ public class PatientController : MonoBehaviour
         else if (currentScreen == "PROM")
         {
             dotController.DisableDots();
-            dotController.EnableHandDots();
+
+            Action<TreeNode> traverse = null;
+            traverse = (n) => {
+                if (n.Value == "UpperExtremity")
+                {
+                    foreach (TreeNode nv in n.Nodes[0].Nodes)
+                    {
+                        if (nv.Value == currentTag)
+                        {
+                            dotController.EnableUpperHandDots();
+                        }
+                    }
+                }
+                else
+                {
+                    n.Nodes.ForEach(traverse);
+                }
+
+            };
+            traverse(root);
+            if (!dotController.hand)
+                dotController.EnableLowerHandDots();
+            //dotController.EnableHandDots();
             Debug.Log("PROM Animation Accessed");
             handManager.ToggleHands();
             handManager.currentlyTesting = dropdownIndex;

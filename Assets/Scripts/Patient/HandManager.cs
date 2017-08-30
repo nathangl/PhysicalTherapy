@@ -14,8 +14,18 @@ public class HandManager : MonoBehaviour
     string leftLocation = null;     //Left hand current location
     string rightLocation = null;        //Right hand current location
 
+    GameObject leftLocal;
+    GameObject rightLocal;
+
     public bool active = false;
     public bool success = false;
+
+    public Material red;
+    public Material yellow;
+
+    public GameObject placementUI;
+    public int selection = 1;
+    public Text selectionTxt;
 
     //LayoutElement leftLayout;
     //LayoutElement rightLayout;
@@ -24,6 +34,7 @@ public class HandManager : MonoBehaviour
 
     void Start()
     {
+        placementUI.SetActive(false);
         leftHandObj = GameObject.Find("LeftHand");
         //leftLayout = leftHandObj.gameObject.GetComponent<LayoutElement>();
         rightHandObj = GameObject.Find("RightHand");
@@ -39,6 +50,16 @@ public class HandManager : MonoBehaviour
             active = false;
             leftLocation = null;
             rightLocation = null;
+            if(leftLocal)
+            {
+                leftLocal.GetComponentInChildren<Renderer>().material = yellow;
+                leftLocal = null;
+            }
+            if(rightLocal)
+            {
+                rightLocal.GetComponentInChildren<Renderer>().material = yellow;
+                rightLocal = null;
+            }
             //ToggleLayout();
         }
         else
@@ -62,9 +83,15 @@ public class HandManager : MonoBehaviour
             {
                 case "left":
                     leftLocation = hit.collider.transform.tag;
+                    leftLocal = hit.collider.gameObject;
+                    hit.collider.GetComponentInChildren<Renderer>().material = red;
+                    StartPlacement();
                     break;
                 case "right":
                     rightLocation = hit.collider.transform.tag;
+                    rightLocal = hit.collider.gameObject;
+                    hit.collider.GetComponentInChildren<Renderer>().material = red;
+                    StartPlacement();
                     break;
                 default:
                     Debug.Log("Error at HandManager");
@@ -78,13 +105,6 @@ public class HandManager : MonoBehaviour
             if (rightLocation != null)
             {
                 rightHandObj.SetActive(false);
-            }
-
-            if (leftLocation != null && rightLocation != null)
-            {
-                CheckLocations();
-                leftHandObj.SetActive(true);
-                rightHandObj.SetActive(true);
             }
         }
     }
@@ -125,6 +145,31 @@ public class HandManager : MonoBehaviour
         Tracker.clicked.Add("PROMLHP");
         success = true;
         ToggleHands();
+    }
+
+    public void StartPlacement()
+    {
+        placementUI.SetActive(true);
+        placementUI.transform.position = Input.mousePosition + new Vector3(0, 0, 0);        //mouse position with offset (0)
+        selectionTxt.text = selection.ToString();
+    }
+
+    public void DisablePlacement()
+    {
+        if (leftLocation != null && rightLocation != null)
+        {
+            CheckLocations();
+            leftHandObj.SetActive(true);
+            rightHandObj.SetActive(true);
+        }
+        placementUI.SetActive(false);
+        selection = 1;
+    }
+
+    public void NextPlacement()
+    {
+        selection++;
+        selectionTxt.text = selection.ToString();
     }
 
     /*public void ToggleLayout()
