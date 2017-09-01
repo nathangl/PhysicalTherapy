@@ -12,7 +12,7 @@ public class animPaths : MonoBehaviour {
     public animPathsManager manager;
     float position; //the position in animation or time in animation
 
-    void Awake()
+    void Start()
     {
        iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), 0);
     }
