@@ -66,7 +66,7 @@ public class FindingsManager : MonoBehaviour {
     };
 
     public Button bed, sitstand, sitting, standing, walking;
-    public Text tInfo, dInfo, oInfo;
+    public Text tInfo, dInfo, oInfo, sInfo;
     public Dropdown amountD, typeD, positionD, equipmentD;
     public string button;
     public GameObject transferUI, deficitUI, otherUI;
@@ -158,6 +158,7 @@ public class FindingsManager : MonoBehaviour {
         {
             if (button == "AROM" || button == "PROM")
             {
+                sInfo.text = "Please identify any deficts found in the following areas";
                 for (int i = 0; i < ROMS.Count; i++)
                 {
                     Toggle temp = Instantiate(toggle);
@@ -176,6 +177,7 @@ public class FindingsManager : MonoBehaviour {
             }
             else if (button == "STRENGTH")
             {
+                sInfo.text = "Identify which muscle groups displayed < ⅗ strength or indicate if the muscle group tested grossly within functional limits";
                 for (int i = 0; i < STRENGTH.Count; i++)
                 {
                     Toggle temp = Instantiate(toggle);

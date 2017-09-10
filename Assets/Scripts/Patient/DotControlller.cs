@@ -33,8 +33,8 @@ public class DotControlller : MonoBehaviour {
         RElbow.SetActive(true);
         LHand.SetActive(true);
         RHand.SetActive(true);
-        LHip.SetActive(true);
-        RHip.SetActive(true);
+        //LHip.SetActive(true);
+        //RHip.SetActive(true);
         LAnkle.SetActive(true);
         RAnkle.SetActive(true);
         LKnee.SetActive(true);
@@ -58,7 +58,7 @@ public class DotControlller : MonoBehaviour {
         RKnee.SetActive(false);
     }
 
-    public void EnableHandDots()
+    public void EnableUpperHandDots()
     {
         LShoulder.SetActive(true);
         RShoulder.SetActive(true);
@@ -66,6 +66,15 @@ public class DotControlller : MonoBehaviour {
         RElbow.SetActive(true);
         LHand.SetActive(true);
         RHand.SetActive(true);
+        hand = true;
+    }
+
+    public void EnableLowerHandDots()
+    {
+        LAnkle.SetActive(true);
+        RAnkle.SetActive(true);
+        LKnee.SetActive(true);
+        RKnee.SetActive(true);
         hand = true;
     }
 }

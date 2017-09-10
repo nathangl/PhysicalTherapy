@@ -14,8 +14,14 @@ public class HandManager : MonoBehaviour
     string leftLocation = null;     //Left hand current location
     string rightLocation = null;        //Right hand current location
 
+    GameObject leftLocal;
+    GameObject rightLocal;
+
     public bool active = false;
     public bool success = false;
+
+    public Material red;
+    public Material yellow;
 
     //LayoutElement leftLayout;
     //LayoutElement rightLayout;
@@ -39,6 +45,16 @@ public class HandManager : MonoBehaviour
             active = false;
             leftLocation = null;
             rightLocation = null;
+            if(leftLocal)
+            {
+                leftLocal.GetComponentInChildren<Renderer>().material = yellow;
+                leftLocal = null;
+            }
+            if(rightLocal)
+            {
+                rightLocal.GetComponentInChildren<Renderer>().material = yellow;
+                rightLocal = null;
+            }
             //ToggleLayout();
         }
         else
@@ -62,9 +78,13 @@ public class HandManager : MonoBehaviour
             {
                 case "left":
                     leftLocation = hit.collider.transform.tag;
+                    leftLocal = hit.collider.gameObject;
+                    hit.collider.GetComponentInChildren<Renderer>().material = red;
                     break;
                 case "right":
                     rightLocation = hit.collider.transform.tag;
+                    rightLocal = hit.collider.gameObject;
+                    hit.collider.GetComponentInChildren<Renderer>().material = red;
                     break;
                 default:
                     Debug.Log("Error at HandManager");
@@ -79,13 +99,8 @@ public class HandManager : MonoBehaviour
             {
                 rightHandObj.SetActive(false);
             }
-
-            if (leftLocation != null && rightLocation != null)
-            {
+            if (leftLocation != null & rightLocation != null)
                 CheckLocations();
-                leftHandObj.SetActive(true);
-                rightHandObj.SetActive(true);
-            }
         }
     }
 
@@ -125,6 +140,16 @@ public class HandManager : MonoBehaviour
         Tracker.clicked.Add("PROMLHP");
         success = true;
         ToggleHands();
+    }
+
+    public void DisablePlacement()
+    {
+        if (leftLocation != null && rightLocation != null)
+        {
+            CheckLocations();
+            leftHandObj.SetActive(true);
+            rightHandObj.SetActive(true);
+        }
     }
 
     /*public void ToggleLayout()
