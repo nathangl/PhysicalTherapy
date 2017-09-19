@@ -20,6 +20,7 @@ public class Manager : MonoBehaviour
 		OnOff (menuOn);
     }
 
+    //Toggles chart menu
     public void BeginMenu(bool isDropdown)
     {
         if (!menuOn && !isDropdown)
@@ -38,6 +39,8 @@ public class Manager : MonoBehaviour
             //Invoke("DisableUI", 1);
         }
     }
+
+    //
     public void BeginDecision()
     {
         if (!menuOn)

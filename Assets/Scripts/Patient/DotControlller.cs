@@ -25,6 +25,7 @@ public class DotControlller : MonoBehaviour {
         DisableDots();
     }
 
+    //Show dots
     public void EnableDropdownDots()
     {
         LShoulder.SetActive(true);
@@ -42,6 +43,7 @@ public class DotControlller : MonoBehaviour {
         dropdown = true;
     }
 
+    //Turn off dots
     public void DisableDots()
     {
         LShoulder.SetActive(false);
@@ -58,6 +60,7 @@ public class DotControlller : MonoBehaviour {
         RKnee.SetActive(false);
     }
 
+    //Show dots for hand placement in the upper half
     public void EnableUpperHandDots()
     {
         LShoulder.SetActive(true);
@@ -69,6 +72,7 @@ public class DotControlller : MonoBehaviour {
         hand = true;
     }
 
+    //Show dots for hand placement in the lower half
     public void EnableLowerHandDots()
     {
         LAnkle.SetActive(true);

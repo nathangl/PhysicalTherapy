@@ -37,6 +37,7 @@ public class HandManager : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    //Toggles hands on or off
     public void ToggleHands()
     {
         if (active)
@@ -67,7 +68,7 @@ public class HandManager : MonoBehaviour
         }
     }
 
-    //
+    //Checks if hand was dragged to a dot
     public void CheckDrag(Vector3 dragTransform, string whichHand)
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -104,6 +105,7 @@ public class HandManager : MonoBehaviour
         }
     }
 
+    //Checks if hands are in correct spots, currently accepts any positioning
     public void CheckLocations()
     {
         if (currentlyTesting == "RightShoulder" && leftLocation == "RightElbow" && rightLocation == "RightHand")
@@ -151,12 +153,4 @@ public class HandManager : MonoBehaviour
             rightHandObj.SetActive(true);
         }
     }
-
-    /*public void ToggleLayout()
-    {
-        leftLayout.ignoreLayout = true;
-        leftHandObj.transform.position = originalPosLeft;
-        rightLayout.ignoreLayout = true;
-        rightHandObj.transform.position = originalPosRight;
-    }*/
 }

@@ -53,23 +53,29 @@ public class PatientController : MonoBehaviour
 
     void Start()
     {
+        //Disables all PROMObjs
         for (int i = 1; i < PROMAnims.transform.childCount; i++)
         {
             PROMObjs.Add(PROMAnims.transform.GetChild(i).gameObject);
         }
         PROMObjs.ForEach(x => x.SetActive(false));
+
+        //Creates tree of patient movements and joints
         CreatePatientTree();
     }
 
     void Update()
     {
+        //Testing for a notification system
         if(screen)
         {
             screenInfo.gameObject.SetActive(true);
             WaitFor(.1f);
             screen = false;
         }
-        if(currentScreen == "STRENGTH")
+
+        //Temporary strength testing
+        if (currentScreen == "STRENGTH")
         {
             if(strengthTest == "Extension" && currentTag == "RightShoulder")
             {
@@ -101,6 +107,8 @@ public class PatientController : MonoBehaviour
                 }
             }
         }
+
+        //If mode is changed (like between AROM and PROM)
         if (currentScreen != prevMode)
         {
             patientAnim.speed = 1;
@@ -109,6 +117,8 @@ public class PatientController : MonoBehaviour
                 currentPROM.GetEnumerator().Current.SetActive(false);
             prevMode = currentScreen;
         }
+
+        //If mode is changed away from PROM, reset patient
         if (currentScreen != "PROM")
         {
             PROMAnims.SetActive(false);
@@ -122,7 +132,8 @@ public class PatientController : MonoBehaviour
             PROMActive = true;
             handManager.success = false;
         }
-        //TODO: fix weird spacing
+
+        //Raycast management along with dropdowns
         if (Input.GetMouseButtonDown(0) && dropdownEnabled && EventSystem.current.IsPointerOverGameObject() == false) // if left mouse clicked
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition); // make a raycast to clicked position
@@ -163,6 +174,7 @@ public class PatientController : MonoBehaviour
         }
     }
 
+    //Creates a dropdown at the mouse location, given the tag of the object that was raycasted
     public void SetDropdown(string clicked)
     {
         if(clicked == "Untagged")
@@ -212,6 +224,7 @@ public class PatientController : MonoBehaviour
         userDropdown.AddOptions(dropdownList);
     }
 
+    //Called from the dropdown's event system. Checks which value was entered
     public void DetermineDropdown()
     {
         patientAnim.Play("Idle2");
@@ -225,7 +238,6 @@ public class PatientController : MonoBehaviour
             //patientAnim.SetTrigger("A" + dropdownIndex + userDropdown.value);
             patientAnim.Play("A" + dropdownIndex + userDropdown.value, 0);
         }
-
         else if (currentScreen == "PROM")
         {
             dotController.DisableDots();
@@ -293,6 +305,7 @@ public class PatientController : MonoBehaviour
         DisableDropdown();
     }
 
+    //Disables strength slider
     public void DisableSlider()
     {
         slider.value = 0;
@@ -300,6 +313,8 @@ public class PatientController : MonoBehaviour
         found = false;
     }
 
+    //Disables dropdown menu
+    //TODO: fix setactive
     public void DisableDropdown()
     {
         userDropdown.value = 0;
@@ -308,6 +323,8 @@ public class PatientController : MonoBehaviour
         //userDropdown.gameObject.SetActive(false);
     }
 
+
+    //Called from all buttons
     public void ButtonInput(string mode)
     {
         DisableSlider();
@@ -416,9 +433,6 @@ public class PatientController : MonoBehaviour
         root.Nodes[1].Nodes[2].Nodes[1].Nodes.Add(new TreeNode { Value = "Plantarflexion" });
         root.Nodes[1].Nodes[2].Nodes[1].Nodes.Add(new TreeNode { Value = "Inversion" });
         root.Nodes[1].Nodes[2].Nodes[1].Nodes.Add(new TreeNode { Value = "Eversion" });
-        /*root.Nodes.Add(new TreeNode { Value = "Side" });
-        root.Nodes[2].Nodes.Add(new TreeNode { Value = "LEFT" });
-        root.Nodes[2].Nodes.Add(new TreeNode { Value = "RIGHT" });*/
     }
 }
 
