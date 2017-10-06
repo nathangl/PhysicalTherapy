@@ -22,7 +22,7 @@ public class PatientController : MonoBehaviour
     Manager manager;
     public GameObject PROMAnims;
     string prevMode = ""; //Previous mode (AROM/PROM)
-    public HandManager handManager;
+    //public HandManager handManager;
     bool dropdownEnabled = true;
     bool PROMActive = false;
     DotControlller dotController;
@@ -114,14 +114,23 @@ public class PatientController : MonoBehaviour
             PROMAnims.SetActive(false);
             PROMActive = false;
         }
-        else if (handManager.success == true)
+        else
+        {
+            //dotController.DisableDots();
+
+            //PROMAnims.SetActive(true);
+            //PROMActive = true;
+        }
+
+        //HANDS
+        /*else if (handManager.success == true)
         {
             dotController.DisableDots();
 
             PROMAnims.SetActive(true);
             PROMActive = true;
             handManager.success = false;
-        }
+        }*/
         //TODO: fix weird spacing
         if (Input.GetMouseButtonDown(0) && dropdownEnabled && EventSystem.current.IsPointerOverGameObject() == false) // if left mouse clicked
         {
@@ -230,15 +239,21 @@ public class PatientController : MonoBehaviour
         {
             dotController.DisableDots();
 
-            Action<TreeNode> traverse = null;
+            /*Action<TreeNode> traverse = null;
             traverse = (n) => {
                 if (n.Value == "UpperExtremity")
                 {
+
                     foreach (TreeNode nv in n.Nodes[0].Nodes)
                     {
                         if (nv.Value == currentTag)
                         {
-                            dotController.EnableUpperHandDots();
+
+                            PROMAnims.SetActive(true);
+                            PROMActive = true;
+
+                            //Hands
+                            //dotController.EnableUpperHandDots();
                         }
                     }
                 }
@@ -248,13 +263,20 @@ public class PatientController : MonoBehaviour
                 }
 
             };
-            traverse(root);
-            if (!dotController.hand)
-                dotController.EnableLowerHandDots();
+            traverse(root);*/
+            PROMAnims.SetActive(true);
+            PROMActive = true;
+
+            //Hands
+            /*if (!dotController.hand)
+                dotController.EnableLowerHandDots();*/
             //dotController.EnableHandDots();
             Debug.Log("PROM Animation Accessed");
-            handManager.ToggleHands();
-            handManager.currentlyTesting = dropdownIndex;
+            
+            //Hands
+            //handManager.ToggleHands();
+            //handManager.currentlyTesting = dropdownIndex;
+
             Tracker.LogData("PROM " + dropdownIndex + " " + currentDD[userDropdown.value]);
             //string find = (dropdownIndex == "RightShoulder") ? "R" : "L";
             try
@@ -334,10 +356,13 @@ public class PatientController : MonoBehaviour
         {
             DisableSlider();
         }
-        if(handManager.active)
+
+        //Hands
+        /*if(handManager.active)
         {
             handManager.ToggleHands();
-        }
+        }*/
+
         Debug.Log(mode + " MODE");
         Tracker.LogData(mode + " MODE");
         Tracker.clicked.Add(mode);
@@ -383,7 +408,7 @@ public class PatientController : MonoBehaviour
         root.Nodes[0].Nodes[2].Nodes[1].Nodes.Add(new TreeNode { Value = "Flexion" });
         root.Nodes[0].Nodes[2].Nodes[1].Nodes.Add(new TreeNode { Value = "Extension" });
         root.Nodes.Add(new TreeNode { Value = "LowerExtremity" });
-        root.Nodes[1].Nodes.Add(new TreeNode { Value = "Hip" });
+        /*root.Nodes[1].Nodes.Add(new TreeNode { Value = "Hip" });
         root.Nodes[1].Nodes[0].Nodes.Add(new TreeNode { Value = "LeftHip" });
         root.Nodes[1].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Flexion" });
         root.Nodes[1].Nodes[0].Nodes[0].Nodes.Add(new TreeNode { Value = "Extension" });
@@ -397,7 +422,7 @@ public class PatientController : MonoBehaviour
         root.Nodes[1].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Abduction" });
         root.Nodes[1].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Adduction" });
         root.Nodes[1].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "Internal Rotation" });
-        root.Nodes[1].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "External Rotation" });
+        root.Nodes[1].Nodes[0].Nodes[1].Nodes.Add(new TreeNode { Value = "External Rotation" });*/
         root.Nodes[1].Nodes.Add(new TreeNode { Value = "Knee" });
         root.Nodes[1].Nodes[1].Nodes.Add(new TreeNode { Value = "LeftKnee" });
         root.Nodes[1].Nodes[1].Nodes[0].Nodes.Add(new TreeNode { Value = "Flexion" });
