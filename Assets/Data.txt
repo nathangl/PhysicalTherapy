@@ -1,1 +1,4 @@
-[00:22]Dialogue Accessed
+[00:00]Dialogue Accessed
+[00:05]IAMTESTING
+[00:07]AROM MODE
+[00:07]LeftShoulder CLICKED!

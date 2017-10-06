@@ -10,8 +10,8 @@ public class DotControlller : MonoBehaviour {
     public GameObject RElbow;
     public GameObject LHand;
     public GameObject RHand;
-    public GameObject LHip;
-    public GameObject RHip;
+    /*public GameObject LHip;
+    public GameObject RHip;*/
     public GameObject LKnee;
     public GameObject RKnee;
     public GameObject LAnkle;
@@ -50,8 +50,8 @@ public class DotControlller : MonoBehaviour {
         RElbow.SetActive(false);
         LHand.SetActive(false);
         RHand.SetActive(false);
-        LHip.SetActive(false);
-        RHip.SetActive(false);
+        /*LHip.SetActive(false);
+        RHip.SetActive(false);*/
         LAnkle.SetActive(false);
         RAnkle.SetActive(false);
         LKnee.SetActive(false);
