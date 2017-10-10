@@ -18,7 +18,7 @@ public class HandManager : MonoBehaviour
     GameObject rightLocal;
 
     public bool active = false;
-    public bool success = false;
+    public bool success = true;
 
     public Material red;
     public Material yellow;

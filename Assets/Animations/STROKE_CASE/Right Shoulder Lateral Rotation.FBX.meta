@@ -1,0 +1,575 @@
+fileFormatVersion: 2
+guid: 8d3405df0bca6274992a77c9aefe5b75
+timeCreated: 1504888270
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Base Human
+    100002: Base HumanLPlatform
+    100004: Base HumanRPlatform
+    100006: Bip001
+    100008: Bip001 Footsteps
+    100010: Bip001 Head
+    100012: Bip001 HeadNub
+    100014: Bip001 L Calf
+    100016: Bip001 L Clavicle
+    100018: Bip001 L Finger0
+    100020: Bip001 L Finger01
+    100022: Bip001 L Finger02
+    100024: Bip001 L Finger0Nub
+    100026: Bip001 L Finger1
+    100028: Bip001 L Finger11
+    100030: Bip001 L Finger12
+    100032: Bip001 L Finger1Nub
+    100034: Bip001 L Finger2
+    100036: Bip001 L Finger21
+    100038: Bip001 L Finger22
+    100040: Bip001 L Finger2Nub
+    100042: Bip001 L Finger3
+    100044: Bip001 L Finger31
+    100046: Bip001 L Finger32
+    100048: Bip001 L Finger3Nub
+    100050: Bip001 L Finger4
+    100052: Bip001 L Finger41
+    100054: Bip001 L Finger42
+    100056: Bip001 L Finger4Nub
+    100058: Bip001 L Foot
+    100060: Bip001 L Forearm
+    100062: Bip001 L Hand
+    100064: Bip001 L Thigh
+    100066: Bip001 L Toe0
+    100068: Bip001 L Toe0Nub
+    100070: Bip001 L UpperArm
+    100072: Bip001 LeftEye
+    100074: Bip001 LeftEyeNub
+    100076: Bip001 Neck
+    100078: Bip001 Pelvis
+    100080: Bip001 R Calf
+    100082: Bip001 R Clavicle
+    100084: Bip001 R Finger0
+    100086: Bip001 R Finger01
+    100088: Bip001 R Finger02
+    100090: Bip001 R Finger0Nub
+    100092: Bip001 R Finger1
+    100094: Bip001 R Finger11
+    100096: Bip001 R Finger12
+    100098: Bip001 R Finger1Nub
+    100100: Bip001 R Finger2
+    100102: Bip001 R Finger21
+    100104: Bip001 R Finger22
+    100106: Bip001 R Finger2Nub
+    100108: Bip001 R Finger3
+    100110: Bip001 R Finger31
+    100112: Bip001 R Finger32
+    100114: Bip001 R Finger3Nub
+    100116: Bip001 R Finger4
+    100118: Bip001 R Finger41
+    100120: Bip001 R Finger42
+    100122: Bip001 R Finger4Nub
+    100124: Bip001 R Foot
+    100126: Bip001 R Forearm
+    100128: Bip001 R Hand
+    100130: Bip001 R Thigh
+    100132: Bip001 R Toe0
+    100134: Bip001 R Toe0Nub
+    100136: Bip001 R UpperArm
+    100138: Bip001 RightEye
+    100140: Bip001 RightEyeNub
+    100142: Bip001 Spine
+    100144: Bip001 Spine1
+    100146: Bip001 Spine2
+    100148: Body
+    100150: Bottoms
+    100152: Box001
+    100154: ChamferBox001
+    100156: ChamferBox002
+    100158: ChamferBox003
+    100160: Cylinder001
+    100162: Cylinder002
+    100164: Cylinder003
+    100166: Cylinder004
+    100168: Cylinder005
+    100170: Cylinder006
+    100172: Cylinder007
+    100174: Cylinder008
+    100176: Cylinder009
+    100178: Cylinder010
+    100180: Cylinder011
+    100182: Cylinder012
+    100184: Cylinder013
+    100186: Cylinder014
+    100188: Cylinder015
+    100190: Cylinder016
+    100192: Eyes
+    100194: Hair
+    100196: //RootNode
+    100198: Shoes
+    100200: Table01
+    100202: Tops
+    100204: Torus001
+    100206: Torus002
+    100208: Torus003
+    100210: Torus004
+    100212: WheelChair00
+    100214: WheelChair01
+    100216: WheelChair02
+    100218: WheelChair03
+    100220: WheelChair04
+    100222: WheelChair05
+    100224: WheelChair06
+    100226: WheelChair07
+    100228: WheelChair08
+    100230: WheelChair09
+    100232: WheelChair10
+    100234: WheelChair11
+    100236: WheelChair12
+    100238: WheelChair13
+    100240: WheelChair14
+    100242: WheelChair15
+    100244: WheelChair16
+    100246: WheelChair17
+    100248: WheelChair18
+    100250: WheelChair19
+    100252: WheelChair20
+    100254: WheelChair21
+    100256: WheelChair22
+    100258: WheelChair23
+    100260: WheelChair24
+    100262: WheelChair25
+    100264: WheelChair26
+    100266: WheelChair27
+    100268: WheelChair28
+    100270: WheelChair29
+    100272: WheelChair30
+    100274: WheelChair31
+    100276: WheelChair32
+    100278: WheelChair33
+    100280: WheelChair34
+    100282: WheelChair35
+    100284: WheelChair36
+    100286: WheelChair37
+    100288: WheelChair38
+    400000: Base Human
+    400002: Base HumanLPlatform
+    400004: Base HumanRPlatform
+    400006: Bip001
+    400008: Bip001 Footsteps
+    400010: Bip001 Head
+    400012: Bip001 HeadNub
+    400014: Bip001 L Calf
+    400016: Bip001 L Clavicle
+    400018: Bip001 L Finger0
+    400020: Bip001 L Finger01
+    400022: Bip001 L Finger02
+    400024: Bip001 L Finger0Nub
+    400026: Bip001 L Finger1
+    400028: Bip001 L Finger11
+    400030: Bip001 L Finger12
+    400032: Bip001 L Finger1Nub
+    400034: Bip001 L Finger2
+    400036: Bip001 L Finger21
+    400038: Bip001 L Finger22
+    400040: Bip001 L Finger2Nub
+    400042: Bip001 L Finger3
+    400044: Bip001 L Finger31
+    400046: Bip001 L Finger32
+    400048: Bip001 L Finger3Nub
+    400050: Bip001 L Finger4
+    400052: Bip001 L Finger41
+    400054: Bip001 L Finger42
+    400056: Bip001 L Finger4Nub
+    400058: Bip001 L Foot
+    400060: Bip001 L Forearm
+    400062: Bip001 L Hand
+    400064: Bip001 L Thigh
+    400066: Bip001 L Toe0
+    400068: Bip001 L Toe0Nub
+    400070: Bip001 L UpperArm
+    400072: Bip001 LeftEye
+    400074: Bip001 LeftEyeNub
+    400076: Bip001 Neck
+    400078: Bip001 Pelvis
+    400080: Bip001 R Calf
+    400082: Bip001 R Clavicle
+    400084: Bip001 R Finger0
+    400086: Bip001 R Finger01
+    400088: Bip001 R Finger02
+    400090: Bip001 R Finger0Nub
+    400092: Bip001 R Finger1
+    400094: Bip001 R Finger11
+    400096: Bip001 R Finger12
+    400098: Bip001 R Finger1Nub
+    400100: Bip001 R Finger2
+    400102: Bip001 R Finger21
+    400104: Bip001 R Finger22
+    400106: Bip001 R Finger2Nub
+    400108: Bip001 R Finger3
+    400110: Bip001 R Finger31
+    400112: Bip001 R Finger32
+    400114: Bip001 R Finger3Nub
+    400116: Bip001 R Finger4
+    400118: Bip001 R Finger41
+    400120: Bip001 R Finger42
+    400122: Bip001 R Finger4Nub
+    400124: Bip001 R Foot
+    400126: Bip001 R Forearm
+    400128: Bip001 R Hand
+    400130: Bip001 R Thigh
+    400132: Bip001 R Toe0
+    400134: Bip001 R Toe0Nub
+    400136: Bip001 R UpperArm
+    400138: Bip001 RightEye
+    400140: Bip001 RightEyeNub
+    400142: Bip001 Spine
+    400144: Bip001 Spine1
+    400146: Bip001 Spine2
+    400148: Body
+    400150: Bottoms
+    400152: Box001
+    400154: ChamferBox001
+    400156: ChamferBox002
+    400158: ChamferBox003
+    400160: Cylinder001
+    400162: Cylinder002
+    400164: Cylinder003
+    400166: Cylinder004
+    400168: Cylinder005
+    400170: Cylinder006
+    400172: Cylinder007
+    400174: Cylinder008
+    400176: Cylinder009
+    400178: Cylinder010
+    400180: Cylinder011
+    400182: Cylinder012
+    400184: Cylinder013
+    400186: Cylinder014
+    400188: Cylinder015
+    400190: Cylinder016
+    400192: Eyes
+    400194: Hair
+    400196: //RootNode
+    400198: Shoes
+    400200: Table01
+    400202: Tops
+    400204: Torus001
+    400206: Torus002
+    400208: Torus003
+    400210: Torus004
+    400212: WheelChair00
+    400214: WheelChair01
+    400216: WheelChair02
+    400218: WheelChair03
+    400220: WheelChair04
+    400222: WheelChair05
+    400224: WheelChair06
+    400226: WheelChair07
+    400228: WheelChair08
+    400230: WheelChair09
+    400232: WheelChair10
+    400234: WheelChair11
+    400236: WheelChair12
+    400238: WheelChair13
+    400240: WheelChair14
+    400242: WheelChair15
+    400244: WheelChair16
+    400246: WheelChair17
+    400248: WheelChair18
+    400250: WheelChair19
+    400252: WheelChair20
+    400254: WheelChair21
+    400256: WheelChair22
+    400258: WheelChair23
+    400260: WheelChair24
+    400262: WheelChair25
+    400264: WheelChair26
+    400266: WheelChair27
+    400268: WheelChair28
+    400270: WheelChair29
+    400272: WheelChair30
+    400274: WheelChair31
+    400276: WheelChair32
+    400278: WheelChair33
+    400280: WheelChair34
+    400282: WheelChair35
+    400284: WheelChair36
+    400286: WheelChair37
+    400288: WheelChair38
+    2300000: Box001
+    2300002: ChamferBox001
+    2300004: ChamferBox002
+    2300006: ChamferBox003
+    2300008: Cylinder001
+    2300010: Cylinder002
+    2300012: Cylinder003
+    2300014: Cylinder004
+    2300016: Cylinder005
+    2300018: Cylinder006
+    2300020: Cylinder007
+    2300022: Cylinder008
+    2300024: Cylinder009
+    2300026: Cylinder010
+    2300028: Cylinder011
+    2300030: Cylinder012
+    2300032: Cylinder013
+    2300034: Cylinder014
+    2300036: Cylinder015
+    2300038: Cylinder016
+    2300040: Torus001
+    2300042: Torus002
+    2300044: Torus003
+    2300046: Torus004
+    2300048: WheelChair00
+    2300050: WheelChair01
+    2300052: WheelChair02
+    2300054: WheelChair03
+    2300056: WheelChair04
+    2300058: WheelChair05
+    2300060: WheelChair06
+    2300062: WheelChair07
+    2300064: WheelChair08
+    2300066: WheelChair09
+    2300068: WheelChair10
+    2300070: WheelChair11
+    2300072: WheelChair12
+    2300074: WheelChair13
+    2300076: WheelChair14
+    2300078: WheelChair15
+    2300080: WheelChair16
+    2300082: WheelChair17
+    2300084: WheelChair18
+    2300086: WheelChair19
+    2300088: WheelChair20
+    2300090: WheelChair21
+    2300092: WheelChair22
+    2300094: WheelChair23
+    2300096: WheelChair24
+    2300098: WheelChair25
+    2300100: WheelChair26
+    2300102: WheelChair27
+    2300104: WheelChair28
+    2300106: WheelChair29
+    2300108: WheelChair30
+    2300110: WheelChair31
+    2300112: WheelChair32
+    2300114: WheelChair33
+    2300116: WheelChair34
+    2300118: WheelChair35
+    2300120: WheelChair36
+    2300122: WheelChair37
+    2300124: WheelChair38
+    3300000: Box001
+    3300002: ChamferBox001
+    3300004: ChamferBox002
+    3300006: ChamferBox003
+    3300008: Cylinder001
+    3300010: Cylinder002
+    3300012: Cylinder003
+    3300014: Cylinder004
+    3300016: Cylinder005
+    3300018: Cylinder006
+    3300020: Cylinder007
+    3300022: Cylinder008
+    3300024: Cylinder009
+    3300026: Cylinder010
+    3300028: Cylinder011
+    3300030: Cylinder012
+    3300032: Cylinder013
+    3300034: Cylinder014
+    3300036: Cylinder015
+    3300038: Cylinder016
+    3300040: Torus001
+    3300042: Torus002
+    3300044: Torus003
+    3300046: Torus004
+    3300048: WheelChair00
+    3300050: WheelChair01
+    3300052: WheelChair02
+    3300054: WheelChair03
+    3300056: WheelChair04
+    3300058: WheelChair05
+    3300060: WheelChair06
+    3300062: WheelChair07
+    3300064: WheelChair08
+    3300066: WheelChair09
+    3300068: WheelChair10
+    3300070: WheelChair11
+    3300072: WheelChair12
+    3300074: WheelChair13
+    3300076: WheelChair14
+    3300078: WheelChair15
+    3300080: WheelChair16
+    3300082: WheelChair17
+    3300084: WheelChair18
+    3300086: WheelChair19
+    3300088: WheelChair20
+    3300090: WheelChair21
+    3300092: WheelChair22
+    3300094: WheelChair23
+    3300096: WheelChair24
+    3300098: WheelChair25
+    3300100: WheelChair26
+    3300102: WheelChair27
+    3300104: WheelChair28
+    3300106: WheelChair29
+    3300108: WheelChair30
+    3300110: WheelChair31
+    3300112: WheelChair32
+    3300114: WheelChair33
+    3300116: WheelChair34
+    3300118: WheelChair35
+    3300120: WheelChair36
+    3300122: WheelChair37
+    3300124: WheelChair38
+    4300000: Eyes
+    4300002: Body
+    4300004: Tops
+    4300006: Hair
+    4300008: Shoes
+    4300010: Bottoms
+    4300012: ChamferBox001
+    4300014: Cylinder001
+    4300016: Torus001
+    4300018: Cylinder002
+    4300020: Cylinder003
+    4300022: Cylinder004
+    4300024: Torus002
+    4300026: Cylinder005
+    4300028: Cylinder006
+    4300030: Cylinder007
+    4300032: Cylinder008
+    4300034: Cylinder009
+    4300036: Torus003
+    4300038: Cylinder010
+    4300040: Cylinder011
+    4300042: Cylinder012
+    4300044: Torus004
+    4300046: Cylinder013
+    4300048: Cylinder014
+    4300050: Cylinder015
+    4300052: Cylinder016
+    4300054: ChamferBox002
+    4300056: ChamferBox003
+    4300058: Box001
+    4300060: WheelChair38
+    4300062: WheelChair37
+    4300064: WheelChair36
+    4300066: WheelChair35
+    4300068: WheelChair34
+    4300070: WheelChair33
+    4300072: WheelChair32
+    4300074: WheelChair31
+    4300076: WheelChair30
+    4300078: WheelChair29
+    4300080: WheelChair28
+    4300082: WheelChair27
+    4300084: WheelChair26
+    4300086: WheelChair25
+    4300088: WheelChair24
+    4300090: WheelChair23
+    4300092: WheelChair22
+    4300094: WheelChair21
+    4300096: WheelChair20
+    4300098: WheelChair19
+    4300100: WheelChair18
+    4300102: WheelChair17
+    4300104: WheelChair16
+    4300106: WheelChair15
+    4300108: WheelChair14
+    4300110: WheelChair13
+    4300112: WheelChair12
+    4300114: WheelChair11
+    4300116: WheelChair10
+    4300118: WheelChair09
+    4300120: WheelChair08
+    4300122: WheelChair07
+    4300124: WheelChair06
+    4300126: WheelChair05
+    4300128: WheelChair04
+    4300130: WheelChair03
+    4300132: WheelChair02
+    4300134: WheelChair01
+    4300136: WheelChair00
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Body
+    13700002: Bottoms
+    13700004: Eyes
+    13700006: Hair
+    13700008: Shoes
+    13700010: Tops
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
