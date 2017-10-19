@@ -1,5 +1,4 @@
-[00:00]Dialogue Accessed
-[00:04]IAMTESTING
-[00:05]PROM MODE
-[00:06]LeftShoulder CLICKED!
-[00:07]PROM LeftShoulder Flexion
+[00:01]Dialogue Accessed
+[00:05]IAMTESTING
+[00:06]AROM MODE
+[00:07]LeftShoulder CLICKED!
