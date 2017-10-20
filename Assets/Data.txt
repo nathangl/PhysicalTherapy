@@ -1,4 +1,5 @@
-[00:01]Dialogue Accessed
-[00:05]IAMTESTING
-[00:06]AROM MODE
-[00:07]LeftShoulder CLICKED!
+[00:04]Dialogue Accessed
+[00:11]IAMTESTING
+[00:13]PROM MODE
+[00:14]LeftShoulder CLICKED!
+[00:19]PROM LeftShoulder External Rotation
