@@ -1,8 +1,0 @@
-[00:01]Dialogue Accessed
-[00:08]IAMTESTING
-[00:11]PROM MODE
-[00:13]LeftShoulder CLICKED!
-[00:24]PROM LeftShoulder Flexion
-[00:35]PROM MODE
-[00:41]LeftShoulder CLICKED!
-[01:14]PROM LeftShoulder External Rotation
