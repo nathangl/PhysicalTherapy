@@ -13,7 +13,7 @@ using System.Collections;
  * more effort from the player to move, whether by investing more time (due to slower velocity)
  * or more movement (to increase the delta vector which increases the velocity).
  */
-public class PhysicsInteractable : InteractableBase
+/*public class PhysicsInteractable : InteractableBase
 {
     protected Rigidbody rigidbody;
     protected bool currentlyInteracting;
@@ -95,4 +95,4 @@ public class PhysicsInteractable : InteractableBase
             Destroy(interactionPoint.gameObject);
         }
     }
-}
+}*/
