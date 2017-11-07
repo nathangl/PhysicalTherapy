@@ -1,8 +1,11 @@
+[00:00]Chart Accessed
 [00:01]Dialogue Accessed
-[00:08]IAMTESTING
-[00:11]PROM MODE
-[00:13]LeftShoulder CLICKED!
-[00:24]PROM LeftShoulder Flexion
-[00:35]PROM MODE
-[00:41]LeftShoulder CLICKED!
-[01:14]PROM LeftShoulder External Rotation
+[00:05]IAMTESTING
+[00:06]AROM MODE
+[00:07]RightShoulder CLICKED!
+[00:14]AROM MODE
+[00:16]RightShoulder CLICKED!
+[00:48]AROM MODE
+[00:49]RightShoulder CLICKED!
+[00:55]AROM MODE
+[01:01]RightShoulder CLICKED!
