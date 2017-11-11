@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class animPaths : MonoBehaviour {
+public class animPaths : MonoBehaviour
+{
     Vector3 player;
     float minDistance = float.PositiveInfinity;
     float minPercent = 0;
@@ -14,7 +15,7 @@ public class animPaths : MonoBehaviour {
 
     void Start()
     {
-       iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), 0);
+        iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), 0);
     }
 
     /*
@@ -22,36 +23,36 @@ public class animPaths : MonoBehaviour {
      */
     void OnMouseDrag()
     {
+        //Check if new animation
         if (gameObject.name == manager.prevAnim || manager.first == true)
         {
-            //Debug.Log("hit");
             Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
-            Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);    //Converts mousePosition from screen space to world space
 
 
-            float pos = DeterminePos(objPosition);
-            gameObject.transform.position = objPosition;
-            
-            iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), pos);
+            float pos = DeterminePos(objPosition);      //Returns minimum percent
+            gameObject.transform.position = objPosition;    //Sets collider position to mouse position
 
+            iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), pos);     //Puts gameobject on path
+            /*
             //anim.speed = 0;
             if (gameObject.name == "PROMRightArm")
             {
                 position = DeterminePos(objPosition);
                 anim.Play(gameObject.name, 0, position);
                 //Debug.Log(position);
-            }
-            else
-            {
-                position = (DeterminePos(objPosition)) / 2;
-                anim.Play(gameObject.name, 0, position);
-                //Debug.Log(position);
-            }
+            }*/
+            //else
+            position = (DeterminePos(objPosition)) / 2;     //Current % or time through animation clip
+            anim.Play(gameObject.name, 0, position);        //Plays frozen animation clip at position's % or time
+
+            //Keeping track of which animation was played last
             manager.prevPos = position;
             manager.prevAnim = gameObject.name;
             manager.prevObj = gameObject;
             manager.first = false;
         }
+        //Continue current animation path
         else
         {
             iTween.PutOnPath(manager.prevObj, iTweenPath.GetPath(manager.prevAnim), 0);

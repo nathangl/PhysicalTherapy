@@ -1,5 +1,5 @@
 Case Authoring:    “Chart Review” information  CVA Prototype
-Name, diagnosis, date of onset
+Name, diagnosis, date of onsettest
 Patient biographical/social info
 Prior level of function
 Past medical history

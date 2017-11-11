@@ -29,7 +29,6 @@ public class TextReadDisplay : MonoBehaviour {
     public Text rightFive;
     public Text rightSix;
 
-
     void Start () {
         //int[] charts = new int[2] { 0, 1 };
         //int random = Random.Range(0, 2);
