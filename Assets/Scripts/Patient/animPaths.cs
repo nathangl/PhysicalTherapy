@@ -12,6 +12,12 @@ public class animPaths : MonoBehaviour {
     public animPathsManager manager;
     float position; //the position in animation or time in animation
 
+    //implementation of VR
+
+    /*private Valve.VR.EVRButtonId gripButton = Valve.VR.EVRButtonId.k_EButton_Grip;
+    private Valve.VR.EVRButtonId triggerButton = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
+    WandInteraction wand;*/
+
     void Start()
     {
        iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), 0);
@@ -20,11 +26,13 @@ public class animPaths : MonoBehaviour {
     /*
      * MAKE SURE THAT THE ANIMATION SPEED IS SET TO 0
      */
+
     void OnMouseDrag()
     {
         if (gameObject.name == manager.prevAnim || manager.first == true)
         {
             //Debug.Log("hit");
+
             Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
             Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 

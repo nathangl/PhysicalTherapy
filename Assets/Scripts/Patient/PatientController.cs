@@ -57,7 +57,7 @@ public class PatientController : MonoBehaviour
         {
             PROMObjs.Add(PROMAnims.transform.GetChild(i).gameObject);
         }
-        PROMObjs.ForEach(x => x.SetActive(false));
+        //PROMObjs.ForEach(x => x.SetActive(false));
         CreatePatientTree();
     }
 
@@ -109,11 +109,11 @@ public class PatientController : MonoBehaviour
                 currentPROM.GetEnumerator().Current.SetActive(false);
             prevMode = currentScreen;
         }
-        if (currentScreen != "PROM")
+        /*if (currentScreen != "PROM")
         {
             PROMAnims.SetActive(false);
             PROMActive = false;
-        }
+        }*/
         else
         {
             //dotController.DisableDots();

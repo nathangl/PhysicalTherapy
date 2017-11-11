@@ -13,7 +13,7 @@ public class WandInteraction : MonoBehaviour {
 
     private InteractableItem closestItem;
     private InteractableItem interactingItem;
-
+    private VRanimPath animation;
 
     // Use this for initialization
     void Start () {
