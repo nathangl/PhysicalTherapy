@@ -38,8 +38,9 @@ public class animPaths : MonoBehaviour {
 
 
             float pos = DeterminePos(objPosition);
+
             gameObject.transform.position = objPosition;
-            
+
             iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), pos);
 
             //anim.speed = 0;

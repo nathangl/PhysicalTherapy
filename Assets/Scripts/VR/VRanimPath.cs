@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 //using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VRanimPath : MonoBehaviour {
 
@@ -21,6 +22,9 @@ public class VRanimPath : MonoBehaviour {
 	public animPathsManager manager;
 	float position;		//the position in animation or time in animation
 
+	//Text test
+	public Text ouchTxt;
+
 	// Use this for initialization
 	void Start () {
 		iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), 0);
@@ -35,14 +39,18 @@ public class VRanimPath : MonoBehaviour {
 			if (gameObject.name == manager.prevAnim || manager.first == true)
 			{
 				//Use interactionPoint instead?
-//				Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
+				//Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
 //				Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-
+				BeginInteraction (attachedWand);
 				float pos = DeterminePos(interactionPoint.position);
 				gameObject.transform.position = interactionPoint.position;
 
 				iTween.PutOnPath(gameObject, iTweenPath.GetPath(gameObject.name), pos);
+
+				//If raised over 90%, ouch text displays
+				if (pos > .9f)
+					ouchTxt.gameObject.SetActive (true);
 
 				position = (DeterminePos(interactionPoint.position)) / 2;
 				anim.Play(gameObject.name, 0, position);
@@ -63,7 +71,6 @@ public class VRanimPath : MonoBehaviour {
 
 	public void BeginInteraction(WandInteractionVR wand)
 	{
-		Debug.Log ("Begin Interaction Called!");
 		attachedWand = wand;
 		interactionPoint.position = wand.transform.position;
 		interactionPoint.rotation = wand.transform.rotation;
@@ -76,13 +83,13 @@ public class VRanimPath : MonoBehaviour {
 
 	public void EndInteraction(WandInteractionVR wand)
 	{
-		Debug.Log ("End Interaction Called!");
 		if (wand == attachedWand)
 		{
 			attachedWand = null;
 			currentlyInteracting = false;
 			//this.transform.SetParent(null);
 		}
+		Debug.Log ("End Interaction");
 	}
 
 	public bool IsInteracting()

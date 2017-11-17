@@ -9,8 +9,6 @@ public class WandInteractionVR : MonoBehaviour {
     private SteamVR_Controller.Device controller { get { return SteamVR_Controller.Input((int)trackedObj.index); } }
     private SteamVR_TrackedObject trackedObj;
 
-    private VRanimPath animation;
-
 	private VRanimPath interactingItem;
 
     // Use this for initialization
@@ -38,10 +36,12 @@ public class WandInteractionVR : MonoBehaviour {
 
 			}
         }
-		if (controller.GetPressUp(triggerButton) && animation != null)
+		if (controller.GetPressUp(triggerButton))
         {
-            
-			//interactingItem.EndInteraction(this);            
+			if (interactingItem) {
+				interactingItem.EndInteraction(this);        
+				//interactingItem = null;
+			}
         }
 
     }
@@ -59,7 +59,9 @@ public class WandInteractionVR : MonoBehaviour {
 
     private void OnTriggerExit(Collider collider)
     {
-		interactingItem = null;
-        Debug.Log ("Wand exit");
+		if (interactingItem) {
+			interactingItem.EndInteraction(this);        
+			interactingItem = null;
+		}
     }
 }
