@@ -1,0 +1,10 @@
+[00:00]Dialogue Accessed
+[00:04]IAMTESTING
+[00:10]AROM MODE
+[00:10]RightShoulder CLICKED!
+[00:12]RightElbow CLICKED!
+[00:19]AROM MODE
+[00:20]RightShoulder CLICKED!
+[00:25]RightElbow CLICKED!
+[00:33]AROM MODE
+[00:34]RightElbow CLICKED!

@@ -127,6 +127,7 @@ ModelImporter:
     100238: WheelChair37
     100240: WheelChair38
     100242: WheelChairGroup
+    100244: Bip001 5
     400000: Bip001
     400002: Bip001 1
     400004: Bip001 2
@@ -249,6 +250,7 @@ ModelImporter:
     400238: WheelChair37
     400240: WheelChair38
     400242: WheelChairGroup
+    400244: Bip001 5
     2300000: WheelChair00
     2300002: WheelChair01
     2300004: WheelChair02
