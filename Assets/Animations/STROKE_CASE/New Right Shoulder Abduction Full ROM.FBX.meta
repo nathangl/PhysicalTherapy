@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 731da23569f189a44b6b3de7ee041a39
-timeCreated: 1508862444
+timeCreated: 1512068072
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -87,6 +87,50 @@ ModelImporter:
     100158: Shoes
     100160: Tops
     100162: WheelChairGroup
+    100164: Bip001 1
+    100166: Bip001 2
+    100168: Bip001 3
+    100170: Bip001 4
+    100172: WheelChair00
+    100174: WheelChair01
+    100176: WheelChair02
+    100178: WheelChair03
+    100180: WheelChair04
+    100182: WheelChair05
+    100184: WheelChair06
+    100186: WheelChair07
+    100188: WheelChair08
+    100190: WheelChair09
+    100192: WheelChair10
+    100194: WheelChair11
+    100196: WheelChair12
+    100198: WheelChair13
+    100200: WheelChair14
+    100202: WheelChair15
+    100204: WheelChair16
+    100206: WheelChair17
+    100208: WheelChair18
+    100210: WheelChair19
+    100212: WheelChair20
+    100214: WheelChair21
+    100216: WheelChair22
+    100218: WheelChair23
+    100220: WheelChair24
+    100222: WheelChair25
+    100224: WheelChair26
+    100226: WheelChair27
+    100228: WheelChair28
+    100230: WheelChair29
+    100232: WheelChair30
+    100234: WheelChair31
+    100236: WheelChair32
+    100238: WheelChair33
+    100240: WheelChair34
+    100242: WheelChair35
+    100244: WheelChair36
+    100246: WheelChair37
+    100248: WheelChair38
+    100250: WheelChairGroup 1
     400000: Base Human
     400002: Base HumanLPlatform
     400004: Base HumanRPlatform
@@ -169,12 +213,173 @@ ModelImporter:
     400158: Shoes
     400160: Tops
     400162: WheelChairGroup
+    400164: Bip001 1
+    400166: Bip001 2
+    400168: Bip001 3
+    400170: Bip001 4
+    400172: WheelChair00
+    400174: WheelChair01
+    400176: WheelChair02
+    400178: WheelChair03
+    400180: WheelChair04
+    400182: WheelChair05
+    400184: WheelChair06
+    400186: WheelChair07
+    400188: WheelChair08
+    400190: WheelChair09
+    400192: WheelChair10
+    400194: WheelChair11
+    400196: WheelChair12
+    400198: WheelChair13
+    400200: WheelChair14
+    400202: WheelChair15
+    400204: WheelChair16
+    400206: WheelChair17
+    400208: WheelChair18
+    400210: WheelChair19
+    400212: WheelChair20
+    400214: WheelChair21
+    400216: WheelChair22
+    400218: WheelChair23
+    400220: WheelChair24
+    400222: WheelChair25
+    400224: WheelChair26
+    400226: WheelChair27
+    400228: WheelChair28
+    400230: WheelChair29
+    400232: WheelChair30
+    400234: WheelChair31
+    400236: WheelChair32
+    400238: WheelChair33
+    400240: WheelChair34
+    400242: WheelChair35
+    400244: WheelChair36
+    400246: WheelChair37
+    400248: WheelChair38
+    400250: WheelChairGroup 1
+    2300000: WheelChair00
+    2300002: WheelChair01
+    2300004: WheelChair02
+    2300006: WheelChair03
+    2300008: WheelChair04
+    2300010: WheelChair05
+    2300012: WheelChair06
+    2300014: WheelChair07
+    2300016: WheelChair08
+    2300018: WheelChair09
+    2300020: WheelChair10
+    2300022: WheelChair11
+    2300024: WheelChair12
+    2300026: WheelChair13
+    2300028: WheelChair14
+    2300030: WheelChair15
+    2300032: WheelChair16
+    2300034: WheelChair17
+    2300036: WheelChair18
+    2300038: WheelChair19
+    2300040: WheelChair20
+    2300042: WheelChair21
+    2300044: WheelChair22
+    2300046: WheelChair23
+    2300048: WheelChair24
+    2300050: WheelChair25
+    2300052: WheelChair26
+    2300054: WheelChair27
+    2300056: WheelChair28
+    2300058: WheelChair29
+    2300060: WheelChair30
+    2300062: WheelChair31
+    2300064: WheelChair32
+    2300066: WheelChair33
+    2300068: WheelChair34
+    2300070: WheelChair35
+    2300072: WheelChair36
+    2300074: WheelChair37
+    2300076: WheelChair38
+    3300000: WheelChair00
+    3300002: WheelChair01
+    3300004: WheelChair02
+    3300006: WheelChair03
+    3300008: WheelChair04
+    3300010: WheelChair05
+    3300012: WheelChair06
+    3300014: WheelChair07
+    3300016: WheelChair08
+    3300018: WheelChair09
+    3300020: WheelChair10
+    3300022: WheelChair11
+    3300024: WheelChair12
+    3300026: WheelChair13
+    3300028: WheelChair14
+    3300030: WheelChair15
+    3300032: WheelChair16
+    3300034: WheelChair17
+    3300036: WheelChair18
+    3300038: WheelChair19
+    3300040: WheelChair20
+    3300042: WheelChair21
+    3300044: WheelChair22
+    3300046: WheelChair23
+    3300048: WheelChair24
+    3300050: WheelChair25
+    3300052: WheelChair26
+    3300054: WheelChair27
+    3300056: WheelChair28
+    3300058: WheelChair29
+    3300060: WheelChair30
+    3300062: WheelChair31
+    3300064: WheelChair32
+    3300066: WheelChair33
+    3300068: WheelChair34
+    3300070: WheelChair35
+    3300072: WheelChair36
+    3300074: WheelChair37
+    3300076: WheelChair38
     4300000: Eyes
     4300002: Body
     4300004: Tops
     4300006: Hair
     4300008: Shoes
     4300010: Bottoms
+    4300012: WheelChair00
+    4300014: WheelChair01
+    4300016: WheelChair02
+    4300018: WheelChair03
+    4300020: WheelChair04
+    4300022: WheelChair05
+    4300024: WheelChair06
+    4300026: WheelChair07
+    4300028: WheelChair08
+    4300030: WheelChair09
+    4300032: WheelChair10
+    4300034: WheelChair11
+    4300036: WheelChair12
+    4300038: WheelChair13
+    4300040: WheelChair14
+    4300042: WheelChair15
+    4300044: WheelChair16
+    4300046: WheelChair17
+    4300048: WheelChair18
+    4300050: WheelChair19
+    4300052: WheelChair20
+    4300054: WheelChair21
+    4300056: WheelChair22
+    4300058: WheelChair23
+    4300060: WheelChair24
+    4300062: WheelChair25
+    4300064: WheelChair26
+    4300066: WheelChair27
+    4300068: WheelChair28
+    4300070: WheelChair29
+    4300072: WheelChair30
+    4300074: WheelChair31
+    4300076: WheelChair32
+    4300078: WheelChair33
+    4300080: WheelChair34
+    4300082: WheelChair35
+    4300084: WheelChair36
+    4300086: WheelChair37
+    4300088: WheelChair38
     7400000: Take 001
     9500000: //RootNode
     13700000: Body
