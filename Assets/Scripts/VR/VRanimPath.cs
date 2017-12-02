@@ -51,6 +51,8 @@ public class VRanimPath : MonoBehaviour {
 				//If raised over 90%, ouch text displays
 				if (pos > .9f)
 					ouchTxt.gameObject.SetActive (true);
+				else if(pos < .9f)
+					ouchTxt.gameObject.SetActive(false);
 
 				position = (DeterminePos(interactionPoint.position)) / 2;
 				anim.Play(gameObject.name, 0, position);
