@@ -19,32 +19,43 @@ public class WandInteraction : MonoBehaviour {
     void Start () {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
     }
-	
+
 	// Update is called once per frame
+  // Checks to see if a controller button is preseed down or up
 	void Update () {
+        // Checks to see if controller is on and tracking
         if (controller == null)
         {
             Debug.Log("Controller not initialized");
             return;
         }
 
+        // Checks to see if button is pressed down
         if ( controller.GetPressDown(triggerButton))
         {
             float minDistance = float.MaxValue;
 
             float distance;
+            // If the controller is hovering over multiple object
+            // this determines which object is closest which is
+            // the one that will be selected
             foreach(InteractableItem item in objectsHoveringOver)
             {
+                // Checks distance
                 distance = (item.transform.position - transform.position).sqrMagnitude;
-                if (distance < minDistance) 
+                if (distance < minDistance)
                 {
                     minDistance = distance;
                     closestItem = item;
                 }
             }
+
             interactingItem = closestItem;
+
             if (interactingItem)
             {
+                // If the object is already interacting, that interaction
+                // is ended
                 if (interactingItem.IsInteracting())
                 {
                     interactingItem.EndInteraction(this);
@@ -53,13 +64,16 @@ public class WandInteraction : MonoBehaviour {
 
             }
         }
+
+        // Checks to see if the user lets go of the button
         if (controller.GetPressUp(triggerButton) && interactingItem != null)
         {
-            interactingItem.EndInteraction(this);            
+            interactingItem.EndInteraction(this);
         }
 
     }
 
+    // Detects objects that wand is hovering over
     private void OnTriggerEnter(Collider collider)
     {
         InteractableItem collidedItem = collider.GetComponent<InteractableItem>();
@@ -69,6 +83,7 @@ public class WandInteraction : MonoBehaviour {
         }
     }
 
+    // Detects when the controller goes outside of the controller
     private void OnTriggerExit(Collider collider)
     {
         InteractableItem collidedItem = collider.GetComponent<InteractableItem>();

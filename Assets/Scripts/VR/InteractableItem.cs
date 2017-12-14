@@ -11,23 +11,27 @@ public class InteractableItem : MonoBehaviour {
 
     private Transform interactionPoint;
 
-    private float velocityFactor = 20000f;
+    private float velocityFactor = 20000f; //Multiplier for determining displacement needed to move object
     private Vector3 posDelta;
 
-    private float rotationFactor = 400f;
+    private float rotationFactor = 400f; //Multiplier for determining displacement needed to move object
     private Quaternion rotationDelta;
     private float angle;
     private Vector3 axis;
 
-	// Use this for initialization
+	// Initializes rigidBody to the objects rigidbody
+  // the point at which the controller is touching the objects
+  // Takes the factors and divides them by the objects mass
 	void Start () {
         rigidBody = GetComponent<Rigidbody>();
         interactionPoint = new GameObject().transform;
         velocityFactor /= rigidBody.mass;
         rotationFactor /= rigidBody.mass;
 	}
-	
+
 	// Update is called once per frame
+  // Checks to see if the controller is interacting with the object
+  // Sets the velocity of an object to follow the controller
 	void Update () {
 		if (attachedWand && curentlyInteracting)
         {
@@ -45,10 +49,12 @@ public class InteractableItem : MonoBehaviour {
             this.rigidBody.angularVelocity = (Time.fixedDeltaTime * angle * axis) * rotationFactor;
         }
 	}
-
+    // Called from WandInteraction
+    // Sets the interactionPoint to the Wands position
+    // Sets currentlyInteracting to True
     public void BeginInteraction(WandInteraction wand)
     {
-        
+
         attachedWand = wand;
         interactionPoint.position = wand.transform.position;
         interactionPoint.rotation = wand.transform.rotation;
@@ -56,12 +62,13 @@ public class InteractableItem : MonoBehaviour {
         interactionPoint.SetParent(transform, true);
         //this.transform.SetParent(wand.transform);
         curentlyInteracting = true;
-       
-    }
 
+    }
+    // Called from WandInteraction
+    // Sets attachedWand to null
     public void EndInteraction(WandInteraction wand)
     {
-        if (wand == attachedWand)
+        if (wand == attachedWand) // Checks which wand is ending the interaction
         {
             attachedWand = null;
             curentlyInteracting = false;

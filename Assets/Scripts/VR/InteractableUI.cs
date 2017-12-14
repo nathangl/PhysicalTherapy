@@ -26,15 +26,16 @@ public class InteractableUI : MonoBehaviour {
 
   public void BeginInteraction(WandInteractionVR wand) {
     currentlyInteracting = true;
-    PROM.gameObject.SetActive(true);
+    PROM.gameObject.SetActive(true); // Enables iTween path
 
   }
 
+  // Currently not working but is not necessary
   public void EndInteraction(WandInteractionVR wand) {
     if (wand == attachedWand) {
       attachedWand = null;
       currentlyInteracting = false;
-      PROM.gameObject.SetActive(false);
+      PROM.gameObject.SetActive(false); // Disables iTween path
       //this.transform.SetParent(null);
     }
   }
