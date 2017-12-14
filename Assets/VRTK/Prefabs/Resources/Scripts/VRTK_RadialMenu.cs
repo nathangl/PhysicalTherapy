@@ -345,13 +345,13 @@ namespace VRTK
             Vector3 Dir = -1 * Vector3.one;
             if (show)
             {
-                targetScale = 1;
+                targetScale = 10;
                 Dir = Vector3.one;
             }
             int i = 0; //Sanity check for infinite loops
             while (i < 250 && ((show && transform.localScale.x < targetScale) || (!show && transform.localScale.x > targetScale)))
             {
-                transform.localScale += Dir * Time.deltaTime * 4f; //Tweening function - currently 0.25 second linear
+                transform.localScale += Dir * Time.deltaTime * 25f; //Tweening function - currently 0.25 second linear
                 yield return true;
                 i++;
             }
