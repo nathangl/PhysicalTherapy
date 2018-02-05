@@ -36,6 +36,9 @@ public class PatientController : MonoBehaviour
     string strengthTest = "";
     bool moving = false;
     bool found = false;
+    bool sPROM = false;
+    int preVal = 0;
+    bool noReset = false;
 
     public bool screen = false;
     public Text screenInfo;
@@ -69,9 +72,60 @@ public class PatientController : MonoBehaviour
             WaitFor(.1f);
             screen = false;
         }
+
+        if(sPROM)
+        {
+            if (patientAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > .49)
+            {
+                //strengthTest = currentDD[userDropdown.value];
+                PROMActive = false;
+                PROMAnims.SetActive(false);
+                patientAnim.Play("PROM" + dropdownIndex + currentDD[preVal], 0, 0.49f);
+                slider.gameObject.SetActive(true);
+                currentScreen = "STRENGTH";
+                sPROM = false;
+            }
+        }
+
+
+
+
+
+
         if(currentScreen == "STRENGTH")
         {
-            if(strengthTest == "Extension" && currentTag == "RightShoulder")
+            if (slider.value == 3 && !found)
+            {
+                found = true;
+                //DisableSlider();
+                moving = true;
+                //patientAnim.speed = -1.0f;
+                //patientAnim.SetBool("Mirror", true);
+                patientAnim.SetFloat("Speed", 1);
+                //patientAnim.speed = patientAnim.GetCurrentAnimatorStateInfo(0).speed;
+                patientAnim.speed = 1;
+            }
+            if (moving)
+            {
+                patientAnim.Play("A" + dropdownIndex + preVal, 0, 0.49f);
+                moving = false;
+                /*Debug.Log(patientAnim.speed);
+                if (patientAnim.GetCurrentAnimatorStateInfo(0).normalizedTime < .3)
+                {
+                    //patientAnim.speed = 1;
+                    //patientAnim.SetBool("Mirror", false);
+                    //patientAnim.SetFloat("Speed", 1f);
+                    patientAnim.speed = patientAnim.GetCurrentAnimatorStateInfo(0).speed;
+                }
+                if (patientAnim.GetCurrentAnimatorStateInfo(0).normalizedTime > .5)
+                {
+                    patientAnim.speed = 0;
+                    moving = false;
+                }*/
+
+            }
+            noReset = true;
+            /*if(strengthTest == "Extension" && currentTag == "RightShoulder")
             {
                 if (slider.value == 3 && !found)
                 {
@@ -99,9 +153,9 @@ public class PatientController : MonoBehaviour
                         moving = false;
                     }
                 }
-            }
+            }*/
         }
-        if (currentScreen != prevMode)
+        if (currentScreen != prevMode && !noReset)
         {
             patientAnim.speed = 1;
             patientAnim.Play("Idle2");
@@ -235,7 +289,13 @@ public class PatientController : MonoBehaviour
             patientAnim.Play("A" + dropdownIndex + userDropdown.value, 0);
         }
 
-        else if (currentScreen == "PROM")
+        else if (currentScreen == "STRENGTH")
+        {
+            sPROM = true;
+            currentScreen = "PROM";
+        }
+
+        if (currentScreen == "PROM")
         {
             dotController.DisableDots();
 
@@ -295,14 +355,14 @@ public class PatientController : MonoBehaviour
             }
         }
 
-        else if (currentScreen == "STRENGTH")
+        /*else if (currentScreen == "STRENGTH")
         {
             strengthTest = currentDD[userDropdown.value];
             dotController.DisableDots();
             patientAnim.speed = 0;
             patientAnim.Play("A" + dropdownIndex + userDropdown.value, 0, 0.40f);
             slider.gameObject.SetActive(true);
-        }
+        }*/
 
         else if (userDropdown.value == 2 && currentScreen == "")
         {
@@ -324,6 +384,7 @@ public class PatientController : MonoBehaviour
 
     public void DisableDropdown()
     {
+        preVal = userDropdown.value;
         userDropdown.value = 0;
         userDropdown.transform.position = new Vector3(10000, 0, 0);
         dropdownActive = false;
