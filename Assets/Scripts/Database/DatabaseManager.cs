@@ -15,8 +15,7 @@ public class DatabaseManager : MonoBehaviour
     public static bool inDB = false;
     public static bool correctLogin = false;
 
-    private static string connectionString = "server=csci03.is.uindy.edu;uid=test;" +
-"pwd=Test1234!;database=TEST;";
+    private static string connectionString = null # taken out to make public
 
     bool created = true;
 
